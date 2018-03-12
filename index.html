@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next gemini use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -103,12 +103,16 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
+<meta name="description" content="Dive into the ocean.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Gjxhlan&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Gjxhlan&#39;s Blog">
+<meta property="og:description" content="Dive into the ocean.">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gjxhlan&#39;s Blog">
+<meta name="twitter:description" content="Dive into the ocean.">
 
 
 
@@ -164,7 +168,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -211,6 +215,24 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
@@ -265,7 +287,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gjxhlan">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/upload_image/Avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -301,6 +323,24 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -330,18 +370,67 @@
       
         
           
-          原题链接：https://leetcode.com/contest/weekly-contest-75
-Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符移到最右边的位置，’abcde’ -&gt; ‘bcdea’，可以移动任意次。问 A 能否得到 B。
-字符串处理。
+            <p>写小结的目的，主要是在于想让自己能写代码的同时，也能把自己的思路写出来。</p>
+<p>原题链接：<a href="https://leetcode.com/contest/weekly-contest-75" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-75</a></p>
+<h1 id="Rotate-String"><a href="#Rotate-String" class="headerlink" title="Rotate String"></a>Rotate String</h1><p>给两个字符串 A 和 B。每次可以将 A 的最左边字符移到最右边的位置，’abcde’ -&gt; ‘bcdea’，可以移动任意次。问 A 能否得到 B。</p>
+<p>字符串处理。</p>
+<ol>
+<li>将 A 看成首尾相接循环串，每次以 A[i] 字符为开头，截取其中长度为 A.length 的子串，与 B 进行对比，如果匹配则返回 True，直到所有子串都轮询一遍仍没有匹配的子串则返回 False。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(n^2)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">rotateString</span><span class="params">(String A, String B)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] tempA = A.toCharArray();</span><br><span class="line">        <span class="keyword">char</span>[] tempB = B.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> n = A.length();</span><br><span class="line">        <span class="keyword">if</span> (A.length() != B.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                <span class="keyword">int</span> k = (i + j) % n;</span><br><span class="line">                <span class="keyword">if</span> (tempA[k] != tempB[j]) flag = <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (flag) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>将两个字符串 A 拼接在一块 A + A，然后查找 B 是否是其子串。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">rotateString</span><span class="params">(String A, String B)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (A+A).contains(B);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="All-Paths-From-Source-to-Target"><a href="#All-Paths-From-Source-to-Target" class="headerlink" title="All Paths From Source to Target"></a>All Paths From Source to Target</h1><p>给一个有向无环图 G = (V, E)，包含 N 个 nodes。Input <code>graph[i]</code>代表从 node i 出发的所有边。返回所有从 0 到 N-1 的路径列表。路径之间可以任意顺序排列，路径中的节点顺序不能打乱。N 的范围 [2,15]。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input: [[1,2], [3], [3], []] </span><br><span class="line">Output: [[0,1,3],[0,2,3]] </span><br><span class="line">Explanation: The graph looks like this:</span><br><span class="line">0---&gt;1</span><br><span class="line">|    |</span><br><span class="line">v    v</span><br><span class="line">2---&gt;3</span><br><span class="line">There are two paths: 0 -&gt; 1 -&gt; 3 and 0 -&gt; 2 -&gt; 3.</span><br></pre></td></tr></table></figure>
+<p>DFS。</p>
+<ol>
+<li><p>从0出发 DFS 所有路径，用 ArrayList 依序保存当前路径上的所有节点，当访问到 N-1 的时候，将路径存储到 answer 路径列表中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(all paths from 0)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; allPathsSourceTarget(<span class="keyword">int</span>[][] graph) &#123;</span><br><span class="line">        <span class="keyword">if</span> (graph.length == <span class="number">0</span>) <span class="keyword">return</span> ans;</span><br><span class="line">        dfs(<span class="number">0</span>, graph, <span class="keyword">new</span> ArrayList&lt;&gt;());</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> node, <span class="keyword">int</span>[][] graph, List&lt;Integer&gt; path)</span> </span>&#123;</span><br><span class="line">        path.add(node);</span><br><span class="line">        <span class="keyword">if</span> (node == graph.length-<span class="number">1</span>) &#123;</span><br><span class="line">            ans.add(<span class="keyword">new</span> ArrayList&lt;&gt;(path));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> next: graph[node]) &#123;</span><br><span class="line">            dfs(next, graph, path);</span><br><span class="line">            path.remove(path.size()-<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="Champagne-Tower"><a href="#Champagne-Tower" class="headerlink" title="Champagne Tower"></a>Champagne Tower</h1><p>如图，一个由酒杯搭建而成的香槟金字塔，每个酒杯装满后会向两边平均溢出多余的酒，已知从顶层倒 n 杯酒（n 非负数），当所有酒杯都不溢出时，求第 i 行第 j 个酒杯装了多少酒（both i and j are 0 indexed），如1杯、0.5杯。</p>
+<p><img src="/upload_image/Screen Shot 2018-03-11 at 3.41.48 PM.png" alt="酒杯"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: poured = 1, query_glass = 1, query_row = 1</span><br><span class="line">Output: 0.0</span><br><span class="line">Explanation: We poured 1 cup of champange to the top glass of the tower (which is indexed as (0, 0)). There will be no excess liquid so all the glasses under the top glass will remain empty.</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>poured</code> will be in the range of <code>[0, 10 ^ 9]</code>.</li>
+<li><code>query_glass</code> and <code>query_row</code> will be in the range of <code>[0, 99]</code>.</li>
+</ul>
+<p>简易 DP，递推公式都告诉你了，<code>f[i,j]=max(f[i-1][j-1]-1,0)/2 + max(f[i-1][j]-1,0)/2</code>.</p>
+<ol>
+<li><p>用 <code>list&lt;list&gt;</code> 来表示一个动态二维数组。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(query_row * query_row) 66ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">champagneTower</span><span class="params">(<span class="keyword">int</span> poured, <span class="keyword">int</span> query_row, <span class="keyword">int</span> query_glass)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (query_row == <span class="number">0</span>) <span class="keyword">return</span> Math.min(poured, <span class="number">1</span>);</span><br><span class="line">        List&lt;List&lt;Double&gt;&gt; f = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        f.add(<span class="keyword">new</span> ArrayList&lt;Double&gt;());</span><br><span class="line">        f.get(<span class="number">0</span>).add((<span class="keyword">double</span>)poured); <span class="comment">// f[0][0] = poured;</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;; i++) &#123;</span><br><span class="line">            List&lt;Double&gt; last = f.get(i-<span class="number">1</span>);</span><br><span class="line">            List&lt;Double&gt; cur = <span class="keyword">new</span> ArrayList&lt;Double&gt;();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= i; j++) &#123;</span><br><span class="line">                <span class="comment">//f[i][j] = max(f[i-1][j-1]-1,0)/2 + max(f[i-1][j]-1,0)/2</span></span><br><span class="line">                <span class="keyword">double</span> node = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">if</span> (j-<span class="number">1</span> &gt;= <span class="number">0</span>) node += Math.max(last.get(j-<span class="number">1</span>)-<span class="number">1</span>, <span class="number">0</span>) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span> (j &lt; last.size()) node += Math.max(last.get(j)-<span class="number">1</span>, <span class="number">0</span>) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span> (i == query_row &amp;&amp; j == query_glass) <span class="keyword">return</span> node &gt; <span class="number">1</span> ? <span class="number">1</span> : node;</span><br><span class="line">                cur.add(node);</span><br><span class="line">            &#125;</span><br><span class="line">            f.add(cur);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>两个一维滚动数组，代表上一层杯子和当前层杯子。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time complexity O(query_row, query_row)，但是数据结构变得更为简单，时间复杂度从 61ms 降至 31ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">champagneTower</span><span class="params">(<span class="keyword">int</span> poured, <span class="keyword">int</span> query_row, <span class="keyword">int</span> query_glass)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (query_row == <span class="number">0</span>) <span class="keyword">return</span> Math.min(poured, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">double</span>[] d = &#123;poured&#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;; i++) &#123;</span><br><span class="line">            <span class="keyword">double</span>[] f = <span class="keyword">new</span> <span class="keyword">double</span>[i+<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= i; j++) &#123;</span><br><span class="line">                <span class="comment">//f[i][j] = max(f[i-1][j-1]-1,0)/2 + max(f[i-1][j]-1,0)/2</span></span><br><span class="line">                <span class="keyword">if</span> (j-<span class="number">1</span> &gt;= <span class="number">0</span>) f[j] += Math.max(d[j-<span class="number">1</span>]-<span class="number">1</span>, <span class="number">0</span>) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span> (j &lt; d.length) f[j] += Math.max(d[j]-<span class="number">1</span>, <span class="number">0</span>) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span> (i == query_row &amp;&amp; j == query_glass) <span class="keyword">return</span> f[j] &gt; <span class="number">1</span> ? <span class="number">1</span> : f[j];</span><br><span class="line">            &#125;</span><br><span class="line">            d = f;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>有些上层节点是无法影响到（query_row，query_col）节点的，我们可以不计算那些节点，求 j 位于[start_col, end_col] 范围中的节点，只有这些节点会对之后的待求节点产生影响。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 31ms -&gt; 26ms, 可能实际是因为随机原因减少的运行时间</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">champagneTower</span><span class="params">(<span class="keyword">int</span> poured, <span class="keyword">int</span> query_row, <span class="keyword">int</span> query_glass)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (query_row == <span class="number">0</span>) <span class="keyword">return</span> Math.min(poured, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">double</span>[] d = &#123;poured&#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>;; i++) &#123;</span><br><span class="line">            <span class="keyword">double</span>[] f = <span class="keyword">new</span> <span class="keyword">double</span>[i+<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> start_col = Math.max(i - (query_row-query_glass), <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">int</span> end_col = Math.min(query_glass, i);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = start_col; j &lt;= end_col; j++) &#123;</span><br><span class="line">                <span class="comment">//f[i][j] = max(f[i-1][j-1]-1,0)/2 + max(f[i-1][j]-1,0)/2</span></span><br><span class="line">                <span class="keyword">if</span> (j-<span class="number">1</span> &gt;= <span class="number">0</span>) f[j] += Math.max(d[j-<span class="number">1</span>]-<span class="number">1</span>, <span class="number">0</span>) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span> (j &lt; d.length) f[j] += Math.max(d[j]-<span class="number">1</span>, <span class="number">0</span>) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span> (i == query_row &amp;&amp; j == query_glass) <span class="keyword">return</span> f[j] &gt; <span class="number">1</span> ? <span class="number">1</span> : f[j];</span><br><span class="line">            &#125;</span><br><span class="line">            d = f;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>基于解法2，可以将滚动数组合并，自己覆盖自己，因为<code>dp[i][j]</code>只会被<code>dp[i-1][j-1]、dp[i-1][j]</code>所影响，那么当我们从后往前更新时，新更新的值就不会影响 index 靠前的值，因为当前节点的更新只会影响 index 等于或者大于他的节点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 时间复杂度没有什么降低，空间复杂度降至O(query_row)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">champagneTower</span><span class="params">(<span class="keyword">int</span> poured, <span class="keyword">int</span> query_row, <span class="keyword">int</span> query_glass)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">double</span>[] dp = <span class="keyword">new</span> <span class="keyword">double</span>[<span class="number">101</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = poured;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; query_row; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">                dp[j] = Math.max((dp[j]-<span class="number">1</span>) / <span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">                dp[j+<span class="number">1</span>] += dp[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.min(dp[query_glass], <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="Smallest-Rotation-with-Highest-Score"><a href="#Smallest-Rotation-with-Highest-Score" class="headerlink" title="Smallest Rotation with Highest Score"></a>Smallest Rotation with Highest Score</h1><p>给一个序列 A，给一个非负的 index K，我们可以在 K 处旋转整个序列使其变成<code>A[K], A[K+1], A{K+2], ... A[A.length - 1], A[0], A[1], ..., A[K-1]</code>。之后每个值小于等于其新的 index 的 entry 都可以得到一分。求得到最大分数的 K，如果有多个 K，输出最小的。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: [2, 3, 1, 4, 0]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:  </span><br><span class="line">Scores for each K are listed below: </span><br><span class="line">K = 0,  A = [2,3,1,4,0],    score 2</span><br><span class="line">K = 1,  A = [3,1,4,0,2],    score 3</span><br><span class="line">K = 2,  A = [1,4,0,2,3],    score 3</span><br><span class="line">K = 3,  A = [4,0,2,3,1],    score 4</span><br><span class="line">K = 4,  A = [0,2,3,1,4],    score 3</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>A</code> will have length at most <code>20000</code>.</li>
+<li><code>A[i]</code> will be in the range <code>[0, A.length]</code>.</li>
+</ul>
+<p>A 的范围预示着时间复杂度可能是 O(n) 级别的，DP。</p>
+<p>枚举 K -&gt; [0, N)。rotate 数组之后的得到的新坐标和原坐标之间存在着线性关系，可以用式子</p>
+<p><code>index_after = (index + N - K) % N</code> 表示，得分的条件是<code>A[i] - index_after &lt;= 0</code>，解得 <code>K &lt;= (index - A[i] + N) % N</code>。这个式子意味着，当 K 大于<code>(index - A[i] + N) % N</code>时，entry i 永远无法得分，即 K 的临界值为<code>K&#39; = (index - A[i] + N + 1) % N</code>，可以用数组累加失分点 <code>loss[(index - A[i] + N + 1) % N] += 1</code>。</p>
+<p>那么什么时候得分呢？题目只是要求输出得到最大分数的 K，而不需要计算最大分数，所以我们可以假设一个参考平面<code>score[0]</code>。当 K 增加1的时候，除了第一个元素之外所有 entry 的 index 都将减 1（相对 K 得到的序列），index 减少只会失分，由 <code>loss[K]</code>表示；第一个元素将被移到最后，如果元素的值为 <code>A[i] in [1, A.length)</code>，那么他肯定能得到一分。这样我们可以得到状态转移方程：<code>score[K] = score[K-1] + 1 - loss[K], score[0] = 1 - loss[K]</code></p>
+<p>考虑两个特殊情况 <code>A[i] = 0 or A.length</code>，其临界点<code>K&#39; = (index - A[i] + N + 1) % N = (index + 1) % N</code>，可以看出值为 0 或 A.length 的元素的临界点都是其坐标加1，即它在失分的时候，同样它也会帮助我们得到一分，即无影响。这也符合 0 &lt;= index 和 N &gt; index 不随 rotate 而改变的情况。</p>
+<p>然后寻找$\operatorname*{argmax}_K \max{score[K]}$。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int bestRotation(int[] A) &#123;</span><br><span class="line">        int N = A.length;</span><br><span class="line">        int max_i = 0;</span><br><span class="line">        int[] score = new int[N+1];</span><br><span class="line">        for (int i = 0; i &lt; N; i++) score[(i-A[i]+N+1) % N] -= 1;</span><br><span class="line">        for (int i = 1; i &lt; N; i++) &#123;</span><br><span class="line">            score[i] += score[i-1] + 1;</span><br><span class="line">            max_i = score[i] &gt; score[max_i] ? i : max_i;</span><br><span class="line">        &#125;</span><br><span class="line">        return max_i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以直接先把 K=0 时的 score 求出来，这样递推可以的到每个 K 得到的 score 的绝对值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">bestRotation</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = A.length;</span><br><span class="line">        <span class="keyword">int</span> max_K = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] score = <span class="keyword">new</span> <span class="keyword">int</span>[N+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span>[] loss = <span class="keyword">new</span> <span class="keyword">int</span>[N+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// the change of index is index = (i + N - K) % N, </span></span><br><span class="line">        <span class="comment">//   so A[i] - index &lt;= 0 will lead to following formula.</span></span><br><span class="line">        <span class="comment">//   lose point happens at K &gt; i - A[i] + N, </span></span><br><span class="line">        <span class="comment">//   each element will get point or lose point only once</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            loss[(i-A[i]+N+<span class="number">1</span>) % N] -= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (A[i] &lt;= i) score[<span class="number">0</span>] += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (A[N-<span class="number">1</span>] == A.length) loss[<span class="number">0</span>]++; <span class="comment">// special case 0 or A.length</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> K = <span class="number">1</span>; K &lt; N; K++) &#123;</span><br><span class="line">            score[K] = score[K-<span class="number">1</span>] + <span class="number">1</span> + loss[K];</span><br><span class="line">            max_K = score[K] &gt; score[max_K] ? K : max_K;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max_K;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/11/Leetcode-Contest-75-解题小结/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -351,9 +440,6 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
     
     
     
-    <div>
-      
-    </div>
 
     
 
@@ -396,12 +482,12 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/Hello-World-0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/05/Java-源码阅读——HashMap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gjxhlan">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/upload_image/Avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -415,7 +501,7 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/11/Hello-World-0/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2018/03/05/Java-源码阅读——HashMap/" itemprop="url">Java 源码阅读——HashMap</a></h1>
         
 
         <div class="post-meta">
@@ -427,7 +513,7 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-11T19:59:49-04:00">2018-03-11</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-05T23:11:35-05:00">2018-03-05</time>
             
 
             
@@ -466,15 +552,33 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
       
         
           
+            <h1 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h1><p>java版本为1.8.</p>
+<h2 id="table、bin、node"><a href="#table、bin、node" class="headerlink" title="table、bin、node"></a>table、bin、node</h2><p>HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">This map usually acts as a binned (bucketed) hash table, but when bins get </span><br><span class="line">too large, they are transformed into bins of TreeNodes, each structured </span><br><span class="line">similarly to those in java.util.TreeMap.</span><br></pre></td></tr></table></figure>
+<h3 id="Tree-bins"><a href="#Tree-bins" class="headerlink" title="Tree bins"></a>Tree bins</h3><p>Bins whose elements are all TreeNodes。提供O(logn)的操作。</p>
+<p>（以下实力一波嘲讽233<br><img src="/upload_image/post_JavaHashMap_UNADJUSTEDNONRAW_thumb_a88.jpg" alt="实力一波嘲讽233"></p>
+<h2 id="capacity"><a href="#capacity" class="headerlink" title="capacity"></a>capacity</h2><p>容量，一般为2的幂次方，初始为16，最大为2^30。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The default initial capacity - MUST be a power of two.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The maximum capacity, used if a higher value is implicitly specified</span></span><br><span class="line"><span class="comment"> * by either of the constructors with arguments.</span></span><br><span class="line"><span class="comment"> * MUST be a power of two &lt;= 1&lt;&lt;30.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="threshold"><a href="#threshold" class="headerlink" title="threshold"></a>threshold</h2><h3 id="TREEIFY-THRESHOLD（针对bin存储nodes）"><a href="#TREEIFY-THRESHOLD（针对bin存储nodes）" class="headerlink" title="TREEIFY_THRESHOLD（针对bin存储nodes）"></a>TREEIFY_THRESHOLD（针对bin存储nodes）</h3><p>当bin中的nodes数量小于TREEIFY_THRESHOLD，bin中的nodes会以list形式存储；当bin中的node数量超过TREEIFY_THRESHOLD，bin中的nodes会以tree形式存储。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The bin count threshold for using a tree rather than list for a</span></span><br><span class="line"><span class="comment"> * bin.  Bins are converted to trees when adding an element to a</span></span><br><span class="line"><span class="comment"> * bin with at least this many nodes. The value must be greater</span></span><br><span class="line"><span class="comment"> * than 2 and should be at least 8 to mesh with assumptions in</span></span><br><span class="line"><span class="comment"> * tree removal about conversion back to plain bins upon</span></span><br><span class="line"><span class="comment"> * shrinkage.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="UNTREEIFY-THRESHOLD"><a href="#UNTREEIFY-THRESHOLD" class="headerlink" title="UNTREEIFY_THRESHOLD"></a>UNTREEIFY_THRESHOLD</h3><p>当bin中的nodes数量重新小于UNTREEIFY_THRESHOLD时，bin中的node会被重新以list形式存储。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The bin count threshold for untreeifying a (split) bin during a</span></span><br><span class="line"><span class="comment"> * resize operation. Should be less than TREEIFY_THRESHOLD, and at</span></span><br><span class="line"><span class="comment"> * most 6 to mesh with shrinkage detection under removal.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="MIN-TREEIFY-CAPACITY（针对table存储bins）"><a href="#MIN-TREEIFY-CAPACITY（针对table存储bins）" class="headerlink" title="MIN_TREEIFY_CAPACITY（针对table存储bins）"></a>MIN_TREEIFY_CAPACITY（针对table存储bins）</h3><p>当整个table的nodes数量小于MIN_TREEIFY_CAPACITY时，bins会以list形式存储；当整个table的nodes数量大于MIN_TREEIFY_CAPACITY时，bins会以tree形式存储。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The smallest table capacity for which bins may be treeified.</span></span><br><span class="line"><span class="comment"> * (Otherwise the table is resized if too many nodes in a bin.)</span></span><br><span class="line"><span class="comment"> * Should be at least 4 * TREEIFY_THRESHOLD to avoid conflicts</span></span><br><span class="line"><span class="comment"> * between resizing and treeification thresholds.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="loadFactor"><a href="#loadFactor" class="headerlink" title="loadFactor"></a>loadFactor</h2><p>loadFactor默认是0.75。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The load factor used when none specified in constructor.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="node子类"><a href="#node子类" class="headerlink" title="node子类"></a>node子类</h2><h3 id="equals函数"><a href="#equals函数" class="headerlink" title="equals函数"></a>equals函数</h3><ul>
+<li>是否是自己</li>
+<li>如果是同Map类实例，key和value对象是否均相同</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">this</span>) <span class="comment">// 判断是否为本身</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (o <span class="keyword">instanceof</span> Map.Entry) &#123; <span class="comment">// 是否是Map实例</span></span><br><span class="line">        Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;</span><br><span class="line">        <span class="keyword">if</span> (Objects.equals(key, e.getKey()) &amp;&amp;</span><br><span class="line">            Objects.equals(value, e.getValue()))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="hash方法"><a href="#hash方法" class="headerlink" title="hash方法"></a>hash方法</h2><p><a href="https://www.cnblogs.com/tiger-fu/p/7884794.html" target="_blank" rel="noopener">Java集合源码阅读之HashMap</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="put方法"><a href="#put方法" class="headerlink" title="put方法"></a>put方法</h2><h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h2><h1 id="Java序列化"><a href="#Java序列化" class="headerlink" title="Java序列化"></a>Java序列化</h1><h2 id="深入学习-Java-序列化"><a href="#深入学习-Java-序列化" class="headerlink" title="深入学习 Java 序列化"></a><a href="http://www.importnew.com/24490.html" target="_blank" rel="noopener">深入学习 Java 序列化</a></h2><p>Java序列化是指把Java对象保存为二进制字节码的过程，Java反序列化是指把二进制码重新转换成Java对象的过程。</p>
+<p>在计算需要被序列化的字段的时候会把被static和transient修饰的字段给过滤掉。</p>
+<h2 id="serialVersionUID-与-transient"><a href="#serialVersionUID-与-transient" class="headerlink" title="serialVersionUID 与 transient"></a>serialVersionUID 与 transient</h2><p><a href="https://www.cnblogs.com/duanxz/p/3511695.html" target="_blank" rel="noopener">java类中serialversionuid作用是什么?举个例子说明</a></p>
+
           
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/11/Hello-World-0/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -484,9 +588,6 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
     
     
     
-    <div>
-      
-    </div>
 
     
 
@@ -529,12 +630,12 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/11/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/04/Java-源码阅读——ArrayList/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gjxhlan">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/upload_image/Avatar.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -548,7 +649,7 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/11/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2018/03/04/Java-源码阅读——ArrayList/" itemprop="url">Java 源码阅读——ArrayList</a></h1>
         
 
         <div class="post-meta">
@@ -560,7 +661,7 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-11T19:57:57-04:00">2018-03-11</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-04T23:11:04-05:00">2018-03-04</time>
             
 
             
@@ -599,15 +700,34 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
       
         
           
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/11/hello-world/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h1 id="ArrayList源码"><a href="#ArrayList源码" class="headerlink" title="ArrayList源码"></a>ArrayList源码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">transient</span> Object[] elementData; <span class="comment">// non-private to simplify nested class access</span></span><br></pre></td></tr></table></figure>
+<p>ArrayList的底层实现是一个Object数组，int、char之类的基础类型无法直接add to List。</p>
+<h2 id="capacity"><a href="#capacity" class="headerlink" title="capacity"></a>capacity</h2><h3 id="Default-capacity"><a href="#Default-capacity" class="headerlink" title="Default capacity"></a>Default capacity</h3><p>默认capacity是10</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="MAX-ARRAY-SIZE"><a href="#MAX-ARRAY-SIZE" class="headerlink" title="MAX_ARRAY_SIZE"></a>MAX_ARRAY_SIZE</h3><p>从grow方法中可以看出最大的Array_size应该是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">private void grow(int minCapacity) &#123;</span><br><span class="line">    // overflow-conscious code</span><br><span class="line">    int oldCapacity = elementData.length;</span><br><span class="line">    int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1); // 扩充成原来的1.5倍</span><br><span class="line">    if (newCapacity - minCapacity &lt; 0)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    // minCapacity is usually close to size, so this is a win:</span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static int hugeCapacity(int minCapacity) &#123;</span><br><span class="line">    if (minCapacity &lt; 0) // overflow</span><br><span class="line">        throw new OutOfMemoryError();</span><br><span class="line">    return (minCapacity &gt; MAX_ARRAY_SIZE) ?</span><br><span class="line">        Integer.MAX_VALUE :</span><br><span class="line">        MAX_ARRAY_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="add"><a href="#add" class="headerlink" title="add"></a>add</h2><p>add方法的流程是</p>
+<ol>
+<li>保证容量</li>
+<li>添加新值</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></span><br><span class="line">    elementData[size++] = e;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ensureCapacityInternal方法将先判断当前集合是否为空集，因为ArrayList所有空集都是同一个final static对象DEFAULTCAPACITY_EMPTY_ELEMENTDATA。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">        minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ensureExplicitCapacity(minCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>elementData 数组的容量只会增加不会减少，所以 elementData.length 指向数组的容量，而 size 则指向了数据存储的元素数量。若当前数组容量可以容纳所以存储的元素，那么就没必要调用 grow 方法扩容了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    modCount++;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">        grow(minCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>grow 方法进行扩容，先扩容1.5倍，如果仍然小于所要求的存储空间的大小 minCapacity，那么就将minCapacity 作为新数组的容量。</p>
+<p>minCapacity &lt; 0 处理溢出。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">hugeCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (minCapacity &lt; <span class="number">0</span>) <span class="comment">// overflow</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> OutOfMemoryError();</span><br><span class="line">    <span class="keyword">return</span> (minCapacity &gt; MAX_ARRAY_SIZE) ?</span><br><span class="line">        Integer.MAX_VALUE :</span><br><span class="line">        MAX_ARRAY_SIZE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="contains"><a href="#contains" class="headerlink" title="contains"></a>contains</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> indexOf(o) &gt;= <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">            <span class="keyword">if</span> (elementData[i]==<span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">            <span class="keyword">if</span> (o.equals(elementData[i]))</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>contains()方法的时间复杂度是O(n)，从头到尾遍历一遍。</p>
+<h1 id="ArrayList需要注意的点"><a href="#ArrayList需要注意的点" class="headerlink" title="ArrayList需要注意的点"></a>ArrayList需要注意的点</h1><p>ArrayList不是线程安全的。</p>
+<p>基本上扩容、删除、contains的平均时间复杂度都是O(n), 访问速度是O(1)。</p>
+<p>初始容量是10，每次会超出elementData数组容量时，会扩容1.5倍，通过Arrays.copyof()进行实现。所以当我们知道有多少对象要插入的时候尽量用有参构造方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ensureCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)</span><br><span class="line">        <span class="comment">// any size if not default element table</span></span><br><span class="line">        ? <span class="number">0</span></span><br><span class="line">        <span class="comment">// larger than default for default empty table. It's already</span></span><br><span class="line">        <span class="comment">// supposed to be at default size.</span></span><br><span class="line">        : DEFAULT_CAPACITY;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (minCapacity &gt; minExpand) &#123;</span><br><span class="line">        ensureExplicitCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>modCount 用来判断是否存在多线程的问题，但无法解决问题，只能抛出异常。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (modCount != expectedModCount)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
         
       
     </div>
@@ -617,9 +737,6 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
     
     
     
-    <div>
-      
-    </div>
 
     
 
@@ -679,8 +796,12 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/upload_image/Avatar.png"
+                alt="gjxhlan" />
+            
               <p class="site-author-name" itemprop="name">gjxhlan</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">Dive into the ocean.</p>
           </div>
 
           
@@ -697,21 +818,36 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
               
 
               
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
 
               
                 
                 
                 <div class="site-state-item site-state-tags">
-                  
+                  <a href="/tags/index.html">
                     
                     
                       
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">tags</span>
-                  
+                  </a>
                 </div>
               
             </nav>
@@ -719,6 +855,20 @@ Rotate String给两个字符串 A 和 B。每次可以将 A 的最左边字符�
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/angnuoli" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:gjxhlan@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
           
 
           
