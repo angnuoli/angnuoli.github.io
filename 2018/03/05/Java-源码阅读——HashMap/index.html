@@ -154,19 +154,19 @@
   <meta name="keywords" content="Java 源码," />
 
 
-<meta name="description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233  capacity 容量，一般为2">
+<meta name="description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233">
 <meta name="keywords" content="Java 源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 源码阅读——HashMap">
 <meta property="og:url" content="http://yoursite.com/2018/03/05/Java-源码阅读——HashMap/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233  capacity 容量，一般为2">
+<meta property="og:description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/upload_image/post_JavaHashMap_UNADJUSTEDNONRAW_thumb_a88.jpg">
-<meta property="og:updated_time" content="2018-03-12T05:53:07.880Z">
+<meta property="og:updated_time" content="2018-03-12T06:07:43.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 源码阅读——HashMap">
-<meta name="twitter:description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233  capacity 容量，一般为2">
+<meta name="twitter:description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233">
 <meta name="twitter:image" content="http://yoursite.com/upload_image/post_JavaHashMap_UNADJUSTEDNONRAW_thumb_a88.jpg">
 
 
@@ -412,6 +412,7 @@
 <h3 id="tree-bins">Tree bins</h3>
 <p>Bins whose elements are all TreeNodes。提供O(logn)的操作。</p>
 <p>（以下实力一波嘲讽233 <img src="/upload_image/post_JavaHashMap_UNADJUSTEDNONRAW_thumb_a88.jpg" alt="实力一波嘲讽233"></p>
+<a id="more"></a>
 <h2 id="capacity">capacity</h2>
 <p>容量，一般为2的幂次方，初始为16，最大为2^30。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The default initial capacity - MUST be a power of two.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The maximum capacity, used if a higher value is implicitly specified</span></span><br><span class="line"><span class="comment"> * by either of the constructors with arguments.</span></span><br><span class="line"><span class="comment"> * MUST be a power of two &lt;= 1&lt;&lt;30.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br></pre></td></tr></table></figure>
@@ -446,7 +447,6 @@
 <p>在计算需要被序列化的字段的时候会把被static和transient修饰的字段给过滤掉。</p>
 <h2 id="serialversionuid-与-transient">serialVersionUID 与 transient</h2>
 <p><a href="https://www.cnblogs.com/duanxz/p/3511695.html" target="_blank" rel="noopener">java类中serialversionuid作用是什么?举个例子说明</a></p>
-<a id="more"></a>
 
       
     </div>
