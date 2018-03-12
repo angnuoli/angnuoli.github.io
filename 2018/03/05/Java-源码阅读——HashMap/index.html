@@ -17,6 +17,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-radar.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -41,6 +48,50 @@
 
 
 
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rannetto One:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
@@ -103,19 +154,19 @@
   <meta name="keywords" content="Java 源码," />
 
 
-<meta name="description" content="HashMapjava版本为1.8. table、bin、nodeHashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui 123This map usually acts as a binned (bucketed) hash table, but when bins get too large, they a">
+<meta name="description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233  capacity 容量，一般为2">
 <meta name="keywords" content="Java 源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 源码阅读——HashMap">
 <meta property="og:url" content="http://yoursite.com/2018/03/05/Java-源码阅读——HashMap/index.html">
-<meta property="og:site_name" content="Gjxhlan&#39;s Blog">
-<meta property="og:description" content="HashMapjava版本为1.8. table、bin、nodeHashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui 123This map usually acts as a binned (bucketed) hash table, but when bins get too large, they a">
+<meta property="og:site_name" content="gjxhlan&#39;s blog">
+<meta property="og:description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233  capacity 容量，一般为2">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/upload_image/post_JavaHashMap_UNADJUSTEDNONRAW_thumb_a88.jpg">
-<meta property="og:updated_time" content="2018-03-12T02:59:16.732Z">
+<meta property="og:updated_time" content="2018-03-12T05:53:07.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 源码阅读——HashMap">
-<meta name="twitter:description" content="HashMapjava版本为1.8. table、bin、nodeHashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui 123This map usually acts as a binned (bucketed) hash table, but when bins get too large, they a">
+<meta name="twitter:description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233  capacity 容量，一般为2">
 <meta name="twitter:image" content="http://yoursite.com/upload_image/post_JavaHashMap_UNADJUSTEDNONRAW_thumb_a88.jpg">
 
 
@@ -132,7 +183,7 @@
     sidebar: "",
   };
 </script>
-  <title>Java 源码阅读——HashMap | Gjxhlan's Blog</title>
+  <title>Java 源码阅读——HashMap | gjxhlan's blog</title>
   
 
 
@@ -172,6 +223,8 @@
 
 </head>
 
+
+
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
@@ -190,7 +243,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Gjxhlan's Blog</span>
+        <span class="site-title">gjxhlan's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -294,7 +347,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Gjxhlan's Blog">
+      <meta itemprop="name" content="gjxhlan's blog">
     </span>
 
     
@@ -351,31 +404,49 @@
       
 
       
-        <h1 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h1><p>java版本为1.8.</p>
-<h2 id="table、bin、node"><a href="#table、bin、node" class="headerlink" title="table、bin、node"></a>table、bin、node</h2><p>HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui</p>
+        <h1 id="hashmap">HashMap</h1>
+<p>java版本为1.8.</p>
+<h2 id="tablebinnode">table、bin、node</h2>
+<p>HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">This map usually acts as a binned (bucketed) hash table, but when bins get </span><br><span class="line">too large, they are transformed into bins of TreeNodes, each structured </span><br><span class="line">similarly to those in java.util.TreeMap.</span><br></pre></td></tr></table></figure>
-<h3 id="Tree-bins"><a href="#Tree-bins" class="headerlink" title="Tree bins"></a>Tree bins</h3><p>Bins whose elements are all TreeNodes。提供O(logn)的操作。</p>
-<p>（以下实力一波嘲讽233<br><img src="/upload_image/post_JavaHashMap_UNADJUSTEDNONRAW_thumb_a88.jpg" alt="实力一波嘲讽233"></p>
-<h2 id="capacity"><a href="#capacity" class="headerlink" title="capacity"></a>capacity</h2><p>容量，一般为2的幂次方，初始为16，最大为2^30。</p>
+<h3 id="tree-bins">Tree bins</h3>
+<p>Bins whose elements are all TreeNodes。提供O(logn)的操作。</p>
+<p>（以下实力一波嘲讽233 <img src="/upload_image/post_JavaHashMap_UNADJUSTEDNONRAW_thumb_a88.jpg" alt="实力一波嘲讽233"></p>
+<h2 id="capacity">capacity</h2>
+<p>容量，一般为2的幂次方，初始为16，最大为2^30。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The default initial capacity - MUST be a power of two.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The maximum capacity, used if a higher value is implicitly specified</span></span><br><span class="line"><span class="comment"> * by either of the constructors with arguments.</span></span><br><span class="line"><span class="comment"> * MUST be a power of two &lt;= 1&lt;&lt;30.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="threshold"><a href="#threshold" class="headerlink" title="threshold"></a>threshold</h2><h3 id="TREEIFY-THRESHOLD（针对bin存储nodes）"><a href="#TREEIFY-THRESHOLD（针对bin存储nodes）" class="headerlink" title="TREEIFY_THRESHOLD（针对bin存储nodes）"></a>TREEIFY_THRESHOLD（针对bin存储nodes）</h3><p>当bin中的nodes数量小于TREEIFY_THRESHOLD，bin中的nodes会以list形式存储；当bin中的node数量超过TREEIFY_THRESHOLD，bin中的nodes会以tree形式存储。</p>
+<h2 id="threshold">threshold</h2>
+<h3 id="treeify_threshold针对bin存储nodes">TREEIFY_THRESHOLD（针对bin存储nodes）</h3>
+<p>当bin中的nodes数量小于TREEIFY_THRESHOLD，bin中的nodes会以list形式存储；当bin中的node数量超过TREEIFY_THRESHOLD，bin中的nodes会以tree形式存储。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The bin count threshold for using a tree rather than list for a</span></span><br><span class="line"><span class="comment"> * bin.  Bins are converted to trees when adding an element to a</span></span><br><span class="line"><span class="comment"> * bin with at least this many nodes. The value must be greater</span></span><br><span class="line"><span class="comment"> * than 2 and should be at least 8 to mesh with assumptions in</span></span><br><span class="line"><span class="comment"> * tree removal about conversion back to plain bins upon</span></span><br><span class="line"><span class="comment"> * shrinkage.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> TREEIFY_THRESHOLD = <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="UNTREEIFY-THRESHOLD"><a href="#UNTREEIFY-THRESHOLD" class="headerlink" title="UNTREEIFY_THRESHOLD"></a>UNTREEIFY_THRESHOLD</h3><p>当bin中的nodes数量重新小于UNTREEIFY_THRESHOLD时，bin中的node会被重新以list形式存储。</p>
+<h3 id="untreeify_threshold">UNTREEIFY_THRESHOLD</h3>
+<p>当bin中的nodes数量重新小于UNTREEIFY_THRESHOLD时，bin中的node会被重新以list形式存储。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The bin count threshold for untreeifying a (split) bin during a</span></span><br><span class="line"><span class="comment"> * resize operation. Should be less than TREEIFY_THRESHOLD, and at</span></span><br><span class="line"><span class="comment"> * most 6 to mesh with shrinkage detection under removal.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UNTREEIFY_THRESHOLD = <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="MIN-TREEIFY-CAPACITY（针对table存储bins）"><a href="#MIN-TREEIFY-CAPACITY（针对table存储bins）" class="headerlink" title="MIN_TREEIFY_CAPACITY（针对table存储bins）"></a>MIN_TREEIFY_CAPACITY（针对table存储bins）</h3><p>当整个table的nodes数量小于MIN_TREEIFY_CAPACITY时，bins会以list形式存储；当整个table的nodes数量大于MIN_TREEIFY_CAPACITY时，bins会以tree形式存储。</p>
+<h3 id="min_treeify_capacity针对table存储bins">MIN_TREEIFY_CAPACITY（针对table存储bins）</h3>
+<p>当整个table的nodes数量小于MIN_TREEIFY_CAPACITY时，bins会以list形式存储；当整个table的nodes数量大于MIN_TREEIFY_CAPACITY时，bins会以tree形式存储。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The smallest table capacity for which bins may be treeified.</span></span><br><span class="line"><span class="comment"> * (Otherwise the table is resized if too many nodes in a bin.)</span></span><br><span class="line"><span class="comment"> * Should be at least 4 * TREEIFY_THRESHOLD to avoid conflicts</span></span><br><span class="line"><span class="comment"> * between resizing and treeification thresholds.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_TREEIFY_CAPACITY = <span class="number">64</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="loadFactor"><a href="#loadFactor" class="headerlink" title="loadFactor"></a>loadFactor</h2><p>loadFactor默认是0.75。</p>
+<h2 id="loadfactor">loadFactor</h2>
+<p>loadFactor默认是0.75。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The load factor used when none specified in constructor.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="node子类"><a href="#node子类" class="headerlink" title="node子类"></a>node子类</h2><h3 id="equals函数"><a href="#equals函数" class="headerlink" title="equals函数"></a>equals函数</h3><ul>
+<h2 id="node子类">node子类</h2>
+<h3 id="equals函数">equals函数</h3>
+<ul>
 <li>是否是自己</li>
 <li>如果是同Map类实例，key和value对象是否均相同</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">this</span>) <span class="comment">// 判断是否为本身</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (o <span class="keyword">instanceof</span> Map.Entry) &#123; <span class="comment">// 是否是Map实例</span></span><br><span class="line">        Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;</span><br><span class="line">        <span class="keyword">if</span> (Objects.equals(key, e.getKey()) &amp;&amp;</span><br><span class="line">            Objects.equals(value, e.getValue()))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="hash方法"><a href="#hash方法" class="headerlink" title="hash方法"></a>hash方法</h2><p><a href="https://www.cnblogs.com/tiger-fu/p/7884794.html" target="_blank" rel="noopener">Java集合源码阅读之HashMap</a></p>
+<h2 id="hash方法">hash方法</h2>
+<p><a href="https://www.cnblogs.com/tiger-fu/p/7884794.html" target="_blank" rel="noopener">Java集合源码阅读之HashMap</a></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="put方法"><a href="#put方法" class="headerlink" title="put方法"></a>put方法</h2><h2 id="get方法"><a href="#get方法" class="headerlink" title="get方法"></a>get方法</h2><h1 id="Java序列化"><a href="#Java序列化" class="headerlink" title="Java序列化"></a>Java序列化</h1><h2 id="深入学习-Java-序列化"><a href="#深入学习-Java-序列化" class="headerlink" title="深入学习 Java 序列化"></a><a href="http://www.importnew.com/24490.html" target="_blank" rel="noopener">深入学习 Java 序列化</a></h2><p>Java序列化是指把Java对象保存为二进制字节码的过程，Java反序列化是指把二进制码重新转换成Java对象的过程。</p>
+<h2 id="put方法">put方法</h2>
+<h2 id="get方法">get方法</h2>
+<h1 id="java序列化">Java序列化</h1>
+<h2 id="深入学习-java-序列化"><a href="http://www.importnew.com/24490.html" target="_blank" rel="noopener">深入学习 Java 序列化</a></h2>
+<p>Java序列化是指把Java对象保存为二进制字节码的过程，Java反序列化是指把二进制码重新转换成Java对象的过程。</p>
 <p>在计算需要被序列化的字段的时候会把被static和transient修饰的字段给过滤掉。</p>
-<h2 id="serialVersionUID-与-transient"><a href="#serialVersionUID-与-transient" class="headerlink" title="serialVersionUID 与 transient"></a>serialVersionUID 与 transient</h2><p><a href="https://www.cnblogs.com/duanxz/p/3511695.html" target="_blank" rel="noopener">java类中serialversionuid作用是什么?举个例子说明</a></p>
+<h2 id="serialversionuid-与-transient">serialVersionUID 与 transient</h2>
+<p><a href="https://www.cnblogs.com/duanxz/p/3511695.html" target="_blank" rel="noopener">java类中serialversionuid作用是什么?举个例子说明</a></p>
+<a id="more"></a>
 
       
     </div>
@@ -396,7 +467,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java-源码/" rel="tag"># Java 源码</a>
+            <a href="/tags/Java-源码/" rel="tag"><i class="fa fa-tag"></i> Java 源码</a>
           
         </div>
       
@@ -583,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HashMap"><span class="nav-number">1.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#table、bin、node"><span class="nav-number">1.1.</span> <span class="nav-text">table、bin、node</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tree-bins"><span class="nav-number">1.1.1.</span> <span class="nav-text">Tree bins</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#capacity"><span class="nav-number">1.2.</span> <span class="nav-text">capacity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#threshold"><span class="nav-number">1.3.</span> <span class="nav-text">threshold</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TREEIFY-THRESHOLD（针对bin存储nodes）"><span class="nav-number">1.3.1.</span> <span class="nav-text">TREEIFY_THRESHOLD（针对bin存储nodes）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UNTREEIFY-THRESHOLD"><span class="nav-number">1.3.2.</span> <span class="nav-text">UNTREEIFY_THRESHOLD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MIN-TREEIFY-CAPACITY（针对table存储bins）"><span class="nav-number">1.3.3.</span> <span class="nav-text">MIN_TREEIFY_CAPACITY（针对table存储bins）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loadFactor"><span class="nav-number">1.4.</span> <span class="nav-text">loadFactor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node子类"><span class="nav-number">1.5.</span> <span class="nav-text">node子类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#equals函数"><span class="nav-number">1.5.1.</span> <span class="nav-text">equals函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hash方法"><span class="nav-number">1.6.</span> <span class="nav-text">hash方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#put方法"><span class="nav-number">1.7.</span> <span class="nav-text">put方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get方法"><span class="nav-number">1.8.</span> <span class="nav-text">get方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java序列化"><span class="nav-number">2.</span> <span class="nav-text">Java序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#深入学习-Java-序列化"><span class="nav-number">2.1.</span> <span class="nav-text">深入学习 Java 序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#serialVersionUID-与-transient"><span class="nav-number">2.2.</span> <span class="nav-text">serialVersionUID 与 transient</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hashmap"><span class="nav-number">1.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#tablebinnode"><span class="nav-number">1.1.</span> <span class="nav-text">table、bin、node</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tree-bins"><span class="nav-number">1.1.1.</span> <span class="nav-text">Tree bins</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#capacity"><span class="nav-number">1.2.</span> <span class="nav-text">capacity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#threshold"><span class="nav-number">1.3.</span> <span class="nav-text">threshold</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#treeify_threshold针对bin存储nodes"><span class="nav-number">1.3.1.</span> <span class="nav-text">TREEIFY_THRESHOLD（针对bin存储nodes）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#untreeify_threshold"><span class="nav-number">1.3.2.</span> <span class="nav-text">UNTREEIFY_THRESHOLD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#min_treeify_capacity针对table存储bins"><span class="nav-number">1.3.3.</span> <span class="nav-text">MIN_TREEIFY_CAPACITY（针对table存储bins）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loadfactor"><span class="nav-number">1.4.</span> <span class="nav-text">loadFactor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node子类"><span class="nav-number">1.5.</span> <span class="nav-text">node子类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#equals函数"><span class="nav-number">1.5.1.</span> <span class="nav-text">equals函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hash方法"><span class="nav-number">1.6.</span> <span class="nav-text">hash方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#put方法"><span class="nav-number">1.7.</span> <span class="nav-text">put方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get方法"><span class="nav-number">1.8.</span> <span class="nav-text">get方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java序列化"><span class="nav-number">2.</span> <span class="nav-text">Java序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#深入学习-java-序列化"><span class="nav-number">2.1.</span> <span class="nav-text">深入学习 Java 序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#serialversionuid-与-transient"><span class="nav-number">2.2.</span> <span class="nav-text">serialVersionUID 与 transient</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -675,6 +746,8 @@
 
 
 
+  
+
 
 
 
@@ -700,6 +773,11 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
@@ -775,6 +853,36 @@
   
 
   
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
 
   
   
@@ -787,5 +895,13 @@
 
   
 
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
 </body>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
 </html>
