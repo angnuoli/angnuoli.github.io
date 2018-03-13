@@ -1823,7 +1823,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffd6f5;
+  background: #cd7c60;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2936,23 +2936,4 @@ ul.breadcrumb li+li:last-child {
 .links-of-author {
   margin-top: 10px;
   text-align: center;
-}
-.post-toc ol a {
-  color: #565656;
-  border-bottom: 1px solid #565656;
-}
-.post-toc ol a:hover {
-  color: #f60;
-  border-bottom-color: #f60;
-}
-.post-toc .nav .active > a {
-  color: #f60;
-  border-bottom-color: #f60;
-}
-.post-toc .nav .active > a:hover {
-  color: #f60;
-  border-bottom-color: #f60;
-}
-.post-toc ol {
-  padding: 0px 10px 5px 10px;
 }

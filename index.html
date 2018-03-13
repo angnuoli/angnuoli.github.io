@@ -154,16 +154,16 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="Dive into the ocean.">
+<meta name="description" content="Keep Calm, Listen and Move Fast.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="gjxhlan&#39;s blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="Dive into the ocean.">
+<meta property="og:description" content="Keep Calm, Listen and Move Fast.">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="gjxhlan&#39;s blog">
-<meta name="twitter:description" content="Dive into the ocean.">
+<meta name="twitter:description" content="Keep Calm, Listen and Move Fast.">
 
 
 
@@ -430,26 +430,26 @@
 <ol style="list-style-type: decimal">
 <li>将 A 看成首尾相接循环串，每次以 A[i] 字符为开头，截取其中长度为 A.length 的子串，与 B 进行对比，如果匹配则返回 True，直到所有子串都轮询一遍仍没有匹配的子串则返回 False。</li>
 </ol>
-<p><!--�18--></p>
+<p><!--�8--></p>
 <ol start="2" style="list-style-type: decimal">
 <li>将两个字符串 A 拼接在一块 A + A，然后查找 B 是否是其子串。</li>
 </ol>
-<p><!--�19--></p>
+<p><!--�9--></p>
 <h1 id="all-paths-from-source-to-target">All Paths From Source to Target</h1>
 <p>给一个有向无环图 G = (V, E)，包含 N 个 nodes。Input <code>graph[i]</code>代表从 node i 出发的所有边。返回所有从 0 到 N-1 的路径列表。路径之间可以任意顺序排列，路径中的节点顺序不能打乱。N 的范围 [2,15]。</p>
-<!--�20-->
+<!--�10-->
 <p>DFS。</p>
 <ol style="list-style-type: decimal">
 <li>从0出发 DFS 所有路径，用 ArrayList 依序保存当前路径上的所有节点，当访问到 N-1 的时候，将路径存储到 answer 路径列表中。</li>
 </ol>
-<p><!--�21--></p>
+<p><!--�11--></p>
 <h1 id="champagne-tower">Champagne Tower</h1>
 <p>如图，一个由酒杯搭建而成的香槟金字塔，每个酒杯装满后会向两边平均溢出多余的酒，已知从顶层倒 n 杯酒（n 非负数），当所有酒杯都不溢出时，求第 i 行第 j 个酒杯装了多少酒（both i and j are 0 indexed），如1杯、0.5杯。</p>
 <div class="figure">
 <img src="/upload_image/Screen%20Shot%202018-03-11%20at%203.41.48%20PM.png" alt="酒杯">
 <p class="caption">酒杯</p>
 </div>
-<!--�22-->
+<!--�12-->
 <p><strong>Note:</strong></p>
 <ul>
 <li><code>poured</code> will be in the range of <code>[0, 10 ^ 9]</code>.</li>
@@ -459,22 +459,22 @@
 <ol style="list-style-type: decimal">
 <li>用 <code>list&lt;list&gt;</code> 来表示一个动态二维数组。</li>
 </ol>
-<p><!--�23--></p>
+<p><!--�13--></p>
 <ol start="2" style="list-style-type: decimal">
 <li>两个一维滚动数组，代表上一层杯子和当前层杯子。</li>
 </ol>
-<p><!--�24--></p>
+<p><!--�14--></p>
 <ol start="3" style="list-style-type: decimal">
 <li>有些上层节点是无法影响到（query_row，query_col）节点的，我们可以不计算那些节点，求 j 位于[start_col, end_col] 范围中的节点，只有这些节点会对之后的待求节点产生影响。</li>
 </ol>
-<p><!--�25--></p>
+<p><!--�15--></p>
 <ol start="4" style="list-style-type: decimal">
 <li>基于解法2，可以将滚动数组合并，自己覆盖自己，因为<code>dp[i][j]</code>只会被<code>dp[i-1][j-1]、dp[i-1][j]</code>所影响，那么当我们从后往前更新时，新更新的值就不会影响 index 靠前的值，因为当前节点的更新只会影响 index 等于或者大于他的节点。</li>
 </ol>
-<p><!--�26--></p>
+<p><!--�16--></p>
 <h1 id="smallest-rotation-with-highest-score">Smallest Rotation with Highest Score</h1>
 <p>给一个序列 A，给一个非负的 index K，我们可以在 K 处旋转整个序列使其变成<code>A[K], A[K+1], A{K+2], ... A[A.length - 1], A[0], A[1], ..., A[K-1]</code>。之后每个值小于等于其新的 index 的 entry 都可以得到一分。求得到最大分数的 K，如果有多个 K，输出最小的。</p>
-<!--�27-->
+<!--�17-->
 <p><strong>Note:</strong></p>
 <ul>
 <li><code>A</code> will have length at most <code>20000</code>.</li>
@@ -486,9 +486,9 @@
 <p>那么什么时候得分呢？题目只是要求输出得到最大分数的 K，而不需要计算最大分数，所以我们可以假设一个参考平面<code>score[0]</code>。当 K 增加1的时候，除了第一个元素之外所有 entry 的 index 都将减 1（相对 K 得到的序列），index 减少只会失分，由 <code>loss[K]</code>表示；第一个元素将被移到最后，如果元素的值为 <code>A[i] in [1, A.length)</code>，那么他肯定能得到一分。这样我们可以得到状态转移方程：<code>score[K] = score[K-1] + 1 - loss[K], score[0] = 1 - loss[K]</code></p>
 <p>考虑两个特殊情况 <code>A[i] = 0 or A.length</code>，其临界点<code>K' = (index - A[i] + N + 1) % N = (index + 1) % N</code>，可以看出值为 0 或 A.length 的元素的临界点都是其坐标加1，即它在失分的时候，同样它也会帮助我们得到一分，即无影响。这也符合 0 &lt;= index 和 N &gt; index 不随 rotate 而改变的情况。</p>
 <p>然后寻找<span class="math inline">\(\mathop{\arg\max}\limits_{K} \{score[K]\}\)</span>。</p>
-<!--�28-->
+<!--�18-->
 <p>也可以直接先把 K=0 时的 score 求出来，这样递推可以的到每个 K 得到的 score 的绝对值。</p>
-<!--�29-->
+<!--�19-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/03/11/Leetcode-Contest-75-解题小结/" rel="contents">
@@ -620,7 +620,7 @@
 <p>java版本为1.8.</p>
 <h2 id="tablebinnode">table、bin、node</h2>
 <p>HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui</p>
-<!--�10-->
+<!--�0-->
 <h3 id="tree-bins">Tree bins</h3>
 <p>Bins whose elements are all TreeNodes。提供O(logn)的操作。</p>
 <p>（以下实力一波嘲讽233 <img src="/upload_image/post_JavaHashMap_UNADJUSTEDNONRAW_thumb_a88.jpg" alt="实力一波嘲讽233"></p>
@@ -752,39 +752,39 @@
       
         
           <h1 id="arraylist源码">ArrayList源码</h1>
-<!--�0-->
+<!--�20-->
 <p>ArrayList的底层实现是一个Object数组，int、char之类的基础类型无法直接add to List。</p>
 <h2 id="capacity">capacity</h2>
 <h3 id="default-capacity">Default capacity</h3>
 <p>默认capacity是10</p>
-<!--�1-->
+<!--�21-->
 <h3 id="max_array_size">MAX_ARRAY_SIZE</h3>
 <p>从grow方法中可以看出最大的Array_size应该是</p>
-<!--�2-->
+<!--�22-->
 <h2 id="add">add</h2>
 <p>add方法的流程是</p>
 <ol style="list-style-type: decimal">
 <li>保证容量</li>
 <li>添加新值</li>
 </ol>
-<!--�3-->
+<!--�23-->
 <p>ensureCapacityInternal方法将先判断当前集合是否为空集，因为ArrayList所有空集都是同一个final static对象DEFAULTCAPACITY_EMPTY_ELEMENTDATA。</p>
-<!--�4-->
+<!--�24-->
 <p>elementData 数组的容量只会增加不会减少，所以 elementData.length 指向数组的容量，而 size 则指向了数据存储的元素数量。若当前数组容量可以容纳所以存储的元素，那么就没必要调用 grow 方法扩容了。</p>
-<!--�5-->
+<!--�25-->
 <p>grow 方法进行扩容，先扩容1.5倍，如果仍然小于所要求的存储空间的大小 minCapacity，那么就将minCapacity 作为新数组的容量。</p>
 <p>minCapacity &lt; 0 处理溢出。</p>
-<!--�6-->
+<!--�26-->
 <h2 id="contains">contains</h2>
-<!--�7-->
+<!--�27-->
 <p>contains()方法的时间复杂度是O(n)，从头到尾遍历一遍。</p>
 <h1 id="arraylist需要注意的点">ArrayList需要注意的点</h1>
 <p>ArrayList不是线程安全的。</p>
 <p>基本上扩容、删除、contains的平均时间复杂度都是O(n), 访问速度是O(1)。</p>
 <p>初始容量是10，每次会超出elementData数组容量时，会扩容1.5倍，通过Arrays.copyof()进行实现。所以当我们知道有多少对象要插入的时候尽量用有参构造方法。</p>
-<!--�8-->
+<!--�28-->
 <p>modCount 用来判断是否存在多线程的问题，但无法解决问题，只能抛出异常。</p>
-<!--�9-->
+<!--�29-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/03/04/Java-源码阅读——ArrayList/" rel="contents">
@@ -865,7 +865,7 @@
                 alt="gjxhlan" />
             
               <p class="site-author-name" itemprop="name">gjxhlan</p>
-              <p class="site-description motion-element" itemprop="description">Dive into the ocean.</p>
+              <p class="site-description motion-element" itemprop="description">Keep Calm, Listen and Move Fast.</p>
           </div>
 
           
