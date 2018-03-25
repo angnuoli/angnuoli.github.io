@@ -154,20 +154,20 @@
   <meta name="keywords" content="Leetcode,总结," />
 
 
-<meta name="description" content="写小结的目的，主要是在于想让自己能写代码的同时，也能把自己的思路写出来。 原题链接：https://leetcode.com/contest/weekly-contest-75 Rotate String 给两个字符串 A 和 B。每次可以将 A 的最左边字符移到最右边的位置，&apos;abcde&apos; -&amp;gt; &apos;bcdea&apos;，可以移动任意次。问 A 能否得到 B。 字符串处理。  将 A 看成首尾相接循">
+<meta name="description" content="写小结的目的，主要是在于想让自己能写代码的同时，也能把自己的思路写出来。 原题链接：https://leetcode.com/contest/weekly-contest-75 Rotate String 给两个字符串 A 和 B。每次可以将 A 的最左边字符移到最右边的位置，&apos;abcde&apos; -&amp;gt; &apos;bcdea&apos;，可以移动任意次。问 A 能否得到 B。 字符串处理。">
 <meta name="keywords" content="Leetcode,总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode Contest 75 解题小结">
 <meta property="og:url" content="http://yoursite.com/2018/03/11/Leetcode-Contest-75-解题小结/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="写小结的目的，主要是在于想让自己能写代码的同时，也能把自己的思路写出来。 原题链接：https://leetcode.com/contest/weekly-contest-75 Rotate String 给两个字符串 A 和 B。每次可以将 A 的最左边字符移到最右边的位置，&apos;abcde&apos; -&amp;gt; &apos;bcdea&apos;，可以移动任意次。问 A 能否得到 B。 字符串处理。  将 A 看成首尾相接循">
+<meta property="og:description" content="写小结的目的，主要是在于想让自己能写代码的同时，也能把自己的思路写出来。 原题链接：https://leetcode.com/contest/weekly-contest-75 Rotate String 给两个字符串 A 和 B。每次可以将 A 的最左边字符移到最右边的位置，&apos;abcde&apos; -&amp;gt; &apos;bcdea&apos;，可以移动任意次。问 A 能否得到 B。 字符串处理。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/upload_image/Screen%20Shot%202018-03-11%20at%203.41.48%20PM.png">
-<meta property="og:updated_time" content="2018-03-12T05:57:52.584Z">
+<meta property="og:image" content="https://i.loli.net/2018/03/25/5ab74a27dfc17.jpg">
+<meta property="og:updated_time" content="2018-03-25T07:06:27.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Contest 75 解题小结">
-<meta name="twitter:description" content="写小结的目的，主要是在于想让自己能写代码的同时，也能把自己的思路写出来。 原题链接：https://leetcode.com/contest/weekly-contest-75 Rotate String 给两个字符串 A 和 B。每次可以将 A 的最左边字符移到最右边的位置，&apos;abcde&apos; -&amp;gt; &apos;bcdea&apos;，可以移动任意次。问 A 能否得到 B。 字符串处理。  将 A 看成首尾相接循">
-<meta name="twitter:image" content="http://yoursite.com/upload_image/Screen%20Shot%202018-03-11%20at%203.41.48%20PM.png">
+<meta name="twitter:description" content="写小结的目的，主要是在于想让自己能写代码的同时，也能把自己的思路写出来。 原题链接：https://leetcode.com/contest/weekly-contest-75 Rotate String 给两个字符串 A 和 B。每次可以将 A 的最左边字符移到最右边的位置，&apos;abcde&apos; -&amp;gt; &apos;bcdea&apos;，可以移动任意次。问 A 能否得到 B。 字符串处理。">
+<meta name="twitter:image" content="https://i.loli.net/2018/03/25/5ab74a27dfc17.jpg">
 
 
 
@@ -427,6 +427,7 @@
 <h1 id="rotate-string">Rotate String</h1>
 <p>给两个字符串 A 和 B。每次可以将 A 的最左边字符移到最右边的位置，'abcde' -&gt; 'bcdea'，可以移动任意次。问 A 能否得到 B。</p>
 <p>字符串处理。</p>
+<a id="more"></a>
 <ol style="list-style-type: decimal">
 <li>将 A 看成首尾相接循环串，每次以 A[i] 字符为开头，截取其中长度为 A.length 的子串，与 B 进行对比，如果匹配则返回 True，直到所有子串都轮询一遍仍没有匹配的子串则返回 False。</li>
 </ol>
@@ -446,7 +447,7 @@
 <h1 id="champagne-tower">Champagne Tower</h1>
 <p>如图，一个由酒杯搭建而成的香槟金字塔，每个酒杯装满后会向两边平均溢出多余的酒，已知从顶层倒 n 杯酒（n 非负数），当所有酒杯都不溢出时，求第 i 行第 j 个酒杯装了多少酒（both i and j are 0 indexed），如1杯、0.5杯。</p>
 <div class="figure">
-<img src="/upload_image/Screen%20Shot%202018-03-11%20at%203.41.48%20PM.png" alt="酒杯">
+<img src="https://i.loli.net/2018/03/25/5ab74a27dfc17.jpg" alt="酒杯">
 <p class="caption">酒杯</p>
 </div>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: poured = 1, query_glass = 1, query_row = 1</span><br><span class="line">Output: 0.0</span><br><span class="line">Explanation: We poured 1 cup of champange to the top glass of the tower (which is indexed as (0, 0)). There will be no excess liquid so all the glasses under the top glass will remain empty.</span><br></pre></td></tr></table></figure>
@@ -489,7 +490,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int bestRotation(int[] A) &#123;</span><br><span class="line">        int N = A.length;</span><br><span class="line">        int max_i = 0;</span><br><span class="line">        int[] score = new int[N+1];</span><br><span class="line">        for (int i = 0; i &lt; N; i++) score[(i-A[i]+N+1) % N] -= 1;</span><br><span class="line">        for (int i = 1; i &lt; N; i++) &#123;</span><br><span class="line">            score[i] += score[i-1] + 1;</span><br><span class="line">            max_i = score[i] &gt; score[max_i] ? i : max_i;</span><br><span class="line">        &#125;</span><br><span class="line">        return max_i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>也可以直接先把 K=0 时的 score 求出来，这样递推可以的到每个 K 得到的 score 的绝对值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">bestRotation</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> N = A.length;</span><br><span class="line">        <span class="keyword">int</span> max_K = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] score = <span class="keyword">new</span> <span class="keyword">int</span>[N+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span>[] loss = <span class="keyword">new</span> <span class="keyword">int</span>[N+<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// the change of index is index = (i + N - K) % N, </span></span><br><span class="line">        <span class="comment">//   so A[i] - index &lt;= 0 will lead to following formula.</span></span><br><span class="line">        <span class="comment">//   lose point happens at K &gt; i - A[i] + N, </span></span><br><span class="line">        <span class="comment">//   each element will get point or lose point only once</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            loss[(i-A[i]+N+<span class="number">1</span>) % N] -= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (A[i] &lt;= i) score[<span class="number">0</span>] += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (A[N-<span class="number">1</span>] == A.length) loss[<span class="number">0</span>]++; <span class="comment">// special case 0 or A.length</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> K = <span class="number">1</span>; K &lt; N; K++) &#123;</span><br><span class="line">            score[K] = score[K-<span class="number">1</span>] + <span class="number">1</span> + loss[K];</span><br><span class="line">            max_K = score[K] &gt; score[max_K] ? K : max_K;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max_K;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 
       
     </div>
@@ -534,6 +534,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/14/Java-序列化/" rel="prev" title="Java 序列化">
+                Java 序列化 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -611,7 +615,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -626,7 +630,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -645,7 +653,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

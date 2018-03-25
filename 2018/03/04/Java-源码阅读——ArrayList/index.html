@@ -154,18 +154,18 @@
   <meta name="keywords" content="Java 源码," />
 
 
-<meta name="description" content="ArrayList源码  ArrayList的底层实现是一个Object数组，int、char之类的基础类型无法直接add to List。 capacity Default capacity 默认capacity是10  MAX_ARRAY_SIZE 从grow方法中可以看出最大的Array_size应该是  add add方法的流程是  保证容量 添加新值   ensureCapacityIn">
+<meta name="description" content="ArrayList源码  ArrayList的底层实现是一个Object数组，int、char之类的基础类型无法直接add to List。">
 <meta name="keywords" content="Java 源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 源码阅读——ArrayList">
 <meta property="og:url" content="http://yoursite.com/2018/03/04/Java-源码阅读——ArrayList/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="ArrayList源码  ArrayList的底层实现是一个Object数组，int、char之类的基础类型无法直接add to List。 capacity Default capacity 默认capacity是10  MAX_ARRAY_SIZE 从grow方法中可以看出最大的Array_size应该是  add add方法的流程是  保证容量 添加新值   ensureCapacityIn">
+<meta property="og:description" content="ArrayList源码  ArrayList的底层实现是一个Object数组，int、char之类的基础类型无法直接add to List。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-12T05:53:11.033Z">
+<meta property="og:updated_time" content="2018-03-25T07:08:13.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 源码阅读——ArrayList">
-<meta name="twitter:description" content="ArrayList源码  ArrayList的底层实现是一个Object数组，int、char之类的基础类型无法直接add to List。 capacity Default capacity 默认capacity是10  MAX_ARRAY_SIZE 从grow方法中可以看出最大的Array_size应该是  add add方法的流程是  保证容量 添加新值   ensureCapacityIn">
+<meta name="twitter:description" content="ArrayList源码  ArrayList的底层实现是一个Object数组，int、char之类的基础类型无法直接add to List。">
 
 
 
@@ -375,6 +375,24 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a></span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -405,6 +423,7 @@
         <h1 id="arraylist源码">ArrayList源码</h1>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">transient</span> Object[] elementData; <span class="comment">// non-private to simplify nested class access</span></span><br></pre></td></tr></table></figure>
 <p>ArrayList的底层实现是一个Object数组，int、char之类的基础类型无法直接add to List。</p>
+<a id="more"></a>
 <h2 id="capacity">capacity</h2>
 <h3 id="default-capacity">Default capacity</h3>
 <p>默认capacity是10</p>
@@ -436,7 +455,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ensureCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)</span><br><span class="line">        <span class="comment">// any size if not default element table</span></span><br><span class="line">        ? <span class="number">0</span></span><br><span class="line">        <span class="comment">// larger than default for default empty table. It's already</span></span><br><span class="line">        <span class="comment">// supposed to be at default size.</span></span><br><span class="line">        : DEFAULT_CAPACITY;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (minCapacity &gt; minExpand) &#123;</span><br><span class="line">        ensureExplicitCapacity(minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>modCount 用来判断是否存在多线程的问题，但无法解决问题，只能抛出异常。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">checkForComodification</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (modCount != expectedModCount)</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
 
       
     </div>
@@ -556,7 +574,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -571,7 +589,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -590,7 +612,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
