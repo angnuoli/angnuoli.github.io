@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/en/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/en/lib/pace/pace-theme-center-radar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rannetto One:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/en/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/en/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/en/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/en/',
+    scheme: 'Gemini',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="原题链接：https://leetcode.com/contest/weekly-contest-77 本周感觉难度不大....三道模拟，一道 DP。">
+<meta name="keywords" content="Leetcode,总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode Contest 77 解题小结">
+<meta property="og:url" content="http://yoursite.com/2018/03/25/Leetcode-Contest-77-解题小结/index.html">
+<meta property="og:site_name" content="gjxhlan&#39;s blog">
+<meta property="og:description" content="原题链接：https://leetcode.com/contest/weekly-contest-77 本周感觉难度不大....三道模拟，一道 DP。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-04-01T15:39:16.678Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode Contest 77 解题小结">
+<meta name="twitter:description" content="原题链接：https://leetcode.com/contest/weekly-contest-77 本周感觉难度不大....三道模拟，一道 DP。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/25/Leetcode-Contest-77-解题小结/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Leetcode Contest 77 解题小结 | gjxhlan's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/en/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gjxhlan's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/en/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-about">
+    <a href="/en/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/en/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-categories">
+    <a href="/en/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/en/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-commonweal">
+    <a href="/en/../" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-globe"></i> <br />->简体中文</a>
+</li>
+
+      
+
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/en/2018/03/25/Leetcode-Contest-77-解题小结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gjxhlan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/en/upload_image/Avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gjxhlan's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Leetcode Contest 77 解题小结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-25T00:17:49-04:00">2018-03-25</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/en/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>原题链接：<a href="https://leetcode.com/contest/weekly-contest-77" class="uri" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-77</a></p>
+<p>本周感觉难度不大....三道模拟，一道 DP。</p>
+<a id="more"></a>
+<h1 id="number-of-lines-to-write-string">Number of Lines To Write String</h1>
+<p>给定一个字符宽度数组 width[a..z]，一个字符串 S。打印字符串，每行宽度限制为100，不能截断字符（换行）。</p>
+<ol style="list-style-type: decimal">
+<li>能打多少行</li>
+<li>最后一行的打印宽度</li>
+</ol>
+<p>模拟。</p>
+<ol style="list-style-type: decimal">
+<li>将 A 看成首尾相接循环串，每次以 A[i] 字符为开头，截取其中长度为 A.length 的子串，与 B 进行对比，如果匹配则返回 True，直到所有子串都轮询一遍仍没有匹配的子串则返回 False。</li>
+</ol>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(len(S))</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] numberOfLines(<span class="keyword">int</span>[] widths, String S) &#123;</span><br><span class="line">        <span class="keyword">char</span>[] temp = S.toCharArray();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> line = <span class="number">1</span>, linew = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c : temp) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = (<span class="keyword">int</span>) (c - <span class="string">'a'</span>);</span><br><span class="line">            <span class="keyword">if</span> (linew + widths[x] &gt; <span class="number">100</span>) &#123;</span><br><span class="line">                line++;</span><br><span class="line">                linew = widths[x];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                linew += widths[x];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;line, linew&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="unique-morse-code-words">Unique Morse Code Words</h1>
+<p>给定一个字符 -&gt; Morse Code 映射 String[a..z]，一个字符串数组 words[]，将所有字符串翻译成对应的 Morse Code 串，求不同串的数目。</p>
+<p>模拟。</p>
+<ol style="list-style-type: decimal">
+<li>转换字符串 -&gt; insert in HashSet -&gt; return HashSet.size()</li>
+</ol>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(∑len(word))</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniqueMorseRepresentations</span><span class="params">(String[] words)</span> </span>&#123;</span><br><span class="line">        String[] code = <span class="keyword">new</span> String[]&#123;<span class="string">".-"</span>,<span class="string">"-..."</span>,<span class="string">"-.-."</span>,<span class="string">"-.."</span>,<span class="string">"."</span>,<span class="string">"..-."</span>,<span class="string">"--."</span>,<span class="string">"...."</span>,<span class="string">".."</span>,<span class="string">".---"</span>,<span class="string">"-.-"</span>,<span class="string">".-.."</span>,<span class="string">"--"</span>,<span class="string">"-."</span>,<span class="string">"---"</span>,<span class="string">".--."</span>,<span class="string">"--.-"</span>,<span class="string">".-."</span>,<span class="string">"..."</span>,<span class="string">"-"</span>,<span class="string">"..-"</span>,<span class="string">"...-"</span>,<span class="string">".--"</span>,<span class="string">"-..-"</span>,<span class="string">"-.--"</span>,<span class="string">"--.."</span>&#125;;</span><br><span class="line">        Set&lt;String&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (String word: words) &#123;</span><br><span class="line">            String res = trans(word, code);</span><br><span class="line">            set.add(res);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> set.size();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">String <span class="title">trans</span><span class="params">(String word, String[] code)</span> </span>&#123;</span><br><span class="line">        StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: word.toCharArray()) &#123;</span><br><span class="line">            res.append(code[c - <span class="string">'a'</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="max-increase-to-keep-city-skyline">Max Increase to Keep City Skyline</h1>
+<p>给定一个 <code>grid[][]</code> 矩阵，<code>grid[i][j]</code>代表 (i,j) 建筑物的高度，我们可以增加任意建筑物的高度，但保持上下左右四个视图与原建筑矩阵相同，求所有建筑物最多能增加多少高度（与原矩阵的高度差）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input: grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]</span><br><span class="line">Output: 35</span><br><span class="line"></span><br><span class="line">Explanation: </span><br><span class="line">The grid is:</span><br><span class="line">[ [3, 0, 8, 4], </span><br><span class="line">  [2, 4, 5, 7],</span><br><span class="line">  [9, 2, 6, 3],</span><br><span class="line">  [0, 3, 1, 0] ]</span><br><span class="line">gridNew = [ [8, 4, 8, 7],</span><br><span class="line">            [7, 4, 7, 7],</span><br><span class="line">            [9, 4, 8, 7],</span><br><span class="line">            [3, 3, 3, 3] ]</span><br></pre></td></tr></table></figure>
+<p>模拟。</p>
+<ol style="list-style-type: decimal">
+<li>求行列最大高度，<code>grid_new[i][j]</code>为两者取 min，这样不会影响视图且最优。</li>
+</ol>
+<p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(n^2)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxIncreaseKeepingSkyline</span><span class="params">(<span class="keyword">int</span>[][] grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (grid.length == <span class="number">0</span> || grid[<span class="number">0</span>].length == <span class="number">0</span>) <span class="keyword">return</span> ans;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] maxrow = <span class="keyword">new</span> <span class="keyword">int</span>[grid.length];</span><br><span class="line">        <span class="keyword">int</span>[] maxcol = <span class="keyword">new</span> <span class="keyword">int</span>[grid[<span class="number">0</span>].length];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].length; j++) &#123;</span><br><span class="line">                maxrow[i] = Math.max(maxrow[i], grid[i][j]);</span><br><span class="line">                maxcol[j] = Math.max(maxcol[j], grid[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].length; j++) &#123;</span><br><span class="line">                ans += Math.min(maxrow[i], maxcol[j]) - grid[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="split-array-with-same-average">Split Array With Same Average</h1>
+<p>给一个 int 序列 A[]，每个元素可以选择放到两个初始为空的序列 B 或 C 中，全部元素都必须放到 B 或 C 中。能否找到一种分割策略，使 B 和 C 的平均值相同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example :</span><br><span class="line">Input: </span><br><span class="line">[1,2,3,4,5,6,7,8]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: We can split the array into [1,4,5,8] and [2,3,6,7], and both of them have the average of 4.5.</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li>The length of <code>A</code> will be in the range [1, 30].</li>
+<li><code>A[i]</code> will be in the range of <code>[0, 10000]</code>.</li>
+</ul>
+<h2 id="dp">DP</h2>
+<blockquote>
+<p><a href="https://leetcode.com/problems/split-array-with-same-average/discuss/120729/Java-Solution-using-DP-with-explanation" target="_blank" rel="noopener">English explanation.</a></p>
+</blockquote>
+<p>我一开始想到的是 dp，用 <code>f[t][j] = true</code> 代表子序列可以凑出 <span class="math inline">\(avg = \frac{t}{j}\)</span> 。已知 <code>f[t][j]</code>的情况下，我们假设 A 可以分成两个序列 B, C，长度为 <code>lb + lc = la</code>，那么 B, C 满足一些性质：</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(avg = \frac{A}{la} = \frac{B}{lb} = \frac{C}{lc}\)</span> 三个序列的平均值均相等。avg 是已知的，那么 <span class="math inline">\(B = avg * lb, C = avg * lc\)</span> 且 <span class="math inline">\(B, C\in N\)</span>.</li>
+</ol>
+<p>这就十分 nice，那么我可以枚举 <span class="math inline">\(lb\in [1, A.length-1]\)</span>，通过 <code>lb</code> 可以求出 <code>B, C, lc</code>，判断 <code>f[B][lb] &amp;&amp; f[C][lc]</code> 是否为 True，如果是，那么表示假设成立。</p>
+<p>问题来了，B、C 是否不相交呢？注意，因为可以有重复的元素存在，相交是指包含相同的元素而不是相同值的元素，<code>[1,2,2,3] -&gt; [1,2],[2,3]</code> 不相交，而<code>[1,2,2,3] -&gt; [1,2,2],[2,3]</code> 则相交。</p>
+<p>假设 B、C 是相交的，相交子集为 K。</p>
+<p>那么 <span class="math display">\[
+avg = \frac{A}{la} = \frac{B+C-K}{lb+lc-lk} \\
+\because \frac{B}{lb} = \frac{C}{lc}=\frac{A}{la} \\
+\therefore \frac{B+C-K}{lb+lc-lk} - \frac{B}{lb} = 0 \\
+\frac{B\cdot lb + C\cdot lb - K\cdot lb - B\cdot lb - B \cdot lc + B\cdot lk}{(lb+lc-lk)\cdot lb}=\frac{B\cdot lk - K\cdot lb}{(lb+lc-lk)\cdot lb} \\
+\Rightarrow\frac{B}{lb} = \frac{K}{lk}\\
+\Rightarrow\frac{B-K}{lb-lk} = \frac{B}{lb} = avg
+\]</span> 以上证明，说明将子集 K 从 B 中剥离出去得到 B-K，其平均值也是 avg，那么我们仍然可以得到两个不相交的子序列。</p>
+<p>那么这个方法是可行的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(n^2 * sum)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">splitArraySameAverage</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (A.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> aA : A) sum += aA;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span>[][] f = <span class="keyword">new</span> <span class="keyword">boolean</span>[sum+<span class="number">1</span>][A.length+<span class="number">1</span>];</span><br><span class="line">        f[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> t = sum; t &gt;= A[i]; t--) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i+<span class="number">1</span>; j++) &#123;</span><br><span class="line">                    f[t][j] = f[t][j] | f[t-A[i]][j-<span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= A.length / <span class="number">2</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sum * i % A.length == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span> b = sum * i / A.length;</span><br><span class="line">                <span class="keyword">if</span> (f[b][i]) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/en/tags/Leetcode/" rel="tag"><i class="fa fa-tag"></i> Leetcode</a>
+          
+            <a href="/en/tags/总结/" rel="tag"><i class="fa fa-tag"></i> 总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/en/2018/03/16/Master-Java/" rel="next" title="Master Java">
+                <i class="fa fa-chevron-left"></i> Master Java
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/en/2018/04/01/Leetcode-Contest-78-解题小结/" rel="prev" title="Leetcode Contest 78 Solution">
+                Leetcode Contest 78 Solution <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/en/upload_image/Avatar.png"
+                alt="gjxhlan" />
+            
+              <p class="site-author-name" itemprop="name">gjxhlan</p>
+              <p class="site-description motion-element" itemprop="description">Keep Calm, Listen and Move Fast.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/en/archives/">
+                
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/en/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/en/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/angnuoli" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:gjxhlan@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#number-of-lines-to-write-string"><span class="nav-number">1.</span> <span class="nav-text">Number of Lines To Write String</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unique-morse-code-words"><span class="nav-number">2.</span> <span class="nav-text">Unique Morse Code Words</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#max-increase-to-keep-city-skyline"><span class="nav-number">3.</span> <span class="nav-text">Max Increase to Keep City Skyline</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#split-array-with-same-average"><span class="nav-number">4.</span> <span class="nav-text">Split Array With Same Average</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dp"><span class="nav-number">4.1.</span> <span class="nav-text">DP</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gjxhlan</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/en/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/en/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/en/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/en/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/en/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/en/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/en/js/src/affix.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/en/js/src/schemes/pisces.js?v=6.0.6"></script>
+
+
+
+  
+  <script type="text/javascript" src="/en/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/en/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/en/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</body>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</html>

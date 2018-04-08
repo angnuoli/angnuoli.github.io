@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/en/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/en/lib/pace/pace-theme-center-radar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rannetto One:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/en/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/en/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/en/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/en/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/en/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/en/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/en/',
+    scheme: 'Gemini',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-78 Well, problems are a little bit tricky in this week, problem 1 is map, prob 2 is string, prob 3 is dp and prob 4 is math。">
+<meta name="keywords" content="Leetcode,总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode Contest 78 Solution">
+<meta property="og:url" content="http://yoursite.com/2018/04/01/Leetcode-Contest-78-解题小结/index.html">
+<meta property="og:site_name" content="gjxhlan&#39;s blog">
+<meta property="og:description" content="Link：https://leetcode.com/contest/weekly-contest-78 Well, problems are a little bit tricky in this week, problem 1 is map, prob 2 is string, prob 3 is dp and prob 4 is math。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-04-01T17:14:32.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode Contest 78 Solution">
+<meta name="twitter:description" content="Link：https://leetcode.com/contest/weekly-contest-78 Well, problems are a little bit tricky in this week, problem 1 is map, prob 2 is string, prob 3 is dp and prob 4 is math。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/01/Leetcode-Contest-78-解题小结/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Leetcode Contest 78 Solution | gjxhlan's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/en/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gjxhlan's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/en/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-about">
+    <a href="/en/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/en/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-categories">
+    <a href="/en/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/en/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-commonweal">
+    <a href="/en/../" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-globe"></i> <br />->简体中文</a>
+</li>
+
+      
+
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/en/2018/04/01/Leetcode-Contest-78-解题小结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gjxhlan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/en/upload_image/Avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gjxhlan's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Leetcode Contest 78 Solution</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-01T11:38:13-04:00">2018-04-01</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/en/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Link：<a href="https://leetcode.com/contest/weekly-contest-78" class="uri" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-78</a></p>
+<p>Well, problems are a little bit tricky in this week, problem 1 is map, prob 2 is string, prob 3 is dp and prob 4 is math。</p>
+<a id="more"></a>
+<h1 id="subdomain-visit-count">Subdomain Visit Count</h1>
+<p>Given a String[], return the visit count of subdomains.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line">Input: </span><br><span class="line">[&quot;900 google.mail.com&quot;, &quot;50 yahoo.com&quot;, &quot;1 intel.mail.com&quot;, &quot;5 wiki.org&quot;]</span><br><span class="line">Output: </span><br><span class="line">[&quot;901 mail.com&quot;,&quot;50 yahoo.com&quot;,&quot;900 google.mail.com&quot;,&quot;5 wiki.org&quot;,&quot;5 org&quot;,&quot;1 intel.mail.com&quot;,&quot;951 com&quot;]</span><br><span class="line">Explanation: </span><br><span class="line">We will visit &quot;google.mail.com&quot; 900 times, &quot;yahoo.com&quot; 50 times, &quot;intel.mail.com&quot; once and &quot;wiki.org&quot; 5 times. For the subdomains, we will visit &quot;mail.com&quot; 900 + 1 = 901 times, &quot;com&quot; 900 + 50 + 1 = 951 times, and &quot;org&quot; 5 times.</span><br></pre></td></tr></table></figure>
+<h2 id="hash-table">Hash Table</h2>
+<p>Easy, one pass with HashMap for counting.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(∑len(cpdomains[i]))</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">subdomainVisits</span><span class="params">(String[] cpdomains)</span> </span>&#123;</span><br><span class="line">        Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (String cpdomain: cpdomains) &#123;</span><br><span class="line">            <span class="keyword">int</span> i = cpdomain.indexOf(<span class="string">' '</span>);</span><br><span class="line">            <span class="keyword">int</span> x = Integer.valueOf(cpdomain.substring(<span class="number">0</span>, i));</span><br><span class="line">            cpdomain = cpdomain.substring(i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (map.containsKey(cpdomain)) &#123;</span><br><span class="line">                    map.put(cpdomain, map.get(cpdomain) + x);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    map.put(cpdomain, x);</span><br><span class="line">                &#125;</span><br><span class="line">                i = cpdomain.indexOf(<span class="string">'.'</span>);</span><br><span class="line">                <span class="keyword">if</span> (i != -<span class="number">1</span>) &#123;</span><br><span class="line">                    cpdomain = cpdomain.substring(i+<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">while</span> (i != -<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        List&lt;String&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (Map.Entry&lt;String, Integer&gt; e : map.entrySet()) &#123;</span><br><span class="line">            ans.add(e.getValue() + <span class="string">" "</span> + e.getKey());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="expressive-words">Expressive Words</h1>
+<p>Given a string S. Every continuous substring with duplicate letters of which the length is no less than 3, such as &quot;eee&quot; or &quot;ooo&quot;, can match &quot;e{1, n}&quot; where n is the length of repeat letters. If the length is less than 3, it should match exactly the substring, where &quot;ll&quot; only matches &quot;ll&quot;.</p>
+<p>Given a list of words, return the number of matched words.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input: </span><br><span class="line">S = &quot;heeellooo&quot;</span><br><span class="line">words = [&quot;hello&quot;, &quot;hi&quot;, &quot;helo&quot;]</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: </span><br><span class="line">We can extend &quot;e&quot; and &quot;o&quot; in the word &quot;hello&quot; to get &quot;heeellooo&quot;.</span><br><span class="line">We can&apos;t extend &quot;helo&quot; to get &quot;heeellooo&quot; because the group &quot;ll&quot; is not extended.</span><br></pre></td></tr></table></figure>
+<h2 id="regex">Regex</h2>
+<p>Convert String S to regex pattern using rules stated above.</p>
+<p>Compile each word with the pattern.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(len(S) + ∑len(words[i]))</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">expressiveWords</span><span class="params">(String S, String[] words)</span> </span>&#123;</span><br><span class="line">        S += <span class="string">"X"</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        StringBuilder regex = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">while</span> (i &lt; S.length() - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; S.length() - <span class="number">1</span> &amp;&amp; S.charAt(i) == S.charAt(i+<span class="number">1</span>)) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                n++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (n &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">                regex.append(S.charAt(i) + <span class="string">"&#123;1,"</span> + n + <span class="string">"&#125;"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                regex.append(S.substring(i-n+<span class="number">1</span>, i+<span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        String re = regex.toString();</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (String word : words) &#123;</span><br><span class="line">            <span class="keyword">if</span> (word.matches(re)) ans++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="soup-servings">Soup Servings</h1>
+<p>这道题还是挺 tricky 的，我看了一下前面的人，清一色设置 <span class="math inline">\(N &gt; X000\)</span> 时直接返回 1....</p>
+<p>剩下的可以用记忆化搜索做。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input: N = 50</span><br><span class="line">Output: 0.625</span><br><span class="line">Explanation: </span><br><span class="line">If we choose the first two operations, A will become empty first. For the third operation, A and B will become empty at the same time. For the fourth operation, B will become empty first. So the total probability of A becoming empty first plus half the probability that A and B become empty at the same time, is 0.25 * (1 + 1 + 0.5 + 0) = 0.625.</span><br></pre></td></tr></table></figure>
+<h2 id="dp">DP</h2>
+<p>记忆化搜索，挺模式化的一道题，然而这 N 的人工设置实在是....</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(n^2)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">double</span>[][] map;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">soupServings</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (N &gt; <span class="number">5000</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        map = <span class="keyword">new</span> <span class="keyword">double</span>[N+<span class="number">1</span>][N+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">return</span> dfs(N, N, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">double</span> ans = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> A, <span class="keyword">int</span> B, <span class="keyword">double</span> pro)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (A &lt; <span class="number">0</span>) A = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (B &lt; <span class="number">0</span>) B = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (map[A][B] != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> map[A][B];</span><br><span class="line">        &#125; </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (A &lt;= <span class="number">0</span> &amp;&amp; B &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> pro / <span class="number">2</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (A &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> pro;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (B &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> temp = dfs(A - <span class="number">100</span>, B, pro / <span class="number">4</span>)</span><br><span class="line">                        + dfs(A - <span class="number">75</span>, B - <span class="number">25</span>, pro / <span class="number">4</span>)</span><br><span class="line">                        + dfs(A - <span class="number">50</span>, B - <span class="number">50</span>, pro / <span class="number">4</span>)</span><br><span class="line">                        + dfs(A - <span class="number">25</span>, B - <span class="number">75</span>, pro / <span class="number">4</span>);</span><br><span class="line">        </span><br><span class="line">        map[A][B] = temp;</span><br><span class="line">        <span class="keyword">return</span> temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="chalkboard-xor-game">Chalkboard XOR Game</h1>
+<p>给一个 int 序列 nums，Alice 和 Bob 每次可以从中抹去一个元素，Alice 先手，输出 Alice 是否能赢。</p>
+<p>胜负条件：设 nums 所有元素异或为 s</p>
+<ol style="list-style-type: decimal">
+<li><p>初始 s 为 0，直接胜出。</p></li>
+<li><p>抹去一个元素，使得剩余元素异或为 0 的为输家。</p></li>
+</ol>
+<p>取石子游戏的变种。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input: nums = [1, 1, 2]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: </span><br><span class="line">Alice has two choices: erase 1 or erase 2. </span><br><span class="line">If she erases 1, the nums array becomes [1, 2]. The bitwise XOR of all the elements of the chalkboard is 1 XOR 2 = 3. Now Bob can remove any element he wants, because Alice will be the one to erase the last element and she will lose. </span><br><span class="line">If Alice erases 2 first, now nums becomes [1, 1]. The bitwise XOR of all the elements of the chalkboard is 1 XOR 1 = 0. Alice will lose.</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li><code>1 &lt;= N &lt;= 1000</code>.</li>
+<li><code>0 &lt;= nums[i] &lt;= 2^16</code>.</li>
+</ul>
+<h2 id="math">Math</h2>
+<p>这道题还是比较 tricky 的，discuss 里面也有人抱怨说这题没啥意义……我反正没做出来，看了一眼题解，大致思路是先求</p>
+<p><span class="math display">\[
+S = X_1 \oplus X_2 \oplus...\oplus X_n
+\]</span></p>
+<p>若 <span class="math inline">\(S = 0\)</span>，Alice 直接胜出。</p>
+<p>若 <span class="math inline">\(S\ne 0\)</span>，取任意元素 <span class="math inline">\(X_i\)</span> ，剩余元素异或可以表示为 <span class="math inline">\(S \oplus X_i\)</span> 。</p>
+<ol style="list-style-type: decimal">
+<li>如果 Alice 取的时候，nums 的数量为偶数，Alice 必有可以移动的位置。</li>
+</ol>
+<p>假设 nums 数量为偶数，且 Alice 将在这一步输，那么 <span class="math inline">\(\forall X_i, \ S \oplus X_i = 0\)</span> ，which means <span class="math display">\[
+   \begin{align*}
+   0 = (S\oplus X_1) \oplus (S\oplus X_2) \oplus ...\oplus (S\oplus X_n) &amp;= (S\oplus...\oplus S) \oplus (X_1\oplus X_n) \\ 
+   &amp;= 0 \oplus S \\
+   &amp; \ne 0 
+   \end{align*}
+   \]</span> 导出矛盾，所以 Alice 总有可以移动的位置。</p>
+<ol start="2" style="list-style-type: decimal">
+<li>如果 Alice 取的时候，nums 的数量为奇数，Alice 必输。</li>
+</ol>
+<p>显然 Alice 取了一个之后，Bob 面对的数量必然为偶数，根据 1，Bob 必有可以移动的位置，当只剩最后一个的时候，Alice 取了之后必输。</p>
+<p>以上得证，仅需判断 <code>s == 0 || nums.length % 2 == 0</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(n)</span></span><br><span class="line"><span class="comment">// Space Complexity O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">xorGame</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> s = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num: nums) s ^= num;</span><br><span class="line">        <span class="keyword">return</span> s == <span class="number">0</span> || nums.length % <span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/en/tags/Leetcode/" rel="tag"><i class="fa fa-tag"></i> Leetcode</a>
+          
+            <a href="/en/tags/总结/" rel="tag"><i class="fa fa-tag"></i> 总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/en/2018/03/25/Leetcode-Contest-77-解题小结/" rel="next" title="Leetcode Contest 77 解题小结">
+                <i class="fa fa-chevron-left"></i> Leetcode Contest 77 解题小结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/en/2018/04/07/Leetcode-Contest-79-Solution/" rel="prev" title="Leetcode Contest 79 Solution">
+                Leetcode Contest 79 Solution <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/en/upload_image/Avatar.png"
+                alt="gjxhlan" />
+            
+              <p class="site-author-name" itemprop="name">gjxhlan</p>
+              <p class="site-description motion-element" itemprop="description">Keep Calm, Listen and Move Fast.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/en/archives/">
+                
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/en/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/en/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/angnuoli" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:gjxhlan@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#subdomain-visit-count"><span class="nav-number">1.</span> <span class="nav-text">Subdomain Visit Count</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hash-table"><span class="nav-number">1.1.</span> <span class="nav-text">Hash Table</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#expressive-words"><span class="nav-number">2.</span> <span class="nav-text">Expressive Words</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#regex"><span class="nav-number">2.1.</span> <span class="nav-text">Regex</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#soup-servings"><span class="nav-number">3.</span> <span class="nav-text">Soup Servings</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dp"><span class="nav-number">3.1.</span> <span class="nav-text">DP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#chalkboard-xor-game"><span class="nav-number">4.</span> <span class="nav-text">Chalkboard XOR Game</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#math"><span class="nav-number">4.1.</span> <span class="nav-text">Math</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gjxhlan</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.0.6</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/en/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/en/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/en/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/en/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/en/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/en/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/en/js/src/affix.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/en/js/src/schemes/pisces.js?v=6.0.6"></script>
+
+
+
+  
+  <script type="text/javascript" src="/en/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/en/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/en/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+</body>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</html>
