@@ -150,25 +150,25 @@
 
 
 
-  <meta name="description" content="Java序列化 深入学习 Java 序列化 Java序列化是指把Java对象保存为二进制字节码的过程，Java反序列化是指把二进制码重新转换成Java对象的过程。 在计算需要被序列化的字段的时候会把被static和transient修饰的字段给过滤掉。 serialVersionUID 与 transient java类中serialversionuid作用是什么?举个例子说明">
-<meta name="keywords" content="Java">
+  <meta name="description" content="今天遇上一道很有意思的题目，非有序序列二分查找，正好记录一下。 162. Find Peak Element A peak element is an element that is greater than its neighbors. Given an input array where num[i] ≠ num[i+1], find a peak element and return its">
+<meta name="keywords" content="Leetcode,二分,趣题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 序列化">
-<meta property="og:url" content="http://yoursite.com/2018/03/14/Java-序列化/index.html">
+<meta property="og:title" content="趣题 —— Find Peak Element">
+<meta property="og:url" content="http://yoursite.com/2018/04/09/趣题-Find-Peak-Element/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="Java序列化 深入学习 Java 序列化 Java序列化是指把Java对象保存为二进制字节码的过程，Java反序列化是指把二进制码重新转换成Java对象的过程。 在计算需要被序列化的字段的时候会把被static和transient修饰的字段给过滤掉。 serialVersionUID 与 transient java类中serialversionuid作用是什么?举个例子说明">
+<meta property="og:description" content="今天遇上一道很有意思的题目，非有序序列二分查找，正好记录一下。 162. Find Peak Element A peak element is an element that is greater than its neighbors. Given an input array where num[i] ≠ num[i+1], find a peak element and return its">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-25T07:07:06.413Z">
+<meta property="og:updated_time" content="2018-04-09T22:29:15.412Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 序列化">
-<meta name="twitter:description" content="Java序列化 深入学习 Java 序列化 Java序列化是指把Java对象保存为二进制字节码的过程，Java反序列化是指把二进制码重新转换成Java对象的过程。 在计算需要被序列化的字段的时候会把被static和transient修饰的字段给过滤掉。 serialVersionUID 与 transient java类中serialversionuid作用是什么?举个例子说明">
+<meta name="twitter:title" content="趣题 —— Find Peak Element">
+<meta name="twitter:description" content="今天遇上一道很有意思的题目，非有序序列二分查找，正好记录一下。 162. Find Peak Element A peak element is an element that is greater than its neighbors. Given an input array where num[i] ≠ num[i+1], find a peak element and return its">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/14/Java-序列化/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/09/趣题-Find-Peak-Element/"/>
 
 
 
@@ -178,7 +178,7 @@
   };
 </script>
 
-  <title>Java 序列化 | gjxhlan's blog</title>
+  <title>趣题 —— Find Peak Element | gjxhlan's blog</title>
   
 
 
@@ -371,7 +371,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/14/Java-序列化/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/09/趣题-Find-Peak-Element/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gjxhlan">
@@ -388,7 +388,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java 序列化</h1>
+          <h1 class="post-title" itemprop="name headline">趣题 —— Find Peak Element</h1>
         
 
         <div class="post-meta">
@@ -400,7 +400,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-14T14:15:34-04:00">2018-03-14</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-09T17:48:43-04:00">2018-04-09</time>
             
 
             
@@ -421,7 +421,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程题/" itemprop="url" rel="index"><span itemprop="name">编程题</span></a></span>
 
                 
                 
@@ -455,13 +455,24 @@
       
 
       
-        <h1 id="java序列化">Java序列化</h1>
-<h2 id="深入学习-java-序列化"><a href="http://www.importnew.com/24490.html" target="_blank" rel="noopener">深入学习 Java 序列化</a></h2>
-<p>Java序列化是指把Java对象保存为二进制字节码的过程，Java反序列化是指把二进制码重新转换成Java对象的过程。</p>
-<p>在计算需要被序列化的字段的时候会把被static和transient修饰的字段给过滤掉。</p>
-<h2 id="serialversionuid-与-transient">serialVersionUID 与 transient</h2>
-<p><a href="https://www.cnblogs.com/duanxz/p/3511695.html" target="_blank" rel="noopener">java类中serialversionuid作用是什么?举个例子说明</a></p>
+        <p>今天遇上一道很有意思的题目，非有序序列二分查找，正好记录一下。</p>
+<h2 id="find-peak-element">162. Find Peak Element</h2>
+<p>A peak element is an element that is greater than its neighbors.</p>
+<p>Given an input array where <code>num[i] ≠ num[i+1]</code>, find a peak element and return its index.</p>
+<p>The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.</p>
+<p>You may imagine that <code>num[-1] = num[n] = -∞</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input: [1, 2, 3, 1]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">For example, in array [1, 2, 3, 1], 3 is a peak element and your function should return the index number 2.</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
+<h2 id="traverse">Traverse</h2>
+<p>我第一眼看上去，扫一遍数组，依次 check <code>num[i] &gt; num[i+1]</code> ，如果满足一个就可以输出 i ；全部不满足，即升序序列，那么输出数组的最后一个即可，因为 <code>num[n-1] &gt; num[n] = -∞</code> 。时间复杂度 O(n)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPeakElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; nums[i+<span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.length-<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="binary-search">Binary Search</h2>
+<p>很快用第一种写法 A 了，回头再看这题能否优化。线性时间再优化就是 logn 级别的时间复杂度，O(n) -&gt; O(logn)，一般就是树或二分查找，所以我也很自然地往二分上去想了。</p>
+<p>但是，这个序列并不是一个有序序列，能用二分吗？我开始也觉得没思路（discuss 里面有暴躁老哥直接说, &quot;This may be stupid question… How can you do binary search on an array which is not sorted?&quot;，笑死我了🤣）。不过，他的确说到点子上了，我们一般遇见的二分查找大多是在有序序列中是用的，非有序序列的情况下如何二分？</p>
+<p>然而，二分查找真的要求序列有序吗？回想一下二分查找算法 —— 其核心是通过和中间点比较得到的信息，推断出我们要查找的数在 <code>[left, mid)</code> 还是 <code>(mid, right]</code> 区间中，或者就是 mid 本身。好像并没有要求序列有序！只要中间点能给予我们一些信息让我们将搜索空间缩小一半，即是二分（之前我也拘泥于序列必须有序，反而忘记了算法最根本的目的，缩小搜索空间）。</p>
+<p>先看看二分能提供给我们什么信息，首先取中间点 mid，那么我们同样能够得到 mid 和其 neighbors 之间的关系，如果 num[mid] is peak，直接返回 mid 即可；如果 mid 不是 peak，那么 mid 和其 neighbors 组成的三元组必然是升序或降序序列，结合我们找的是 peak，那么我们可以合理推断，升序的那一侧必然存在 peak。</p>
+<p>这样，这个问题也就完全转变成了一个典型的二分查找，注意处理一下两个边界，时间复杂度 O(logn）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPeakElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> ((mid==<span class="number">0</span> || nums[mid] &gt; nums[mid-<span class="number">1</span>]) &amp;&amp; (mid == n-<span class="number">1</span> || nums[mid] &gt; nums[mid+<span class="number">1</span>])) <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">if</span> ((mid == <span class="number">0</span> || nums[mid-<span class="number">1</span>] &lt; nums[mid]) &amp;&amp; (mid != n-<span class="number">1</span> &amp;&amp; nums[mid] &lt; nums[mid+<span class="number">1</span>])) &#123;</span><br><span class="line">                left = mid+<span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid-<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> right;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -482,7 +493,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"><i class="fa fa-tag"></i> Java</a>
+            <a href="/tags/Leetcode/" rel="tag"><i class="fa fa-tag"></i> Leetcode</a>
+          
+            <a href="/tags/二分/" rel="tag"><i class="fa fa-tag"></i> 二分</a>
+          
+            <a href="/tags/趣题/" rel="tag"><i class="fa fa-tag"></i> 趣题</a>
           
         </div>
       
@@ -495,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/11/Leetcode-Contest-75-解题小结/" rel="next" title="Leetcode Contest 75 解题小结">
-                <i class="fa fa-chevron-left"></i> Leetcode Contest 75 解题小结
+              <a href="/2018/04/07/Leetcode-Contest-79-解题小结/" rel="next" title="Leetcode Contest 79 Solution">
+                <i class="fa fa-chevron-left"></i> Leetcode Contest 79 Solution
               </a>
             
           </div>
@@ -504,10 +519,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/16/Master-Java/" rel="prev" title="Master Java">
-                Master Java <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -683,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java序列化"><span class="nav-number">1.</span> <span class="nav-text">Java序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#深入学习-java-序列化"><span class="nav-number">1.1.</span> <span class="nav-text">深入学习 Java 序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#serialversionuid-与-transient"><span class="nav-number">1.2.</span> <span class="nav-text">serialVersionUID 与 transient</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#find-peak-element"><span class="nav-number">1.</span> <span class="nav-text">162. Find Peak Element</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#traverse"><span class="nav-number">2.</span> <span class="nav-text">Traverse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binary-search"><span class="nav-number">3.</span> <span class="nav-text">Binary Search</span></a></li></ol></div>
             
 
           </div>
