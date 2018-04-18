@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #3c3d03;
+  background: #ffe2bd;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2774,6 +2774,9 @@ ul.breadcrumb li+li:last-child {
 .sub-menu .menu-item-active a:hover {
   background: #fff !important;
   border-bottom-color: #fc6423;
+}
+.sub-menu .menu-item-active a:after {
+  content: initial;
 }
 .use-motion .sidebar .motion-element {
   opacity: 1;

@@ -150,18 +150,18 @@
 
 
 
-  <meta name="description" content="今天遇上一道很有意思的题目，非有序序列二分查找，正好记录一下。 162. Find Peak Element A peak element is an element that is greater than its neighbors. Given an input array where num[i] ≠ num[i+1], find a peak element and return its">
+  <meta name="description" content="最近碰上了一些有意思的二分查找的题目，让我对自己原来关于二分查找的认识进行了一定程度的自省，也让我有种眼前一亮的感觉，正好记录一下。 题目可以概括为，在非有序序列中进行查找。 162. Find Peak Element A peak element is an element that is greater than its neighbors. Given an input array whe">
 <meta name="keywords" content="Leetcode,二分,趣题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="趣题 —— Find Peak Element">
+<meta property="og:title" content="关于二分的一些思考">
 <meta property="og:url" content="http://yoursite.com/2018/04/09/趣题-Find-Peak-Element/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="今天遇上一道很有意思的题目，非有序序列二分查找，正好记录一下。 162. Find Peak Element A peak element is an element that is greater than its neighbors. Given an input array where num[i] ≠ num[i+1], find a peak element and return its">
+<meta property="og:description" content="最近碰上了一些有意思的二分查找的题目，让我对自己原来关于二分查找的认识进行了一定程度的自省，也让我有种眼前一亮的感觉，正好记录一下。 题目可以概括为，在非有序序列中进行查找。 162. Find Peak Element A peak element is an element that is greater than its neighbors. Given an input array whe">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-09T22:29:15.412Z">
+<meta property="og:updated_time" content="2018-04-18T17:42:29.680Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="趣题 —— Find Peak Element">
-<meta name="twitter:description" content="今天遇上一道很有意思的题目，非有序序列二分查找，正好记录一下。 162. Find Peak Element A peak element is an element that is greater than its neighbors. Given an input array where num[i] ≠ num[i+1], find a peak element and return its">
+<meta name="twitter:title" content="关于二分的一些思考">
+<meta name="twitter:description" content="最近碰上了一些有意思的二分查找的题目，让我对自己原来关于二分查找的认识进行了一定程度的自省，也让我有种眼前一亮的感觉，正好记录一下。 题目可以概括为，在非有序序列中进行查找。 162. Find Peak Element A peak element is an element that is greater than its neighbors. Given an input array whe">
 
 
 
@@ -178,7 +178,7 @@
   };
 </script>
 
-  <title>趣题 —— Find Peak Element | gjxhlan's blog</title>
+  <title>关于二分的一些思考 | gjxhlan's blog</title>
   
 
 
@@ -369,7 +369,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">趣题 —— Find Peak Element
+          <h1 class="post-title" itemprop="name headline">关于二分的一些思考
               
             
           </h1>
@@ -443,8 +443,9 @@
       
 
       
-        <p>今天遇上一道很有意思的题目，非有序序列二分查找，正好记录一下。</p>
-<h2 id="find-peak-element">162. Find Peak Element</h2>
+        <p>最近碰上了一些有意思的二分查找的题目，让我对自己原来关于二分查找的认识进行了一定程度的自省，也让我有种眼前一亮的感觉，正好记录一下。</p>
+<p>题目可以概括为，在非有序序列中进行查找。</p>
+<h1 id="find-peak-element">162. Find Peak Element</h1>
 <p>A peak element is an element that is greater than its neighbors.</p>
 <p>Given an input array where <code>num[i] ≠ num[i+1]</code>, find a peak element and return its index.</p>
 <p>The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.</p>
@@ -461,6 +462,13 @@
 <p>先看看二分能提供给我们什么信息，首先取中间点 mid，那么我们同样能够得到 mid 和其 neighbors 之间的关系，如果 num[mid] is peak，直接返回 mid 即可；如果 mid 不是 peak，那么 mid 和其 neighbors 组成的三元组必然是升序或降序序列，结合我们找的是 peak，那么我们可以合理推断，升序的那一侧必然存在 peak。</p>
 <p>这样，这个问题也就完全转变成了一个典型的二分查找，注意处理一下两个边界，时间复杂度 O(logn）。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPeakElement</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> n = nums.length;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> ((mid==<span class="number">0</span> || nums[mid] &gt; nums[mid-<span class="number">1</span>]) &amp;&amp; (mid == n-<span class="number">1</span> || nums[mid] &gt; nums[mid+<span class="number">1</span>])) <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">if</span> ((mid == <span class="number">0</span> || nums[mid-<span class="number">1</span>] &lt; nums[mid]) &amp;&amp; (mid != n-<span class="number">1</span> &amp;&amp; nums[mid] &lt; nums[mid+<span class="number">1</span>])) &#123;</span><br><span class="line">                left = mid+<span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid-<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> right;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="在先升后降序列中查找">在先升后降序列中查找</h1>
+<p>给定一个序列 <code>arr = [1,2,3,4,5,6,4,3,2,1]</code> , 先升后降，在其中查找一个数 <code>num</code> 。</p>
+<p>一般，如果是在一个升序序列或降序序列中查找数，我们很容易想到二分。但是如果突然出现先升后降或先降后升的变体呢？</p>
+<p>同样的思路，找中点，利用 <code>arr[mid-1], arr[mid], arr[mid+1]</code> 三者之间的顺序来确定哪部分空间是需要继续搜索的，哪部分空间是可以剪枝的。</p>
+<p>二分查找对有序性的要求其实是可以弱化的，我感觉我现在可能更喜欢 <code>divide and conquer</code> 这种说法吧。其实，二分本来就来源于此，只不过题目见得多了反而使人产生了惯性思维。所以，增加自己对于算法一些基本思想的认识，而不是仅仅流于算法形式会比较好。</p>
+<p>最后贴上代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findIndex</span><span class="params">(<span class="keyword">int</span> num, <span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> findIndex(num, arr, <span class="number">0</span>, arr.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findIndex</span><span class="params">(<span class="keyword">int</span> num, <span class="keyword">int</span>[] arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// edge case</span></span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (left == right) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[left] == num) <span class="keyword">return</span> left;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (left == right - <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[left] == num) <span class="keyword">return</span> left;</span><br><span class="line">            <span class="keyword">if</span> (arr[right] == num) <span class="keyword">return</span> right;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (arr[mid] == num) <span class="keyword">return</span> mid;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> index = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (arr[mid] &gt; num) &#123;</span><br><span class="line">            index = findIndex(num, arr, left, mid - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (index != -<span class="number">1</span>) <span class="keyword">return</span> index;</span><br><span class="line">            index = findIndex(num, arr, mid + <span class="number">1</span>, right);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// arr[mid] &lt; num 两边不要</span></span><br><span class="line">            <span class="keyword">if</span> (arr[mid - <span class="number">1</span>] &lt; arr[mid] &amp;&amp; arr[mid] &lt; arr[mid + <span class="number">1</span>]) &#123;</span><br><span class="line">                index = findIndex(num, arr, mid + <span class="number">1</span>, right);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (arr[mid - <span class="number">1</span>] &gt; arr[mid] &amp;&amp; arr[mid] &gt; arr[mid + <span class="number">1</span>]) &#123; <span class="comment">// right decreasing</span></span><br><span class="line">                index = findIndex(num, arr, left, mid - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> index;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -498,7 +506,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/07/Leetcode-Contest-79-解题小结/" rel="next" title="Leetcode Contest 79 Solution">
+              <a href="/2018/04/08/Leetcode-Contest-79-解题小结/" rel="next" title="Leetcode Contest 79 Solution">
                 <i class="fa fa-chevron-left"></i> Leetcode Contest 79 Solution
               </a>
             
@@ -680,7 +688,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#find-peak-element"><span class="nav-number">1.</span> <span class="nav-text">162. Find Peak Element</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#traverse"><span class="nav-number">2.</span> <span class="nav-text">Traverse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binary-search"><span class="nav-number">3.</span> <span class="nav-text">Binary Search</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#find-peak-element"><span class="nav-number">1.</span> <span class="nav-text">162. Find Peak Element</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#traverse"><span class="nav-number">1.1.</span> <span class="nav-text">Traverse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#binary-search"><span class="nav-number">1.2.</span> <span class="nav-text">Binary Search</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在先升后降序列中查找"><span class="nav-number">2.</span> <span class="nav-text">在先升后降序列中查找</span></a></li></ol></div>
             
 
           </div>
