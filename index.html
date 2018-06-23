@@ -357,6 +357,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/23/RecyclerView-Bug-Report-use-notifyItemMoved-and-notifyDatasetChanged-back-to-back/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gjxhlan">
+      <meta itemprop="description" content="Keep Calm, Listen and Move Fast.">
+      <meta itemprop="image" content="/upload_image/Avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gjxhlan's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/23/RecyclerView-Bug-Report-use-notifyItemMoved-and-notifyDatasetChanged-back-to-back/" itemprop="url">
+                  RecyclerView Bug Report
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-06-23 16:06:11 / Modified: 17:05:39" itemprop="dateCreated datePublished" datetime="2018-06-23T16:06:11+08:00">2018-06-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Use notifyItemMoved and notifyDatasetChanged back to back.</p>
+<p>在写 drag icon and insert it to RecyclerView 时遇上了一个挺有意思的 bug，记录一下。</p>
+<h1 id="reproduce-bug">Reproduce Bug</h1>
+<ol style="list-style-type: decimal">
+<li><p>先在 adapter 中更换数据集中两个 item 的位置并调用 notifyItemRangeChanged（场景：drag item 到另一个 position 并显示一个 preview 表示预插入新的 item），preview 处于可视区域内。</p></li>
+<li><p>短时间内直接更换数据集 (cardItems = newCardItems)，并调用 notifyDataSetChanged （场景：用targetView 替换 preview）。</p></li>
+<li><p>调用完 notifyDataSetChanged 之后，立即调用 scrollTo 将 RecyclerView 滚动至插入的新 item 处（场景：即时显示新插入的 view）。</p>
+<p>可以不调用 scrollTo，只需保证新的 targetView 仍处于可视区域内（会被 onLayout 刷新）。</p></li>
+<li><p>结果导致某些 position 在进出可视区域时（比如上下不停来回 scroll RecyclerView）交替显示 preview 和targetView。</p></li>
+</ol>
+<h1 id="root-cause-preview-先被-remove-后被-add顺序颠倒了">Root cause: preview 先被 remove 后被 add，顺序颠倒了</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/23/RecyclerView-Bug-Report-use-notifyItemMoved-and-notifyDatasetChanged-back-to-back/" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/10/Leetcode-Contest-88-Solution/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1167,7 +1321,7 @@
 <p>Given an input array where <code>num[i] ≠ num[i+1]</code>, find a peak element and return its index.</p>
 <p>The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.</p>
 <p>You may imagine that <code>num[-1] = num[n] = -∞</code>.</p>
-<!--�78-->
+<!--�71-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/09/趣题-Find-Peak-Element/" rel="contents">
@@ -1928,185 +2082,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/14/Java-序列化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gjxhlan">
-      <meta itemprop="description" content="Keep Calm, Listen and Move Fast.">
-      <meta itemprop="image" content="/upload_image/Avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gjxhlan's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/14/Java-序列化/" itemprop="url">
-                  Java 序列化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-03-14 14:15:34" itemprop="dateCreated datePublished" datetime="2018-03-14T14:15:34+08:00">2018-03-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-03-25 15:07:06" itemprop="dateModified" datetime="2018-03-25T15:07:06+08:00">2018-03-25</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Study-Notes/" itemprop="url" rel="index"><span itemprop="name">Study Notes</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="java序列化">Java序列化</h1>
-<h2 id="深入学习-java-序列化"><a href="http://www.importnew.com/24490.html" target="_blank" rel="noopener">深入学习 Java 序列化</a></h2>
-<p>Java序列化是指把Java对象保存为二进制字节码的过程，Java反序列化是指把二进制码重新转换成Java对象的过程。</p>
-<p>在计算需要被序列化的字段的时候会把被static和transient修饰的字段给过滤掉。</p>
-<h2 id="serialversionuid-与-transient">serialVersionUID 与 transient</h2>
-<p><a href="https://www.cnblogs.com/duanxz/p/3511695.html" target="_blank" rel="noopener">java类中serialversionuid作用是什么?举个例子说明</a></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/14/Java-序列化/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2158,7 +2133,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2200,7 +2175,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2276,7 +2255,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.3.0</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.3.0</div>
 
 
 
