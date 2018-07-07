@@ -10,7 +10,7 @@ categories:
 
 Link：[https://leetcode.com/contest/weekly-contest-90](https://leetcode.com/contest/weekly-contest-90)
 
-昨晚看世界杯 🇩🇪 vs 🇸🇪 比赛看到四点，最后德国 17s 绝杀，看得真爽，然后早上就起不来了... 下午写完，第 1 题 bruteForce，第 2 题 recursion or stack，第 3 题 Math，第 4 题 topK 问题 Sort + PriorityQueue。
+昨晚看世界杯德国 vs 瑞典比赛看到四点，最后德国 17s 绝杀，看得真爽，然后早上就起不来了... 下午写完，第 1 题 bruteForce，第 2 题 recursion or stack，第 3 题 Math，第 4 题 topK 问题 Sort + PriorityQueue。
 
 <!-- more -->
 
