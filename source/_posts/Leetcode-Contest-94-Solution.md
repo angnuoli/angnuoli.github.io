@@ -10,7 +10,7 @@ categories:
 
 Link：[https://leetcode.com/contest/weekly-contest-94](https://leetcode.com/contest/weekly-contest-94)
 
-解题速度实在是比不过大神...第 1 题 naïve，第 2 题 naïve，第 3 题二分，第 4 题 binary search。
+解题速度实在是比不过大神...第 1 题 naïve，第 2 题 naïve，第 3 题二分，第 4 题 binary search / dp。
 
 <!-- more -->
 
