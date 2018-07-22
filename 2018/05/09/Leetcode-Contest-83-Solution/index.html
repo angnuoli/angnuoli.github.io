@@ -16,9 +16,9 @@
 
 <html class="theme-next gemini use-motion" lang="en">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -39,8 +39,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -107,9 +107,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
@@ -152,13 +152,6 @@
     }
   };
 </script>
-
-
-  
-
-
-
-
   <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-83 上周期末考试，轮空一周，本周继续更。第 1、2 题字符串处理，第 3 题 Math ，第 4 题 Three Pointers。">
 <meta name="keywords" content="Leetcode,总结">
 <meta property="og:type" content="article">
@@ -177,7 +170,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/09/Leetcode-Contest-83-Solution/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/09/Leetcode-Contest-83-Solution/">
 
 
 
@@ -224,7 +217,6 @@
     }
   </style>
 </noscript>
-
 </head>
 
 
@@ -241,7 +233,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -264,7 +256,6 @@
 </div>
 
 
-
 <nav class="site-nav">
   
     <ul id="menu" class="menu">
@@ -275,7 +266,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
   </li>
         
         
@@ -283,7 +274,7 @@
           
           <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
   </li>
         
         
@@ -291,7 +282,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
   </li>
         
         
@@ -299,7 +290,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
   </li>
         
         
@@ -307,7 +298,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
   </li>
 
       
@@ -330,7 +321,6 @@
     </header>
 
     
-
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -423,7 +413,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -510,7 +500,6 @@ k | N &amp;- \frac{k(k-1)}{2}
 <h2 id="three-pointers">Three pointers</h2>
 <p>因为只可能有大写字母，用三个指针数组 left, mid, right[26] 来保存某一个字母连续的三个位置，从左到右扫一遍，每次遇到一个字母，更新一次 <code>left = mid，mid = right, right = i</code>，并且将 mid 所在位置的字母的贡献存入 ans，因为 mid 所在位置的字母无法对包含 right 位置右边字符的子串产生影响（unique）。注意最后需要更新一次 ans。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">uniqueLetterString</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (S == <span class="keyword">null</span> || S.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">long</span> cons = (<span class="keyword">long</span>)(<span class="number">1e9</span> + <span class="number">7</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] left = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>], mid = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">int</span>[] right = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> l = S.length();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; left.length; i++) left[i] = mid[i] = right[i] = -<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; l; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> c = S.charAt(i) - <span class="string">'A'</span>;</span><br><span class="line">            left[c] = mid[c];</span><br><span class="line">            mid[c] = right[c];</span><br><span class="line">            right[c] = i;</span><br><span class="line">            <span class="keyword">if</span> (mid[c] != -<span class="number">1</span>) &#123;</span><br><span class="line">                ans = (ans + (mid[c] - left[c]) * (right[c] - mid[c])) % cons;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (right[i] != -<span class="number">1</span>) &#123;</span><br><span class="line">                ans = (ans + (l - right[i]) * (right[i] - mid[i])) % cons;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
       
     </div>
 
@@ -620,9 +609,7 @@ k | N &amp;- \frac{k(k-1)}{2}
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/upload_image/Avatar.png"
-                alt="gjxhlan" />
+              <img class="site-author-image" itemprop="image" src="/upload_image/Avatar.png" alt="gjxhlan">
             
               <p class="site-author-name" itemprop="name">gjxhlan</p>
               <p class="site-description motion-element" itemprop="description">Keep Calm, Listen and Move Fast.</p>
@@ -635,7 +622,7 @@ k | N &amp;- \frac{k(k-1)}{2}
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -774,7 +761,7 @@ k | N &amp;- \frac{k(k-1)}{2}
 
   <span class="post-meta-divider">|</span>
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.6.0</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -783,10 +770,6 @@ k | N &amp;- \frac{k(k-1)}{2}
 
 
   <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.3.0</div>
-
-
-
-
         
 
 

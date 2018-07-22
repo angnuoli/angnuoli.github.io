@@ -16,9 +16,9 @@
 
 <html class="theme-next gemini use-motion" lang="en">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -39,8 +39,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -107,9 +107,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
@@ -152,13 +152,6 @@
     }
   };
 </script>
-
-
-  
-
-
-
-
   <meta name="description" content="原题链接：https://leetcode.com/contest/weekly-contest-77 本周感觉难度不大....三道模拟，一道 DP。">
 <meta name="keywords" content="Leetcode,总结">
 <meta property="og:type" content="article">
@@ -177,7 +170,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/25/Leetcode-Contest-77-解题小结/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/25/Leetcode-Contest-77-解题小结/">
 
 
 
@@ -224,7 +217,6 @@
     }
   </style>
 </noscript>
-
 </head>
 
 
@@ -241,7 +233,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -264,7 +256,6 @@
 </div>
 
 
-
 <nav class="site-nav">
   
     <ul id="menu" class="menu">
@@ -275,7 +266,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
   </li>
         
         
@@ -283,7 +274,7 @@
           
           <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
   </li>
         
         
@@ -291,7 +282,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
   </li>
         
         
@@ -299,7 +290,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
   </li>
         
         
@@ -307,7 +298,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
   </li>
 
       
@@ -330,7 +321,6 @@
     </header>
 
     
-
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -423,7 +413,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -526,7 +516,6 @@ avg = \frac{A}{la} = \frac{B+C-K}{lb+lc-lk} \\
 \]</span> 以上证明，说明将子集 K 从 B 中剥离出去得到 B-K，其平均值也是 avg，那么我们仍然可以得到两个不相交的子序列。</p>
 <p>那么这个方法是可行的。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(n^2 * sum)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">splitArraySameAverage</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (A.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> aA : A) sum += aA;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">boolean</span>[][] f = <span class="keyword">new</span> <span class="keyword">boolean</span>[sum+<span class="number">1</span>][A.length+<span class="number">1</span>];</span><br><span class="line">        f[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> t = sum; t &gt;= A[i]; t--) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i+<span class="number">1</span>; j++) &#123;</span><br><span class="line">                    f[t][j] = f[t][j] | f[t-A[i]][j-<span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= A.length / <span class="number">2</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sum * i % A.length == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span> b = sum * i / A.length;</span><br><span class="line">                <span class="keyword">if</span> (f[b][i]) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
       
     </div>
 
@@ -636,9 +625,7 @@ avg = \frac{A}{la} = \frac{B+C-K}{lb+lc-lk} \\
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/upload_image/Avatar.png"
-                alt="gjxhlan" />
+              <img class="site-author-image" itemprop="image" src="/upload_image/Avatar.png" alt="gjxhlan">
             
               <p class="site-author-name" itemprop="name">gjxhlan</p>
               <p class="site-description motion-element" itemprop="description">Keep Calm, Listen and Move Fast.</p>
@@ -651,7 +638,7 @@ avg = \frac{A}{la} = \frac{B+C-K}{lb+lc-lk} \\
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -790,7 +777,7 @@ avg = \frac{A}{la} = \frac{B+C-K}{lb+lc-lk} \\
 
   <span class="post-meta-divider">|</span>
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.6.0</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -799,10 +786,6 @@ avg = \frac{A}{la} = \frac{B+C-K}{lb+lc-lk} \\
 
 
   <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.3.0</div>
-
-
-
-
         
 
 

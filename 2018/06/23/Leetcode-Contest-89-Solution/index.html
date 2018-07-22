@@ -16,9 +16,9 @@
 
 <html class="theme-next gemini use-motion" lang="en">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -39,8 +39,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -107,9 +107,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
@@ -152,13 +152,6 @@
     }
   };
 </script>
-
-
-  
-
-
-
-
   <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-89 第 1 题二分，我还发了相关的专题，一模一样。第 2 题排序，第 3 题 PriorityQueue + HashMap，第 4 题 BFS。">
 <meta name="keywords" content="Leetcode,总结">
 <meta property="og:type" content="article">
@@ -177,7 +170,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/23/Leetcode-Contest-89-Solution/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/23/Leetcode-Contest-89-Solution/">
 
 
 
@@ -224,7 +217,6 @@
     }
   </style>
 </noscript>
-
 </head>
 
 
@@ -241,7 +233,7 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
@@ -264,7 +256,6 @@
 </div>
 
 
-
 <nav class="site-nav">
   
     <ul id="menu" class="menu">
@@ -275,7 +266,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
   </li>
         
         
@@ -283,7 +274,7 @@
           
           <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
   </li>
         
         
@@ -291,7 +282,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
   </li>
         
         
@@ -299,7 +290,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
   </li>
         
         
@@ -307,7 +298,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
   </li>
 
       
@@ -330,7 +321,6 @@
     </header>
 
     
-
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -411,7 +401,7 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -486,7 +476,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity seat: O(logN) leave: O(logN)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExamRoom</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Interval</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start, end;</span><br><span class="line">        <span class="keyword">int</span> dis;</span><br><span class="line">        <span class="keyword">int</span> seat;</span><br><span class="line">        Interval(<span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span> dis, <span class="keyword">int</span> seat) &#123;</span><br><span class="line">            <span class="keyword">this</span>.start = start;</span><br><span class="line">            <span class="keyword">this</span>.end = end;</span><br><span class="line">            <span class="keyword">this</span>.dis = dis;</span><br><span class="line">            <span class="keyword">this</span>.seat = seat;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    PriorityQueue&lt;Interval&gt; q = <span class="keyword">new</span> PriorityQueue&lt;&gt;(<span class="keyword">new</span> Comparator&lt;Interval&gt;()&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Interval a, Interval b)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (a.dis == b.dis) <span class="keyword">return</span> Integer.compare(a.seat, b.seat);</span><br><span class="line">            <span class="keyword">return</span> Integer.compare(b.dis, a.dis);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    Map&lt;Integer, <span class="keyword">int</span>[]&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">    <span class="keyword">int</span> N;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ExamRoom</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dis = N;</span><br><span class="line">        <span class="keyword">int</span> seat = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.N = N;</span><br><span class="line">        q.offer(<span class="keyword">new</span> Interval(-<span class="number">1</span>, N, N, <span class="number">0</span>));</span><br><span class="line">        map.put(-<span class="number">1</span>, <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, N&#125;);</span><br><span class="line">        map.put(N, <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;-<span class="number">1</span>, N&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">seat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(!map.containsKey(q.peek().start) || !map.containsKey(q.peek().end) || map.containsKey(q.peek().seat)) &#123;</span><br><span class="line">            q.poll();</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        Interval cur = q.poll();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (cur.start == -<span class="number">1</span> &amp;&amp; cur.end == N) &#123;</span><br><span class="line">            q.offer(<span class="keyword">new</span> Interval(<span class="number">0</span>, N, N-<span class="number">1</span>, N-<span class="number">1</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cur.start == -<span class="number">1</span>) &#123;</span><br><span class="line">            q.offer(<span class="keyword">new</span> Interval(cur.seat, cur.end, (cur.end - cur.seat)/<span class="number">2</span>, (cur.seat + cur.end)/<span class="number">2</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cur.end == N) &#123;</span><br><span class="line">            q.offer(<span class="keyword">new</span> Interval(cur.start, cur.seat, (cur.seat - cur.start)/<span class="number">2</span>, (cur.seat + cur.start)/<span class="number">2</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            q.offer(<span class="keyword">new</span> Interval(cur.start, cur.seat, (cur.seat - cur.start)/<span class="number">2</span>, (cur.seat + cur.start)/<span class="number">2</span>));</span><br><span class="line">            q.offer(<span class="keyword">new</span> Interval(cur.seat, cur.end, (cur.end - cur.seat)/<span class="number">2</span>, (cur.seat + cur.end)/<span class="number">2</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        map.put(cur.seat, <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;cur.start, cur.end&#125;);</span><br><span class="line">        map.get(cur.start)[<span class="number">1</span>] = cur.seat;</span><br><span class="line">        map.get(cur.end)[<span class="number">0</span>] = cur.seat;</span><br><span class="line">        <span class="keyword">return</span> cur.seat;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">leave</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] neigh = map.remove(p);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (neigh[<span class="number">0</span>] == -<span class="number">1</span> &amp;&amp; neigh[<span class="number">1</span>] == N) &#123;</span><br><span class="line">            q.offer(<span class="keyword">new</span> Interval(-<span class="number">1</span>, N, N, <span class="number">0</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (neigh[<span class="number">0</span>] == -<span class="number">1</span>) &#123;</span><br><span class="line">            q.offer(<span class="keyword">new</span> Interval(neigh[<span class="number">0</span>], neigh[<span class="number">1</span>], neigh[<span class="number">1</span>], <span class="number">0</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (neigh[<span class="number">1</span>] == N) &#123;</span><br><span class="line">            q.offer(<span class="keyword">new</span> Interval(neigh[<span class="number">0</span>], neigh[<span class="number">1</span>], N-<span class="number">1</span> - neigh[<span class="number">0</span>], N-<span class="number">1</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            q.offer(<span class="keyword">new</span> Interval(neigh[<span class="number">0</span>], neigh[<span class="number">1</span>], (neigh[<span class="number">1</span>]-neigh[<span class="number">0</span>])/<span class="number">2</span>, (neigh[<span class="number">0</span>]+neigh[<span class="number">1</span>])/<span class="number">2</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        map.get(neigh[<span class="number">0</span>])[<span class="number">1</span>] = neigh[<span class="number">1</span>];</span><br><span class="line">        map.get(neigh[<span class="number">1</span>])[<span class="number">0</span>] = neigh[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your ExamRoom object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * ExamRoom obj = new ExamRoom(N);</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.seat();</span></span><br><span class="line"><span class="comment"> * obj.leave(p);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
 <h1 id="k-similar-strings">854. K-Similar Strings</h1>
 <p>标准的 BFS + Memory。</p>
-
       
     </div>
 
@@ -596,9 +585,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/upload_image/Avatar.png"
-                alt="gjxhlan" />
+              <img class="site-author-image" itemprop="image" src="/upload_image/Avatar.png" alt="gjxhlan">
             
               <p class="site-author-name" itemprop="name">gjxhlan</p>
               <p class="site-description motion-element" itemprop="description">Keep Calm, Listen and Move Fast.</p>
@@ -611,7 +598,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -750,7 +737,7 @@
 
   <span class="post-meta-divider">|</span>
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.6.0</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -759,10 +746,6 @@
 
 
   <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.3.0</div>
-
-
-
-
         
 
 
