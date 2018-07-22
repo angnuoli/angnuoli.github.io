@@ -146,10 +146,12 @@ class Solution {
 
 # 873. Length of Longest Fibonacci Subsequence
 
-枚举前两位数，一个 Fibonacci 数列就可以确定下来，再用 binary search 去解决是否存在的问题。可以剪枝，我还没来得及想更好的解，不过即使是 `O(n^2logn)` 也是可以 AC 的。
+## Binary Search O(n^2lognlogn)
+
+枚举前两位数，一个 Fibonacci 数列就可以确定下来，再用 binary search 去解决是否存在的问题。可以剪枝，我还没来得及想更好的解，不过即使是 `O(n^2lognlogn)` 也是可以 AC 的。
 
 ```java
-// Time Complexity O(n^2logn)
+// Time Complexity O(n^2lognlogn)
 class Solution {
     public int lenLongestFibSubseq(int[] A) {
         int ans = 0;
@@ -166,6 +168,71 @@ class Solution {
                     count++;
                     ans = Math.max(ans, count);
                 }
+            }
+        }
+        
+        return ans;
+    }
+}
+```
+
+## HashSet O(n^2logn)
+
+"strickly increasing" 这个条件很好用，我们可以用 HashSet 来替换 binary search，这样时间复杂度可以减少 logn。
+
+```java
+// Time Complexity O(n^2logn)
+class Solution {
+    public int lenLongestFibSubseq(int[] A) {
+        int ans = 0;
+        Set<Integer> set = new HashSet<>();
+        for (int i : A) set.add(i);
+        
+        for (int i = 0; i < A.length; i++) {
+            for (int j = i+1; j< A.length; j++) {
+                int a, b = A[i], c = A[j];
+                int count = 2;
+                while (true) {
+                    a = b;
+                    b = c;
+                    c = a + b;
+                    if (!set.contains(c)) break;
+                    count++;
+                    ans = Math.max(ans, count);
+                }
+            }
+        }
+        
+        return ans;
+    }
+}
+```
+
+## Dp O(n^2)
+
+和朋友讨论了一下，可以用 dp 解。
+
+If we save maximum length of subsequence between `[0, j]` in  `dp[i][j]` and we choose `A[i]` and `A[j]` as the last two number of the subsequence. Then we can write recursive relation formula `dp[i][j] = dp[k][j] + 1` which satisfies `A[k] + A[j] = A[i]`. The problem is to find k but "strictly increasing" solves the problem because we can use map to save distinct number - index mapping.
+
+```java
+// Time Complexity O(n^2)
+class Solution {
+    public int lenLongestFibSubseq(int[] A) {
+        int[][] dp = new int[A.length][A.length];
+        Map<Integer, Integer> map = new HashMap<>();
+        int ans = 0;
+        
+        for (int i = 0; i < A.length; i++) {
+            map.put(A[i], i);
+            for (int j = i-1; j >= 0; j--) {
+                int c = A[i] - A[j];
+                if (c >= A[j]) break;
+                if (map.containsKey(c)) {
+                    int k = map.get(c);
+                    if (dp[k][j] == 0) dp[k][j] = 2;
+                    dp[j][i] = dp[k][j] + 1;
+                }
+                ans = Math.max(dp[j][i], ans);
             }
         }
         
