@@ -13,6 +13,10 @@ Demo： [https://github.com/angnuoli/dynamic-features-demo](https://github.com/a
 >
 > Google sample in Kotlin: [https://github.com/googlesamples/android-dynamic-features](https://github.com/googlesamples/android-dynamic-features).
 
+有篇博客也可以看看
+
+> [深入解读Android新特性——App Bundles](https://blog.csdn.net/qq_42154484/article/details/80653420)
+
 <!-- more -->
 
 ## Summary
