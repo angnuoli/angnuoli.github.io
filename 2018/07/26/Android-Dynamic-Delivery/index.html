@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-radar.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rannetto One:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+  <meta name="description" content="最近试验了一下 Google Play Store 的 Dynamic Delivery 功能，感觉挺不错，记录一下。 Demo： https://github.com/angnuoli/dynamic-features-demo  官方文档：Android App Bundles Google sample in Kotlin: https://github.com/googlesamples/">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Dynamic Delivery">
+<meta property="og:url" content="https://www.gjxhlan.me/2018/07/26/Android-Dynamic-Delivery/index.html">
+<meta property="og:site_name" content="gjxhlan&#39;s blog">
+<meta property="og:description" content="最近试验了一下 Google Play Store 的 Dynamic Delivery 功能，感觉挺不错，记录一下。 Demo： https://github.com/angnuoli/dynamic-features-demo  官方文档：Android App Bundles Google sample in Kotlin: https://github.com/googlesamples/">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://i.loli.net/2018/07/27/5b5ab9bec271b.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/27/5b5ab7670f371.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/26/5b59b6a337b7a.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/26/5b59b6f5034c0.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/26/5b59b720634ec.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/26/5b59b73c56afe.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/26/5b59b769ba6d5.png">
+<meta property="og:updated_time" content="2018-09-10T02:22:14.411Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Dynamic Delivery">
+<meta name="twitter:description" content="最近试验了一下 Google Play Store 的 Dynamic Delivery 功能，感觉挺不错，记录一下。 Demo： https://github.com/angnuoli/dynamic-features-demo  官方文档：Android App Bundles Google sample in Kotlin: https://github.com/googlesamples/">
+<meta name="twitter:image" content="https://i.loli.net/2018/07/27/5b5ab9bec271b.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://www.gjxhlan.me/2018/07/26/Android-Dynamic-Delivery/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Android Dynamic Delivery | gjxhlan's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+</head>
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">gjxhlan's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.gjxhlan.me/2018/07/26/Android-Dynamic-Delivery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gjxhlan">
+      <meta itemprop="description" content="Keep Calm, Listen and Move Fast.">
+      <meta itemprop="image" content="/upload_image/Avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gjxhlan's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android Dynamic Delivery
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-07-26 20:00:18" itemprop="dateCreated datePublished" datetime="2018-07-26T20:00:18-04:00">2018-07-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-09 22:22:14" itemprop="dateModified" datetime="2018-09-09T22:22:14-04:00">2018-09-09</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近试验了一下 Google Play Store 的 Dynamic Delivery 功能，感觉挺不错，记录一下。</p>
+<p>Demo： <a href="https://github.com/angnuoli/dynamic-features-demo" class="uri" target="_blank" rel="noopener">https://github.com/angnuoli/dynamic-features-demo</a></p>
+<blockquote>
+<p>官方文档：<a href="https://developer.android.com/guide/app-bundle/" target="_blank" rel="noopener">Android App Bundles</a></p>
+<p>Google sample in Kotlin: <a href="https://github.com/googlesamples/android-dynamic-features" class="uri" target="_blank" rel="noopener">https://github.com/googlesamples/android-dynamic-features</a>.</p>
+</blockquote>
+<p>有篇博客也可以看看</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/qq_42154484/article/details/80653420" target="_blank" rel="noopener">深入解读Android新特性——App Bundles</a></p>
+</blockquote>
+<a id="more"></a>
+<h2 id="summary">Summary</h2>
+<p>感觉现在这个 feature 还不是很成熟，实验一下不错，是否 enroll in product 需要考虑一下。</p>
+<p>可以正常的下载 module，但是 module 不会立即生效，需要 app 冷启动之后才能加载新 module，默认会 kill app（注意）。</p>
+<p>downloading module 会有一些问题，官方也说在测试</p>
+<div class="figure">
+<img src="https://i.loli.net/2018/07/27/5b5ab9bec271b.png" alt="1532603583978.png">
+<p class="caption">1532603583978.png</p>
+</div>
+<h3 id="problems">Problems</h3>
+<ol style="list-style-type: decimal">
+<li><p>ClassNotFoundException. This can be solved by adding <code>split=&quot;modulename&quot;</code> attribute in manifest file.</p></li>
+<li><p>ResourceNotFound. This error will happen on API 26 or higher using</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api <span class="string">'com.google.android.play:core:1.3.0'</span></span><br></pre></td></tr></table></figure>
+<p><strong>Details</strong></p>
+<p>After first installing the module, you should restart the app.</p>
+<blockquote>
+<p>Reference: <a href="https://developer.android.com/guide/app-bundle/playcore#access_downloaded_modules" class="uri" target="_blank" rel="noopener">https://developer.android.com/guide/app-bundle/playcore#access_downloaded_modules</a></p>
+</blockquote>
+<p>Before restarting the app, starting activity of the module will result in ResourceNotFound Exception on all API level. The stack trace is same with following stack trace. But if we restart the app, ResourceNotFound Exception will still happen on API 26 or higher and the module will work on API 25 or lower.</p>
+<p><strong>Root Cause</strong></p>
+<p>Just guess.</p>
+<ul>
+<li>On phones with API 26 or higher, the base.apk is stored in data/app/packageName + Random-hashcode.</li>
+<li>On phones with API 25 or lower, the base.apk is stored in data/app/packageName-1 or 2, etc.</li>
+</ul>
+<p>I guess the difference may be here.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2018</span>-<span class="number">07</span>-<span class="number">26</span> <span class="number">18</span>:<span class="number">48</span>:<span class="number">49.849</span> <span class="number">15788</span>-<span class="number">15802</span>/? W/dynamicfeature: Opening an oat file without a <span class="class"><span class="keyword">class</span> <span class="title">loader</span>. <span class="title">Are</span> <span class="title">you</span> <span class="title">using</span> <span class="title">the</span> <span class="title">deprecated</span> <span class="title">DexFile</span> <span class="title">APIs</span>?</span></span><br><span class="line">2018-07-26 18:48:49.943 15827-15827/? I/dex2oat: /system/bin/dex2oat --dex-file=/data/user/0/com.demo.dynamicfeatures/files/splitcompat/37/verified-splits/dynamicFeature.apk --output-vdex-fd=60 --oat-fd=61 --oat-location=/data/user/0/com.demo.dynamicfeatures/files/splitcompat/37/verified-splits/oat/arm64/dynamicFeature.odex --compiler-filter=quicken --class-loader-context=&amp;</span><br><span class="line"><span class="number">2018</span>-<span class="number">07</span>-<span class="number">26</span> <span class="number">18</span>:<span class="number">48</span>:<span class="number">50.063</span> <span class="number">15788</span>-<span class="number">15802</span>/? W/dynamicfeature: Skipping duplicate <span class="class"><span class="keyword">class</span> <span class="title">check</span> <span class="title">due</span> <span class="title">to</span> <span class="title">unsupported</span> <span class="title">classloader</span></span></span><br><span class="line">2018-07-26 18:48:50.067 15788-15802/? W/dynamicfeature: Opening an oat file without a class loader. Are you using the deprecated DexFile APIs?</span><br><span class="line"><span class="number">2018</span>-<span class="number">07</span>-<span class="number">26</span> <span class="number">18</span>:<span class="number">48</span>:<span class="number">50.069</span> <span class="number">15788</span>-<span class="number">15802</span>/? E/SplitCompat: DexPathList.makeDexElement failed</span><br><span class="line">    java.io.IOException: No original dex files found <span class="keyword">for</span> dex location /data/user/<span class="number">0</span>/com.demo.dynamicfeatures/files/splitcompat/<span class="number">37</span>/verified-splits/dynamicFeature.config.xxhdpi.apk</span><br><span class="line">        at dalvik.system.DexFile.openDexFileNative(Native Method)</span><br><span class="line">        at dalvik.system.DexFile.openDexFile(DexFile.java:<span class="number">354</span>)</span><br><span class="line">        at dalvik.system.DexFile.&lt;init&gt;(DexFile.java:<span class="number">143</span>)</span><br><span class="line">        at dalvik.system.DexFile.loadDex(DexFile.java:<span class="number">202</span>)</span><br><span class="line">        at dalvik.system.DexPathList.loadDexFile(DexPathList.java:<span class="number">397</span>)</span><br><span class="line">        at dalvik.system.DexPathList.makeDexElements(DexPathList.java:<span class="number">354</span>)</span><br><span class="line">        at dalvik.system.DexPathList.makeDexElements(DexPathList.java:<span class="number">321</span>)</span><br><span class="line">        at dalvik.system.DexPathList.makePathElements(DexPathList.java:<span class="number">443</span>)</span><br><span class="line">        at java.lang.reflect.Method.invoke(Native Method)</span><br><span class="line">        at com.google.android.play.core.splitcompat.c.b.a(Unknown Source:<span class="number">24</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.i.b(Unknown Source:<span class="number">14</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.i.a(Unknown Source:<span class="number">0</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.j.a(Unknown Source:<span class="number">0</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.c.a(Unknown Source:<span class="number">121</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.o.b(Unknown Source:<span class="number">16</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.s.a(Unknown Source:<span class="number">0</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.SplitCompat.a(Unknown Source:<span class="number">120</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.SplitCompat.a(Unknown Source:<span class="number">70</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.SplitCompat.a(Unknown Source:<span class="number">1</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.a.b.run(Unknown Source:<span class="number">64</span>)</span><br><span class="line">        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:<span class="number">458</span>)</span><br><span class="line">        at java.util.concurrent.FutureTask.run(FutureTask.java:<span class="number">266</span>)</span><br><span class="line">        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:<span class="number">301</span>)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:<span class="number">1167</span>)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:<span class="number">641</span>)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:<span class="number">764</span>)</span><br><span class="line"><span class="number">2018</span>-<span class="number">07</span>-<span class="number">26</span> <span class="number">18</span>:<span class="number">48</span>:<span class="number">50.070</span> <span class="number">15788</span>-<span class="number">15802</span>/? E/SplitCompat: Error installing additional splits</span><br><span class="line">    com.google.android.play.core.a.k: DexPathList.makeDexElement failed</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.c.a(Unknown Source:<span class="number">138</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.o.b(Unknown Source:<span class="number">16</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.s.a(Unknown Source:<span class="number">0</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.SplitCompat.a(Unknown Source:<span class="number">120</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.SplitCompat.a(Unknown Source:<span class="number">70</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.SplitCompat.a(Unknown Source:<span class="number">1</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.a.b.run(Unknown Source:<span class="number">64</span>)</span><br><span class="line">        at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:<span class="number">458</span>)</span><br><span class="line">        at java.util.concurrent.FutureTask.run(FutureTask.java:<span class="number">266</span>)</span><br><span class="line">        at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:<span class="number">301</span>)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:<span class="number">1167</span>)</span><br><span class="line">        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:<span class="number">641</span>)</span><br><span class="line">        at java.lang.Thread.run(Thread.java:<span class="number">764</span>)</span><br><span class="line">    	Suppressed: java.io.IOException: No original dex files found <span class="keyword">for</span> dex location /data/user/<span class="number">0</span>/com.demo.dynamicfeatures/files/splitcompat/<span class="number">37</span>/verified-splits/dynamicFeature.config.xxhdpi.apk</span><br><span class="line">        at dalvik.system.DexFile.openDexFileNative(Native Method)</span><br><span class="line">        at dalvik.system.DexFile.openDexFile(DexFile.java:<span class="number">354</span>)</span><br><span class="line">        at dalvik.system.DexFile.&lt;init&gt;(DexFile.java:<span class="number">143</span>)</span><br><span class="line">        at dalvik.system.DexFile.loadDex(DexFile.java:<span class="number">202</span>)</span><br><span class="line">        at dalvik.system.DexPathList.loadDexFile(DexPathList.java:<span class="number">397</span>)</span><br><span class="line">        at dalvik.system.DexPathList.makeDexElements(DexPathList.java:<span class="number">354</span>)</span><br><span class="line">        at dalvik.system.DexPathList.makeDexElements(DexPathList.java:<span class="number">321</span>)</span><br><span class="line">        at dalvik.system.DexPathList.makePathElements(DexPathList.java:<span class="number">443</span>)</span><br><span class="line">        at java.lang.reflect.Method.invoke(Native Method)</span><br><span class="line">        at com.google.android.play.core.splitcompat.c.b.a(Unknown Source:<span class="number">24</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.i.b(Unknown Source:<span class="number">14</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.i.a(Unknown Source:<span class="number">0</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.j.a(Unknown Source:<span class="number">0</span>)</span><br><span class="line">        at com.google.android.play.core.splitcompat.b.c.a(Unknown Source:<span class="number">121</span>)</span><br><span class="line">        		... <span class="number">12</span> more</span><br><span class="line"><span class="number">2018</span>-<span class="number">07</span>-<span class="number">26</span> <span class="number">18</span>:<span class="number">48</span>:<span class="number">50.077</span> <span class="number">15788</span>-<span class="number">15788</span>/? D/dynamic-test: [ResolveInfo&#123;<span class="number">4219</span>d12 com.demo.dynamicfeatures/.DynamicFeatureActivity m=<span class="number">0x0</span>&#125;]</span><br><span class="line"><span class="number">2018</span>-<span class="number">07</span>-<span class="number">26</span> <span class="number">18</span>:<span class="number">48</span>:<span class="number">50.078</span> <span class="number">899</span>-<span class="number">11333</span>/? I/ActivityManager: START u0 &#123;act=android.intent.action.VIEW cmp=com.demo.dynamicfeatures/.DynamicFeatureActivity&#125; from uid <span class="number">10232</span></span><br><span class="line"><span class="number">2018</span>-<span class="number">07</span>-<span class="number">26</span> <span class="number">18</span>:<span class="number">48</span>:<span class="number">50.121</span> <span class="number">15788</span>-<span class="number">15788</span>/? E/dynamicfeature: No <span class="keyword">package</span> ID <span class="number">7</span>e found <span class="keyword">for</span> ID <span class="number">0x7e030000</span>.</span><br><span class="line"><span class="number">2018</span>-<span class="number">07</span>-<span class="number">26</span> <span class="number">18</span>:<span class="number">48</span>:<span class="number">50.121</span> <span class="number">15788</span>-<span class="number">15788</span>/? E/AndroidRuntime: FATAL EXCEPTION: main</span><br><span class="line">    Process: com.demo.dynamicfeatures, PID: <span class="number">15788</span></span><br><span class="line">    java.lang.RuntimeException: Unable to start activity ComponentInfo&#123;com.demo.dynamicfeatures/com.demo.dynamicfeatures.DynamicFeatureActivity&#125;: android.content.res.Resources$NotFoundException: Resource ID #0x7e030000</span><br><span class="line">        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:<span class="number">2913</span>)</span><br><span class="line">        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:<span class="number">3048</span>)</span><br><span class="line">        at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:<span class="number">78</span>)</span><br><span class="line">        at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:<span class="number">108</span>)</span><br><span class="line">        at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:<span class="number">68</span>)</span><br><span class="line">        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:<span class="number">1808</span>)</span><br><span class="line">        at android.os.Handler.dispatchMessage(Handler.java:<span class="number">106</span>)</span><br><span class="line">        at android.os.Looper.loop(Looper.java:<span class="number">193</span>)</span><br><span class="line">        at android.app.ActivityThread.main(ActivityThread.java:<span class="number">6669</span>)</span><br><span class="line">        at java.lang.reflect.Method.invoke(Native Method)</span><br><span class="line">        at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:<span class="number">493</span>)</span><br><span class="line">        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:<span class="number">858</span>)</span><br><span class="line">     Caused by: android.content.res.Resources$NotFoundException: Resource ID #0x7e030000</span><br><span class="line">        at android.content.res.ResourcesImpl.getValue(ResourcesImpl.java:<span class="number">216</span>)</span><br><span class="line">        at android.content.res.Resources.loadXmlResourceParser(Resources.java:<span class="number">2155</span>)</span><br><span class="line">        at android.content.res.Resources.getLayout(Resources.java:<span class="number">1155</span>)</span><br><span class="line">        at android.view.LayoutInflater.inflate(LayoutInflater.java:<span class="number">421</span>)</span><br><span class="line">        at android.view.LayoutInflater.inflate(LayoutInflater.java:<span class="number">374</span>)</span><br><span class="line">        at android.support.v7.app.AppCompatDelegateImplV9.setContentView(AppCompatDelegateImplV9.java:<span class="number">287</span>)</span><br><span class="line">        at android.support.v7.app.AppCompatActivity.setContentView(AppCompatActivity.java:<span class="number">139</span>)</span><br><span class="line">        at com.demo.dynamicfeatures.DynamicFeatureActivity.onCreate(DynamicFeatureActivity.java:<span class="number">21</span>)</span><br><span class="line">        at android.app.Activity.performCreate(Activity.java:<span class="number">7136</span>)</span><br><span class="line">        at android.app.Activity.performCreate(Activity.java:<span class="number">7127</span>)</span><br><span class="line">        at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:<span class="number">1271</span>)</span><br><span class="line">        at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:<span class="number">2893</span>)</span><br><span class="line">        at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:<span class="number">3048</span>) </span><br><span class="line">        at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:<span class="number">78</span>) </span><br><span class="line">        at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:<span class="number">108</span>) </span><br><span class="line">        at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:<span class="number">68</span>) </span><br><span class="line">        at android.app.ActivityThread$H.handleMessage(ActivityThread.java:<span class="number">1808</span>) </span><br><span class="line">        at android.os.Handler.dispatchMessage(Handler.java:<span class="number">106</span>) </span><br><span class="line">        at android.os.Looper.loop(Looper.java:<span class="number">193</span>) </span><br><span class="line">        at android.app.ActivityThread.main(ActivityThread.java:<span class="number">6669</span>) </span><br><span class="line">        at java.lang.reflect.Method.invoke(Native Method) </span><br><span class="line">        at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:<span class="number">493</span>) </span><br><span class="line">        at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:<span class="number">858</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>getResource.getIdentifier() may not work in submodule. I think it is due to resource not in context.</p></li>
+<li><p>Be careful to manage resource name for avoiding resource name conflict, you can add prefix limit in build.gradle.</p></li>
+</ol>
+<h3 id="其他需要注意的地方">其他需要注意的地方</h3>
+<ol style="list-style-type: decimal">
+<li><p>用户第一次下载时会只下载 base module，当用户下载过几次 feature module 后，之后重新下载会将之前下载过的 module 一起下载（测试不是很方便）。</p>
+<p><strong>Clear all data</strong> of Google Play probably result in only downloading base app module next time。</p></li>
+<li><p>We should restart app to use module. Details see <a href="https://developer.android.com/guide/app-bundle/playcore#access_downloaded_modules" class="uri" target="_blank" rel="noopener">https://developer.android.com/guide/app-bundle/playcore#access_downloaded_modules</a></p></li>
+<li><p>The app base.apk is in <code>data/app/packageName</code></p>
+<p>Downloaded split-feature.apk is in <code>data/user/0/packageName/files/splitcompat/versionCode/verifiled-splits</code></p>
+<p>We can try loading apk dynamically using DexClassLoader</p>
+<div class="figure">
+<img src="https://i.loli.net/2018/07/27/5b5ab7670f371.png" alt="1532666235048.png">
+<p class="caption">1532666235048.png</p>
+</div></li>
+</ol>
+<h2 id="build-a-demo">Build a demo</h2>
+<h3 id="场景">场景</h3>
+<p>demo 只包含两个 Activity，MainActivity 和 DynamicFeatureActivity。两个 Activity 分别位于不同的 module中，MainActivity 仅包含一行字和两个 button，点击 button 可以 load module 或打开 DynamicFeatureActivity if module is loaded，里面会展示几幅图片。</p>
+<p>要实现的是，用户在 first install 的时候只 install base module，而另一个包含 DynamicFeatureActivity 和图片资源的 module 在用户点击 button 之后才会被下载和安装。</p>
+<h3 id="流程">流程</h3>
+<ol style="list-style-type: decimal">
+<li><p>先新建一个 app，只包含一个 MainActivity，只有一行字和两个 button。</p>
+<div class="figure">
+<img src="https://i.loli.net/2018/07/26/5b59b6a337b7a.png" alt="1532064279798">
+<p class="caption">1532064279798</p>
+</div></li>
+<li><p>Follow steps in the document: <a href="https://developer.android.com/guide/app-bundle/configure#dynamic_feature_modules" target="_blank" rel="noopener">Create a dynamic feature module</a></p>
+<div class="figure">
+<img src="https://i.loli.net/2018/07/26/5b59b6f5034c0.png" alt="1532064609424">
+<p class="caption">1532064609424</p>
+</div>
+<p>可以选择更改 Module title.</p>
+<div class="figure">
+<img src="https://i.loli.net/2018/07/26/5b59b720634ec.png" alt="1532064799392">
+<p class="caption">1532064799392</p>
+</div>
+<p>为了更明确地看到效果，我在此 module 中存了 1.5 MB 的图片，而 Base Apk 仅有1 MB。</p>
+<div class="figure">
+<img src="https://i.loli.net/2018/07/26/5b59b73c56afe.png" alt="1532440588833">
+<p class="caption">1532440588833</p>
+</div></li>
+<li><p>在 MainActivity 中，设置 button onClickListener，使点击后能自动下载 module 并展示 DynamicFeatureActivity。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> SplitInstallManager manager = SplitInstallManagerFactory.create(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (manager.getInstalledModules().contains(name)) &#123;</span><br><span class="line">    updateProgressMessage(<span class="string">"Already installed"</span>);</span><br><span class="line">    onSuccessfulLoad(name, <span class="keyword">true</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SplitInstallRequest request = SplitInstallRequest.newBuilder()</span><br><span class="line">    .addModule(name)</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">manager.startInstall(request);</span><br></pre></td></tr></table></figure>
+<p>其中需要我们将其他 module 的信息保存成 String，通过 Intent.setClassName(String, String) 来解决依赖问题。<strong>packageName is equal to applicationId in build.gradle</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> String moduleName = <span class="string">"dynamicFeature"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> String packageName = <span class="string">"com.demo.dynamicfeatures"</span>; <span class="comment">// equal to applicationId</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> String dynamicFeatureActivity = <span class="string">"com.demo.dynamicfeatures.DynamicFeatureActivity"</span>;</span><br></pre></td></tr></table></figure>
+<p>Enable SplitInstallManager, SplitInstallRequest, SplitInstallManagerFactory 需要在 Base Module 的 <code>build.gradle</code> 中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'com.google.android.play:core:1.3.1'</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Generate bundle 并发布到 play store 上面</p>
+<div class="figure">
+<img src="https://i.loli.net/2018/07/26/5b59b769ba6d5.png" alt="1532074902195">
+<p class="caption">1532074902195</p>
+</div></li>
+</ol>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"><i class="fa fa-tag"></i> Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/22/Leetcode-Contest-94-Solution/" rel="next" title="Leetcode Contest 94 Solution">
+                <i class="fa fa-chevron-left"></i> Leetcode Contest 94 Solution
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/09/Mac上无密码登录localhost/" rel="prev" title="Connect to localhost without password using SSH on Mac">
+                Connect to localhost without password using SSH on Mac <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/upload_image/Avatar.png" alt="gjxhlan">
+            
+              <p class="site-author-name" itemprop="name">gjxhlan</p>
+              <p class="site-description motion-element" itemprop="description">Keep Calm, Listen and Move Fast.</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/angnuoli" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:gjxhlan@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#summary"><span class="nav-number">1.</span> <span class="nav-text">Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#problems"><span class="nav-number">1.1.</span> <span class="nav-text">Problems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他需要注意的地方"><span class="nav-number">1.2.</span> <span class="nav-text">其他需要注意的地方</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-a-demo"><span class="nav-number">2.</span> <span class="nav-text">Build a demo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#场景"><span class="nav-number">2.1.</span> <span class="nav-text">场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#流程"><span class="nav-number">2.2.</span> <span class="nav-text">流程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">gjxhlan</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">
+    <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+      本站访客数:<span id="busuanzi_value_site_uv"></span>
+    </span>
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.3.0</div>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+
+</body>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+</html>
