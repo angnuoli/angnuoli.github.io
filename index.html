@@ -346,6 +346,162 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.gjxhlan.me/2018/11/08/distribute-python-project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gjxhlan">
+      <meta itemprop="description" content="Keep Calm, Listen and Move Fast.">
+      <meta itemprop="image" content="/upload_image/Avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gjxhlan's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/08/distribute-python-project/" itemprop="url">
+                  Distribute Python project with environment
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-08 11:58:42 / Modified: 12:24:34" itemprop="dateCreated datePublished" datetime="2018-11-08T11:58:42-05:00">2018-11-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>转手项目的时候，和交接方环境和依赖关系不同很容易造成第一次 run 的失败，容易败坏心情。</p>
+<p>总结一下将依赖关系和项目一同打包发送给对方的几个方法。</p>
+<h1 id="使用-conda">使用 conda</h1>
+<p>推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。</p>
+<p>项目开发完成 &gt; 导出环境 &gt; 交接 &gt; 删除环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本机上新建环境，防止多余 site-package 混入项目</span></span><br><span class="line">$ conda create --name &lt;envname&gt; [python=3.7 or 3.5]</span><br><span class="line"><span class="comment"># 本机上项目运行成功后，导出 conda package</span></span><br><span class="line">$ conda list --<span class="built_in">export</span> &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+<p>项目发送给对方后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对方通过 requirements.txt 创建项目环境</span></span><br><span class="line">$ conda create --name &lt;envname&gt; --file requirements.txt</span><br><span class="line">$ conda activate &lt;envname&gt;</span><br></pre></td></tr></table></figure>
+<p>优点：简单无多余</p>
+<p>缺点：必须装 conda</p>
+<h1 id="使用-pip">使用 pip</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本机</span></span><br><span class="line">$ pip freeze &gt; requirements.txt</span><br><span class="line"><span class="comment"># 对方</span></span><br><span class="line">$ pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>优点：python 内置 pip，基本哪都能用，最简洁。</p>
+<p>缺点：将本机所有包（项目不需要的）一起发送给对方，并且对方也将包全部混入自己的环境中，不是很好。</p>
+<h1 id="使用-docker">使用 docker</h1>
+<p>这个主要还是用于发布到生产环境中，我感觉不适用项目交接。</p>
+<h1 id="总结">总结</h1>
+<p>综合来看，conda 不错，conda env 感觉用起来比较顺手。</p>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.gjxhlan.me/2018/09/09/Mac上无密码登录localhost/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -432,9 +588,9 @@
       
         
           <p>最近在 Mac 上搭 Hadoop 环境，运行 start-dfs.sh 时遇到一个问题</p>
-<!--�101-->
+<!--�65-->
 <p>即无法通过 ssh 免密码（通过 pub-private key pair）登录到 localhost</p>
-<!--�102-->
+<!--�66-->
 <p>查了一圈没找到 Solution，最后才摸索出了解决方法。</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1827,160 +1983,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.gjxhlan.me/2018/06/23/RecyclerView-Bug-Report-use-notifyItemMoved-and-notifyDatasetChanged-back-to-back/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="gjxhlan">
-      <meta itemprop="description" content="Keep Calm, Listen and Move Fast.">
-      <meta itemprop="image" content="/upload_image/Avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="gjxhlan's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/23/RecyclerView-Bug-Report-use-notifyItemMoved-and-notifyDatasetChanged-back-to-back/" itemprop="url">
-                  RecyclerView Bug Report
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-06-23 16:06:11 / Modified: 05:05:39" itemprop="dateCreated datePublished" datetime="2018-06-23T16:06:11-04:00">2018-06-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Use notifyItemMoved and notifyDatasetChanged back to back.</p>
-<p>在写 drag icon and insert it to RecyclerView 时遇上了一个挺有意思的 bug，记录一下。</p>
-<h1 id="reproduce-bug">Reproduce Bug</h1>
-<ol style="list-style-type: decimal">
-<li><p>先在 adapter 中更换数据集中两个 item 的位置并调用 notifyItemRangeChanged（场景：drag item 到另一个 position 并显示一个 preview 表示预插入新的 item），preview 处于可视区域内。</p></li>
-<li><p>短时间内直接更换数据集 (cardItems = newCardItems)，并调用 notifyDataSetChanged （场景：用targetView 替换 preview）。</p></li>
-<li><p>调用完 notifyDataSetChanged 之后，立即调用 scrollTo 将 RecyclerView 滚动至插入的新 item 处（场景：即时显示新插入的 view）。</p>
-<p>可以不调用 scrollTo，只需保证新的 targetView 仍处于可视区域内（会被 onLayout 刷新）。</p></li>
-<li><p>结果导致某些 position 在进出可视区域时（比如上下不停来回 scroll RecyclerView）交替显示 preview 和targetView。</p></li>
-</ol>
-<h1 id="root-cause-preview-先被-remove-后被-add顺序颠倒了">Root cause: preview 先被 remove 后被 add，顺序颠倒了</h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/23/RecyclerView-Bug-Report-use-notifyItemMoved-and-notifyDatasetChanged-back-to-back/" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2030,7 +2032,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2080,7 +2082,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

@@ -152,24 +152,25 @@
     }
   };
 </script>
-  <meta name="description" content="Keep Calm, Listen and Move Fast.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Categories">
-<meta property="og:url" content="https://www.gjxhlan.me/categories/index.html">
+  <meta name="description" content="转手项目的时候，和交接方环境和依赖关系不同很容易造成第一次 run 的失败，容易败坏心情。 总结一下将依赖关系和项目一同打包发送给对方的几个方法。 使用 conda 推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。 项目开发完成 &amp;gt; 导出环境 &amp;gt; 交接 &amp;gt; 删除环境 1234# 本机上新建环境，防止多余 site-package 混入项目$ co">
+<meta name="keywords" content="python,conda,pip">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Distribute Python project with environment">
+<meta property="og:url" content="https://www.gjxhlan.me/2018/11/08/distribute-python-project/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="Keep Calm, Listen and Move Fast.">
+<meta property="og:description" content="转手项目的时候，和交接方环境和依赖关系不同很容易造成第一次 run 的失败，容易败坏心情。 总结一下将依赖关系和项目一同打包发送给对方的几个方法。 使用 conda 推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。 项目开发完成 &amp;gt; 导出环境 &amp;gt; 交接 &amp;gt; 删除环境 1234# 本机上新建环境，防止多余 site-package 混入项目$ co">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-12T02:01:09.188Z">
+<meta property="og:updated_time" content="2018-11-08T17:24:34.415Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Categories">
-<meta name="twitter:description" content="Keep Calm, Listen and Move Fast.">
+<meta name="twitter:title" content="Distribute Python project with environment">
+<meta name="twitter:description" content="转手项目的时候，和交接方环境和依赖关系不同很容易造成第一次 run 的失败，容易败坏心情。 总结一下将依赖关系和项目一同打包发送给对方的几个方法。 使用 conda 推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。 项目开发完成 &amp;gt; 导出环境 &amp;gt; 交接 &amp;gt; 删除环境 1234# 本机上新建环境，防止多余 site-package 混入项目$ co">
 
 
 
 
 
 
-  <link rel="canonical" href="https://www.gjxhlan.me/categories/">
+  <link rel="canonical" href="https://www.gjxhlan.me/2018/11/08/distribute-python-project/">
 
 
 
@@ -179,7 +180,7 @@
   };
 </script>
 
-  <title>Categories | gjxhlan's blog</title>
+  <title>Distribute Python project with environment | gjxhlan's blog</title>
   
 
 
@@ -287,7 +288,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
   </li>
@@ -327,93 +328,193 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.gjxhlan.me/2018/11/08/distribute-python-project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="gjxhlan">
+      <meta itemprop="description" content="Keep Calm, Listen and Move Fast.">
+      <meta itemprop="image" content="/upload_image/Avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="gjxhlan's blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">Categories</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                2 categories in total
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Study-Notes/">Study Notes</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程题/">编程题</a><span class="category-list-count">15</span></li></ul>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Distribute Python project with environment
+              
+            
+          </h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-08 11:58:42 / Modified: 12:24:34" itemprop="dateCreated datePublished" datetime="2018-11-08T11:58:42-05:00">2018-11-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>转手项目的时候，和交接方环境和依赖关系不同很容易造成第一次 run 的失败，容易败坏心情。</p>
+<p>总结一下将依赖关系和项目一同打包发送给对方的几个方法。</p>
+<h1 id="使用-conda">使用 conda</h1>
+<p>推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。</p>
+<p>项目开发完成 &gt; 导出环境 &gt; 交接 &gt; 删除环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本机上新建环境，防止多余 site-package 混入项目</span></span><br><span class="line">$ conda create --name &lt;envname&gt; [python=3.7 or 3.5]</span><br><span class="line"><span class="comment"># 本机上项目运行成功后，导出 conda package</span></span><br><span class="line">$ conda list --<span class="built_in">export</span> &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+<p>项目发送给对方后</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对方通过 requirements.txt 创建项目环境</span></span><br><span class="line">$ conda create --name &lt;envname&gt; --file requirements.txt</span><br><span class="line">$ conda activate &lt;envname&gt;</span><br></pre></td></tr></table></figure>
+<p>优点：简单无多余</p>
+<p>缺点：必须装 conda</p>
+<h1 id="使用-pip">使用 pip</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本机</span></span><br><span class="line">$ pip freeze &gt; requirements.txt</span><br><span class="line"><span class="comment"># 对方</span></span><br><span class="line">$ pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<p>优点：python 内置 pip，基本哪都能用，最简洁。</p>
+<p>缺点：将本机所有包（项目不需要的）一起发送给对方，并且对方也将包全部混入自己的环境中，不是很好。</p>
+<h1 id="使用-docker">使用 docker</h1>
+<p>这个主要还是用于发布到生产环境中，我感觉不适用项目交接。</p>
+<h1 id="总结">总结</h1>
+<p>综合来看，conda 不错，conda env 感觉用起来比较顺手。</p>
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+            <a href="/tags/conda/" rel="tag"><i class="fa fa-tag"></i> conda</a>
+          
+            <a href="/tags/pip/" rel="tag"><i class="fa fa-tag"></i> pip</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/09/Mac上无密码登录localhost/" rel="next" title="Connect to localhost without password using SSH on Mac">
+                <i class="fa fa-chevron-left"></i> Connect to localhost without password using SSH on Mac
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -434,8 +535,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -548,6 +658,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-conda"><span class="nav-number">1.</span> <span class="nav-text">使用 conda</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-pip"><span class="nav-number">2.</span> <span class="nav-text">使用 pip</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-docker"><span class="nav-number">3.</span> <span class="nav-text">使用 docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
