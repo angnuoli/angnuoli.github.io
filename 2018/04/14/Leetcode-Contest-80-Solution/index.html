@@ -152,18 +152,18 @@
     }
   };
 </script>
-  <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-80 Problem 1 and 2 are easy, so I don&apos;t want to talk about them, problem 3 is string manipulation and search (pay attention to edge case), problem 4 is">
+  <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-80 Problem 1 and 2 are easy, so I don’t want to talk about them, problem 3 is string manipulation and search (pay attention to edge case), problem 4 is">
 <meta name="keywords" content="Leetcode,总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode Contest 80 Solution">
 <meta property="og:url" content="https://www.gjxhlan.me/2018/04/14/Leetcode-Contest-80-Solution/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="Link：https://leetcode.com/contest/weekly-contest-80 Problem 1 and 2 are easy, so I don&apos;t want to talk about them, problem 3 is string manipulation and search (pay attention to edge case), problem 4 is">
+<meta property="og:description" content="Link：https://leetcode.com/contest/weekly-contest-80 Problem 1 and 2 are easy, so I don’t want to talk about them, problem 3 is string manipulation and search (pay attention to edge case), problem 4 is">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-04-15T05:29:00.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Contest 80 Solution">
-<meta name="twitter:description" content="Link：https://leetcode.com/contest/weekly-contest-80 Problem 1 and 2 are easy, so I don&apos;t want to talk about them, problem 3 is string manipulation and search (pay attention to edge case), problem 4 is">
+<meta name="twitter:description" content="Link：https://leetcode.com/contest/weekly-contest-80 Problem 1 and 2 are easy, so I don’t want to talk about them, problem 3 is string manipulation and search (pay attention to edge case), problem 4 is">
 
 
 
@@ -459,21 +459,21 @@
 
       
         <p>Link：<a href="https://leetcode.com/contest/weekly-contest-80" class="uri" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-80</a></p>
-<p>Problem 1 and 2 are easy, so I don't want to talk about them, problem 3 is string manipulation and search (pay attention to edge case), problem 4 is dp.</p>
+<p>Problem 1 and 2 are easy, so I don’t want to talk about them, problem 3 is string manipulation and search (pay attention to edge case), problem 4 is dp.</p>
 <a id="more"></a>
 <h1 id="ambiguous-coordinates">3. Ambiguous Coordinates</h1>
 <p>We had some 2-dimensional coordinates, like <code>&quot;(1, 3)&quot;</code> or <code>&quot;(2, 0.5)&quot;</code>. Then, we removed all commas, decimal points, and spaces, and ended up with the string <code>S</code>. Return a list of strings representing all possibilities for what our original coordinates could have been.</p>
-<p>Our original representation never had extraneous zeroes, so we never started with numbers like &quot;00&quot;, &quot;0.0&quot;, &quot;0.00&quot;, &quot;1.0&quot;, &quot;001&quot;, &quot;00.01&quot;, or any other number that can be represented with less digits. Also, a decimal point within a number never occurs without at least one digit occuring before it, so we never started with numbers like &quot;.1&quot;.</p>
+<p>Our original representation never had extraneous zeroes, so we never started with numbers like “00”, “0.0”, “0.00”, “1.0”, “001”, “00.01”, or any other number that can be represented with less digits. Also, a decimal point within a number never occurs without at least one digit occuring before it, so we never started with numbers like “.1”.</p>
 <p>The final answer list can be returned in any order. Also note that all coordinates in the final answer have exactly one space between them (occurring after the comma.)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line">Input: &quot;(00011)&quot;</span><br><span class="line">Output:  [&quot;(0.001, 1)&quot;, &quot;(0, 0.011)&quot;]</span><br><span class="line">Explanation: </span><br><span class="line">0.0, 00, 0001 or 00.01 are not allowed.</span><br></pre></td></tr></table></figure>
 <p><strong>Notes:</strong></p>
 <ul>
 <li><code>4 &lt;= S.length &lt;= 12</code>.</li>
-<li><code>S[0]</code> = &quot;(&quot;, <code>S[S.length - 1]</code> = &quot;)&quot;, and the other elements in <code>S</code> are digits.</li>
+<li><code>S[0]</code> = “(”, <code>S[S.length - 1]</code> = “)”, and the other elements in <code>S</code> are digits.</li>
 </ul>
 <h2 id="string">String</h2>
 <p>In this problem, I just enum all possible cases.</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Insert a comma into the string to partition it into two parts, (s1, s2). O(n).</li>
 <li>Enum and combine all valid numbers which come from s1 and s2 by inserting a decimal point or not. O(n).</li>
 </ol>
@@ -481,9 +481,9 @@
 <h1 id="race-car">4. Race Car</h1>
 <p>Your car starts at position 0 and speed +1 on an infinite number line. (Your car can go into negative positions.)</p>
 <p>Your car drives automatically according to a sequence of instructions A (accelerate) and R (reverse).</p>
-<p>When you get an instruction &quot;A&quot;, your car does the following: <code>position += speed, speed *= 2</code>.</p>
-<p>When you get an instruction &quot;R&quot;, your car does the following: if your speed is positive then <code>speed = -1</code> , otherwise <code>speed = 1</code>. (Your position stays the same.)</p>
-<p>For example, after commands &quot;AAR&quot;, your car goes to positions 0-&gt;1-&gt;3-&gt;3, and your speed goes to 1-&gt;2-&gt;4-&gt;-1.</p>
+<p>When you get an instruction “A”, your car does the following: <code>position += speed, speed *= 2</code>.</p>
+<p>When you get an instruction “R”, your car does the following: if your speed is positive then <code>speed = -1</code> , otherwise <code>speed = 1</code>. (Your position stays the same.)</p>
+<p>For example, after commands “AAR”, your car goes to positions 0-&gt;1-&gt;3-&gt;3, and your speed goes to 1-&gt;2-&gt;4-&gt;-1.</p>
 <p>Now for some target position, say the <strong>length</strong> of the shortest sequence of instructions to get there.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line">Input: </span><br><span class="line">target = 6</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: </span><br><span class="line">The shortest instruction sequence is &quot;AAARA&quot;.</span><br><span class="line">Your position goes from 0-&gt;1-&gt;3-&gt;7-&gt;7-&gt;6.</span><br></pre></td></tr></table></figure>
 <h2 id="dp">DP</h2>
@@ -491,14 +491,16 @@
 2^0 + 2^1 +...+2^{n-1} = 2^n - 1
 \]</span> When we use R and speed becomes -1, it is the similar to go back n steps.</p>
 <p>The algorithm is</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><p>let n = the length of binary bits of target</p></li>
 <li><p>If target == <span class="math inline">\(2^n - 1\)</span>, go n steps and achieve the target.</p></li>
-<li><p>if target &lt; <span class="math inline">\(2^n - 1\)</span></p></li>
+<li><p>if target &lt; <span class="math inline">\(2^n - 1\)</span></p>
+<ol type="1">
 <li>we can go n steps and R, speed = -1;</li>
-<li><p>we can go n-1 steps and R; then go back i steps and R, <span class="math inline">\(i \in [0, n-1)\)</span>, speed = 1;</p></li>
+<li>we can go n-1 steps and R; then go back i steps and R, <span class="math inline">\(i \in [0, n-1)\)</span>, speed = 1;</li>
 </ol>
-<p>we only need to enum i once.</p>
+<p>we only need to enum i once.</p></li>
+</ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(target)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] dp;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">racecar</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        dp = <span class="keyword">new</span> <span class="keyword">int</span>[target+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">return</span> helper(target);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">helper</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (target == <span class="number">0</span> || dp[target] != <span class="number">0</span>) <span class="keyword">return</span> dp[target];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> res = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">int</span> n = Integer.toBinaryString(target).length();</span><br><span class="line">        <span class="comment">// if target == 2^n - 1, go n steps and achieve the target</span></span><br><span class="line">        <span class="keyword">if</span> (target == Math.pow(<span class="number">2</span>,n) - <span class="number">1</span>) &#123;</span><br><span class="line">            dp[target] = n;</span><br><span class="line">            <span class="keyword">return</span> n;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// if target &lt; 2^n - 1, go n steps and R</span></span><br><span class="line">        <span class="keyword">int</span> pos1 = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, n) - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (pos1 - target &lt; target) &#123;</span><br><span class="line">            res = Math.min(res, helper(pos1 - target) + n + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// go n-1 steps and R, go back i steps and R, i in [0, n-1)</span></span><br><span class="line">        <span class="keyword">int</span> pos2 = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, n-<span class="number">1</span>) - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n-<span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="comment">// go back i steps</span></span><br><span class="line">            <span class="keyword">int</span> d = (<span class="keyword">int</span>)Math.pow(<span class="number">2</span>, i) - <span class="number">1</span>;</span><br><span class="line">            res = Math.min(res, helper(target - pos2 + d) + n + <span class="number">1</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        dp[target] = res;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>

@@ -434,7 +434,7 @@
           <p>Use notifyItemMoved and notifyDatasetChanged back to back.</p>
 <p>在写 drag icon and insert it to RecyclerView 时遇上了一个挺有意思的 bug，记录一下。</p>
 <h1 id="reproduce-bug">Reproduce Bug</h1>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><p>先在 adapter 中更换数据集中两个 item 的位置并调用 notifyItemRangeChanged（场景：drag item 到另一个 position 并显示一个 preview 表示预插入新的 item），preview 处于可视区域内。</p></li>
 <li><p>短时间内直接更换数据集 (cardItems = newCardItems)，并调用 notifyDataSetChanged （场景：用targetView 替换 preview）。</p></li>
 <li><p>调用完 notifyDataSetChanged 之后，立即调用 scrollTo 将 RecyclerView 滚动至插入的新 item 处（场景：即时显示新插入的 view）。</p>
@@ -604,7 +604,7 @@
       
         
           <p>Link：<a href="https://leetcode.com/contest/weekly-contest-88" class="uri" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-88</a></p>
-<p>虽然最近的 contest 都做了，但是由于懒惰，所以都没写 report lol。本周更一发，第 1、2 题模拟题，第 3 题我是采用树的结构求解，第 4 题没做出来...直奔 discuss。</p>
+<p>虽然最近的 contest 都做了，但是由于懒惰，所以都没写 report lol。本周更一发，第 1、2 题模拟题，第 3 题我是采用树的结构求解，第 4 题没做出来…直奔 discuss。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/06/10/Leetcode-Contest-88-Solution/" rel="contents">
@@ -954,7 +954,7 @@
       
         
           <p>Link：<a href="https://leetcode.com/contest/weekly-contest-81" class="uri" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-81</a></p>
-<p>感觉最近 Leetcode 是不是越来越水了啊...纯拼手速的话，比赛风向就歪了（捂脸，我猜可能是之前那一次冷门数学题导致官方矫枉过正..）。第 1、2 题都是常规题，我用 O(n) 和 O(nlogn) 解的，优化思路之后再想。第 3 题 Trie ，第 4 题 dp。</p>
+<p>感觉最近 Leetcode 是不是越来越水了啊…纯拼手速的话，比赛风向就歪了（捂脸，我猜可能是之前那一次冷门数学题导致官方矫枉过正..）。第 1、2 题都是常规题，我用 O(n) 和 O(nlogn) 解的，优化思路之后再想。第 3 题 Trie ，第 4 题 dp。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/21/Leetcode-Contest-81-Solution/" rel="contents">
@@ -1129,7 +1129,7 @@
       
         
           <p>Link：<a href="https://leetcode.com/contest/weekly-contest-80" class="uri" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-80</a></p>
-<p>Problem 1 and 2 are easy, so I don't want to talk about them, problem 3 is string manipulation and search (pay attention to edge case), problem 4 is dp.</p>
+<p>Problem 1 and 2 are easy, so I don’t want to talk about them, problem 3 is string manipulation and search (pay attention to edge case), problem 4 is dp.</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/14/Leetcode-Contest-80-Solution/" rel="contents">
@@ -1310,7 +1310,7 @@
 <p>Given an input array where <code>num[i] ≠ num[i+1]</code>, find a peak element and return its index.</p>
 <p>The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.</p>
 <p>You may imagine that <code>num[-1] = num[n] = -∞</code>.</p>
-<!--�75-->
+<!--�78-->
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/09/趣题-Find-Peak-Element/" rel="contents">
@@ -1835,7 +1835,7 @@
       
         
           <p>原题链接：<a href="https://leetcode.com/contest/weekly-contest-77" class="uri" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-77</a></p>
-<p>本周感觉难度不大....三道模拟，一道 DP。</p>
+<p>本周感觉难度不大….三道模拟，一道 DP。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/03/25/Leetcode-Contest-77-解题小结/" rel="contents">
@@ -2013,10 +2013,7 @@
 <h2 id="基本">1.2. 基本</h2>
 <h2 id="java-类间关系">1.3 Java 类间关系</h2>
 <h3 id="collection---list-queue-set">1.3.1 Collection - List, Queue, Set</h3>
-<div class="figure">
-<img src="https://i.loli.net/2018/03/28/5abb0fc90332f.jpg">
-
-</div>
+<p><img src="https://i.loli.net/2018/03/28/5abb0fc90332f.jpg"></p>
 <p>从图中可以看出来，AbstractCollection 主要分为 List，Queue 和 Set 三块。</p>
 <h3 id="字符串常量池">2.1. 字符串常量池</h3>
 <h4 id="字符串常量池的实现">字符串常量池的实现</h4>
@@ -2025,7 +2022,7 @@
 <p>在 Java1.7 之后，字符串常量池从 Perm Gen 迁移到了 Heap。</p>
 <blockquote>
 <p>这意味着你不用再受固定大小的内存限制。现在所有的字符串像其他普通对象一样被放置到了堆中，这样你调优的时候只需要管理堆的大小。在技术上，仅此一点就有足够的理由让我们重新考虑在java7中使用Strng.intern()。</p>
-<p><a href="http://www.javaranger.com/archives/1852" target="_blank" rel="noopener">-- Java6,7,8中的String.intern() – 字符串常量池</a></p>
+<p><a href="http://www.javaranger.com/archives/1852" target="_blank" rel="noopener">– Java6,7,8中的String.intern() – 字符串常量池</a></p>
 </blockquote>
 <p>另一篇参考博客：<a href="http://www.cnblogs.com/hadoop-dev/p/7169252.html" target="_blank" rel="noopener">对于JVM中方法区，永久代，元空间以及字符串常量池的迁移和string.intern方法</a></p>
           <!--noindex-->

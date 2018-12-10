@@ -442,18 +442,14 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh localhost</span><br></pre></td></tr></table></figure>
 <p>需要密码则是导致上述错误发生的原因。</p>
 <p>解决方案是</p>
-<ol style="list-style-type: decimal">
-<li>在 <code>~/.ssh</code> 目录下生成一对 rsa key pair</li>
+<ol type="1">
+<li><p>在 <code>~/.ssh</code> 目录下生成一对 rsa key pair</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure></li>
+<li><p>添加到 authorized_keys 中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>在 <code>.ssh/config</code> 文件中添加生成的 private key（这步我看许多 help 中都没有提及，不知道是不是我这边特有的情况，不过这的确解决了问题）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line"> IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure></p>
-<ol start="2" style="list-style-type: decimal">
-<li>添加到 authorized_keys 中</li>
-</ol>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat id_rsa.pub &gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure></p>
-<ol start="3" style="list-style-type: decimal">
-<li><strong>在 <code>.ssh/config</code> 文件中添加生成的 private key（这步我看许多 help 中都没有提及，不知道是不是我这边特有的情况，不过这的确解决了问题）</strong></li>
-</ol>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line"> IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure></p>
 <p>现在在去 start hdfs 就可以成功了。</p>
       
     </div>

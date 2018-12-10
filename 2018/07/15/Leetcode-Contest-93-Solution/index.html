@@ -152,18 +152,18 @@
     }
   };
 </script>
-  <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-93 沉迷吃鸡不能自拔...要改！第 1 题 naïve，第 2 题 enumeration，第 3 题 TreeMap + Greedy，第 4 题 PriorityQueue + Greedy。">
+  <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-93 沉迷吃鸡不能自拔…要改！第 1 题 naïve，第 2 题 enumeration，第 3 题 TreeMap + Greedy，第 4 题 PriorityQueue + Greedy。">
 <meta name="keywords" content="Leetcode,总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode Contest 93 Solution">
 <meta property="og:url" content="https://www.gjxhlan.me/2018/07/15/Leetcode-Contest-93-Solution/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="Link：https://leetcode.com/contest/weekly-contest-93 沉迷吃鸡不能自拔...要改！第 1 题 naïve，第 2 题 enumeration，第 3 题 TreeMap + Greedy，第 4 题 PriorityQueue + Greedy。">
+<meta property="og:description" content="Link：https://leetcode.com/contest/weekly-contest-93 沉迷吃鸡不能自拔…要改！第 1 题 naïve，第 2 题 enumeration，第 3 题 TreeMap + Greedy，第 4 题 PriorityQueue + Greedy。">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-07-22T02:15:29.956Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Contest 93 Solution">
-<meta name="twitter:description" content="Link：https://leetcode.com/contest/weekly-contest-93 沉迷吃鸡不能自拔...要改！第 1 题 naïve，第 2 题 enumeration，第 3 题 TreeMap + Greedy，第 4 题 PriorityQueue + Greedy。">
+<meta name="twitter:description" content="Link：https://leetcode.com/contest/weekly-contest-93 沉迷吃鸡不能自拔…要改！第 1 题 naïve，第 2 题 enumeration，第 3 题 TreeMap + Greedy，第 4 题 PriorityQueue + Greedy。">
 
 
 
@@ -459,7 +459,7 @@
 
       
         <p>Link：<a href="https://leetcode.com/contest/weekly-contest-93" class="uri" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-93</a></p>
-<p>沉迷吃鸡不能自拔...要改！第 1 题 naïve，第 2 题 enumeration，第 3 题 TreeMap + Greedy，第 4 题 PriorityQueue + Greedy。</p>
+<p>沉迷吃鸡不能自拔…要改！第 1 题 naïve，第 2 题 enumeration，第 3 题 TreeMap + Greedy，第 4 题 PriorityQueue + Greedy。</p>
 <a id="more"></a>
 <h1 id="reordered-power-of-2">869. Reordered Power of 2</h1>
 <p>这道题直接枚举 N 的 permutation 肯定是超时的。我是枚举 2 的 power 然后给定一个 len(N) 的判定条件，可以通过 2 的 power 的位数剪枝，不剪枝也无所谓。</p>
@@ -468,7 +468,7 @@
 <h2 id="treemap-greedy">TreeMap + Greedy</h2>
 <p>TreeMap saved numbers of A in sorted order. Traverse array B, at each iteration <code>B[i]</code>, we want to find the least number which is greater than <code>B[i]</code>.</p>
 <p>Why is the method optimized?</p>
-<p>Because every number in A can only contribute to one advantage or not. Numbers larger than it can contribute to other cases and it is still optimized. Numbers less than it can't make the case as an advantage.</p>
+<p>Because every number in A can only contribute to one advantage or not. Numbers larger than it can contribute to other cases and it is still optimized. Numbers less than it can’t make the case as an advantage.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(nlogn)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] advantageCount(<span class="keyword">int</span>[] A, <span class="keyword">int</span>[] B) &#123;</span><br><span class="line">        TreeMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> TreeMap&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : A) map.put(num, map.getOrDefault(num, <span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">        List&lt;Integer&gt; index = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; B.length; i++) &#123;</span><br><span class="line">            Integer key = map.ceilingKey(B[i]+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (key == <span class="keyword">null</span>) &#123;</span><br><span class="line">                index.add(i);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                A[i] = key;</span><br><span class="line">                <span class="keyword">if</span> (map.get(key) == <span class="number">1</span>) map.remove(key);</span><br><span class="line">                <span class="keyword">else</span> map.put(key, map.get(key)-<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> key: map.keySet()) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = map.get(key); i &gt; <span class="number">0</span>; i--) &#123;</span><br><span class="line">                A[index.get(j++)] = key;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> A;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="minimum-number-of-refueling-stops">871. Minimum Number of Refueling Stops</h1>
 <h2 id="priorityqueue-greedy">PriorityQueue + Greedy</h2>

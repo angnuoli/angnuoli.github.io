@@ -152,18 +152,18 @@
     }
   };
 </script>
-  <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-91 偷懒了一周... 第 1 题 naïve，第 2 题边反转 + dfs，第 3 题没做出来，我觉得贪心的方法不太好证明其最优性，第 4 题 TreeMap \(O(n\log^2n)\) or Deque \(O(n)\)。">
+  <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-91 偷懒了一周… 第 1 题 naïve，第 2 题边反转 + dfs，第 3 题没做出来，我觉得贪心的方法不太好证明其最优性，第 4 题 TreeMap \(O(n\log^2n)\) or Deque \(O(n)\)。">
 <meta name="keywords" content="Leetcode,总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode Contest 91 Solution">
 <meta property="og:url" content="https://www.gjxhlan.me/2018/07/07/Leetcode-Contest-91-Solution/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="Link：https://leetcode.com/contest/weekly-contest-91 偷懒了一周... 第 1 题 naïve，第 2 题边反转 + dfs，第 3 题没做出来，我觉得贪心的方法不太好证明其最优性，第 4 题 TreeMap \(O(n\log^2n)\) or Deque \(O(n)\)。">
+<meta property="og:description" content="Link：https://leetcode.com/contest/weekly-contest-91 偷懒了一周… 第 1 题 naïve，第 2 题边反转 + dfs，第 3 题没做出来，我觉得贪心的方法不太好证明其最优性，第 4 题 TreeMap \(O(n\log^2n)\) or Deque \(O(n)\)。">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-07-22T02:15:29.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Contest 91 Solution">
-<meta name="twitter:description" content="Link：https://leetcode.com/contest/weekly-contest-91 偷懒了一周... 第 1 题 naïve，第 2 题边反转 + dfs，第 3 题没做出来，我觉得贪心的方法不太好证明其最优性，第 4 题 TreeMap \(O(n\log^2n)\) or Deque \(O(n)\)。">
+<meta name="twitter:description" content="Link：https://leetcode.com/contest/weekly-contest-91 偷懒了一周… 第 1 题 naïve，第 2 题边反转 + dfs，第 3 题没做出来，我觉得贪心的方法不太好证明其最优性，第 4 题 TreeMap \(O(n\log^2n)\) or Deque \(O(n)\)。">
 
 
 
@@ -459,10 +459,10 @@
 
       
         <p>Link：<a href="https://leetcode.com/contest/weekly-contest-91" class="uri" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-91</a></p>
-<p>偷懒了一周... 第 1 题 naïve，第 2 题边反转 + dfs，第 3 题没做出来，我觉得贪心的方法不太好证明其最优性，第 4 题 TreeMap <span class="math inline">\(O(n\log^2n)\)</span> or Deque <span class="math inline">\(O(n)\)</span>。</p>
+<p>偷懒了一周… 第 1 题 naïve，第 2 题边反转 + dfs，第 3 题没做出来，我觉得贪心的方法不太好证明其最优性，第 4 题 TreeMap <span class="math inline">\(O(n\log^2n)\)</span> or Deque <span class="math inline">\(O(n)\)</span>。</p>
 <a id="more"></a>
 <h1 id="all-nodes-distance-k-in-binary-tree">863. All Nodes Distance K in Binary Tree</h1>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>判断一下 K 是否为0，边界条件</li>
 <li>先将 target 的所有 children 遍历一遍，找出 distance 为 K 的节点。将 target 的左右分支砍掉，因为这边不再对答案有贡献。</li>
 <li>接下来，我们只要将 root 到 target 这条路径上的 edge 全部反转成 child 指向 father。</li>

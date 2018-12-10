@@ -152,18 +152,18 @@
     }
   };
 </script>
-  <meta name="description" content="转手项目的时候，和交接方环境和依赖关系不同很容易造成第一次 run 的失败，容易败坏心情。 总结一下将依赖关系和项目一同打包发送给对方的几个方法。 使用 conda 推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。 项目开发完成 &amp;gt; 导出环境 &amp;gt; 交接 &amp;gt; 删除环境 1234# 本机上新建环境，防止多余 site-package 混入项目$ co">
+  <meta name="description" content="转手项目的时候，和交接方环境和依赖关系不同很容易造成第一次 run 的失败，容易败坏心情。 总结一下将依赖关系和项目一同打包发送给对方的几个方法。 使用 conda 推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。 项目开发完成 &amp;gt; 导出环境 &amp;gt; 交接 &amp;gt; 删除环境 123456789# 本机上新建环境，防止多余 site-package 混入项">
 <meta name="keywords" content="python,conda,pip">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Distribute Python project with environment">
 <meta property="og:url" content="https://www.gjxhlan.me/2018/11/08/distribute-python-project/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="转手项目的时候，和交接方环境和依赖关系不同很容易造成第一次 run 的失败，容易败坏心情。 总结一下将依赖关系和项目一同打包发送给对方的几个方法。 使用 conda 推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。 项目开发完成 &amp;gt; 导出环境 &amp;gt; 交接 &amp;gt; 删除环境 1234# 本机上新建环境，防止多余 site-package 混入项目$ co">
+<meta property="og:description" content="转手项目的时候，和交接方环境和依赖关系不同很容易造成第一次 run 的失败，容易败坏心情。 总结一下将依赖关系和项目一同打包发送给对方的几个方法。 使用 conda 推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。 项目开发完成 &amp;gt; 导出环境 &amp;gt; 交接 &amp;gt; 删除环境 123456789# 本机上新建环境，防止多余 site-package 混入项">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-08T17:24:34.415Z">
+<meta property="og:updated_time" content="2018-11-08T20:10:10.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Distribute Python project with environment">
-<meta name="twitter:description" content="转手项目的时候，和交接方环境和依赖关系不同很容易造成第一次 run 的失败，容易败坏心情。 总结一下将依赖关系和项目一同打包发送给对方的几个方法。 使用 conda 推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。 项目开发完成 &amp;gt; 导出环境 &amp;gt; 交接 &amp;gt; 删除环境 1234# 本机上新建环境，防止多余 site-package 混入项目$ co">
+<meta name="twitter:description" content="转手项目的时候，和交接方环境和依赖关系不同很容易造成第一次 run 的失败，容易败坏心情。 总结一下将依赖关系和项目一同打包发送给对方的几个方法。 使用 conda 推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。 项目开发完成 &amp;gt; 导出环境 &amp;gt; 交接 &amp;gt; 删除环境 123456789# 本机上新建环境，防止多余 site-package 混入项">
 
 
 
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="Created: 2018-11-08 11:58:42 / Modified: 12:24:34" itemprop="dateCreated datePublished" datetime="2018-11-08T11:58:42-05:00">2018-11-08</time>
+              <time title="Created: 2018-11-08 11:58:42 / Modified: 15:10:10" itemprop="dateCreated datePublished" datetime="2018-11-08T11:58:42-05:00">2018-11-08</time>
             
 
             
@@ -433,7 +433,7 @@
 <h1 id="使用-conda">使用 conda</h1>
 <p>推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。</p>
 <p>项目开发完成 &gt; 导出环境 &gt; 交接 &gt; 删除环境</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本机上新建环境，防止多余 site-package 混入项目</span></span><br><span class="line">$ conda create --name &lt;envname&gt; [python=3.7 or 3.5]</span><br><span class="line"><span class="comment"># 本机上项目运行成功后，导出 conda package</span></span><br><span class="line">$ conda list --<span class="built_in">export</span> &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本机上新建环境，防止多余 site-package 混入项目</span></span><br><span class="line">$ conda create --name &lt;envname&gt; [python=3.7 or 3.5]</span><br><span class="line">$ conda activate &lt;envname&gt;</span><br><span class="line"><span class="comment"># 本机上项目运行成功后，导出 conda package</span></span><br><span class="line">$ conda list --<span class="built_in">export</span> &gt; requirements.txt</span><br><span class="line"><span class="comment"># 退出环境</span></span><br><span class="line">$ conda deactivate</span><br><span class="line"><span class="comment"># 删除环境</span></span><br><span class="line">$ conda env remove &lt;envname&gt;</span><br></pre></td></tr></table></figure>
 <p>项目发送给对方后</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对方通过 requirements.txt 创建项目环境</span></span><br><span class="line">$ conda create --name &lt;envname&gt; --file requirements.txt</span><br><span class="line">$ conda activate &lt;envname&gt;</span><br></pre></td></tr></table></figure>
 <p>优点：简单无多余</p>

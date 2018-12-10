@@ -431,7 +431,7 @@
         <p>Use notifyItemMoved and notifyDatasetChanged back to back.</p>
 <p>在写 drag icon and insert it to RecyclerView 时遇上了一个挺有意思的 bug，记录一下。</p>
 <h1 id="reproduce-bug">Reproduce Bug</h1>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><p>先在 adapter 中更换数据集中两个 item 的位置并调用 notifyItemRangeChanged（场景：drag item 到另一个 position 并显示一个 preview 表示预插入新的 item），preview 处于可视区域内。</p></li>
 <li><p>短时间内直接更换数据集 (cardItems = newCardItems)，并调用 notifyDataSetChanged （场景：用targetView 替换 preview）。</p></li>
 <li><p>调用完 notifyDataSetChanged 之后，立即调用 scrollTo 将 RecyclerView 滚动至插入的新 item 处（场景：即时显示新插入的 view）。</p>
@@ -450,7 +450,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* Mark all known views as invalid. Used in response to a, <span class="string">"the whole world might have changed"</span></span><br><span class="line">* data change event.</span><br></pre></td></tr></table></figure>
 <p>然后根据对应的 position 重新调用 bindViewHolder 更新可视区域内的 item。一般要么从 RecyclerViewPool 里面随机取一个重置信息，要么 onCreateViewHolder。</p>
 <p><strong>关键问题有两点</strong>：</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>preview 是在何时被 Recycler 回收，存入 mCachedView 的呢？可视区域内的 view 是不会被存入 mCachedViews。</li>
 <li>为什么没有被 remove 掉？</li>
 </ol>

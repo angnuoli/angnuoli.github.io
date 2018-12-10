@@ -152,19 +152,19 @@
     }
   };
 </script>
-  <meta name="description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233   实力一波嘲讽233">
+  <meta name="description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233  实力一波嘲讽233">
 <meta name="keywords" content="Java 源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 源码阅读——HashMap">
 <meta property="og:url" content="https://www.gjxhlan.me/2018/03/05/Java-源码阅读——HashMap/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233   实力一波嘲讽233">
+<meta property="og:description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233  实力一波嘲讽233">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://i.loli.net/2018/03/25/5ab749f522760.jpg">
 <meta property="og:updated_time" content="2018-03-27T17:34:27.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 源码阅读——HashMap">
-<meta name="twitter:description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233   实力一波嘲讽233">
+<meta name="twitter:description" content="HashMap java版本为1.8. table、bin、node HashMap通常类似hash table。table包含一系列bin(bucket)，bin容纳nodes。bin即是桶（bucket）ui  Tree bins Bins whose elements are all TreeNodes。提供O(logn)的操作。 （以下实力一波嘲讽233  实力一波嘲讽233">
 <meta name="twitter:image" content="https://i.loli.net/2018/03/25/5ab749f522760.jpg">
 
 
@@ -468,10 +468,9 @@
 <h3 id="tree-bins">Tree bins</h3>
 <p>Bins whose elements are all TreeNodes。提供O(logn)的操作。</p>
 <p>（以下实力一波嘲讽233</p>
-<div class="figure">
-<img src="https://i.loli.net/2018/03/25/5ab749f522760.jpg" alt="实力一波嘲讽233">
-<p class="caption">实力一波嘲讽233</p>
-</div>
+<figure>
+<img src="https://i.loli.net/2018/03/25/5ab749f522760.jpg" alt="实力一波嘲讽233"><figcaption>实力一波嘲讽233</figcaption>
+</figure>
 <a id="more"></a>
 <h2 id="capacity">capacity</h2>
 <p>容量，一般为2的幂次方，初始为16，最大为2^30。</p>
@@ -500,7 +499,7 @@
 <p><a href="https://www.cnblogs.com/tiger-fu/p/7884794.html" target="_blank" rel="noopener">Java集合源码阅读之HashMap</a></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="put方法">put方法</h2>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>根据 key 查找对应 bin</li>
 <li>如果 bin 为空（无 hash 碰撞），直接插入</li>
 <li>如果 bin 不为空（hash 碰撞）。

@@ -152,18 +152,18 @@
     }
   };
 </script>
-  <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-81 感觉最近 Leetcode 是不是越来越水了啊...纯拼手速的话，比赛风向就歪了（捂脸，我猜可能是之前那一次冷门数学题导致官方矫枉过正..）。第 1、2 题都是常规题，我用 O(n) 和 O(nlogn) 解的，优化思路之后再想。第 3 题 Trie ，第 4 题 dp。">
+  <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-81 感觉最近 Leetcode 是不是越来越水了啊…纯拼手速的话，比赛风向就歪了（捂脸，我猜可能是之前那一次冷门数学题导致官方矫枉过正..）。第 1、2 题都是常规题，我用 O(n) 和 O(nlogn) 解的，优化思路之后再想。第 3 题 Trie ，第 4 题 dp。">
 <meta name="keywords" content="Leetcode,总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode Contest 81 Solution">
 <meta property="og:url" content="https://www.gjxhlan.me/2018/04/21/Leetcode-Contest-81-Solution/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="Link：https://leetcode.com/contest/weekly-contest-81 感觉最近 Leetcode 是不是越来越水了啊...纯拼手速的话，比赛风向就歪了（捂脸，我猜可能是之前那一次冷门数学题导致官方矫枉过正..）。第 1、2 题都是常规题，我用 O(n) 和 O(nlogn) 解的，优化思路之后再想。第 3 题 Trie ，第 4 题 dp。">
+<meta property="og:description" content="Link：https://leetcode.com/contest/weekly-contest-81 感觉最近 Leetcode 是不是越来越水了啊…纯拼手速的话，比赛风向就歪了（捂脸，我猜可能是之前那一次冷门数学题导致官方矫枉过正..）。第 1、2 题都是常规题，我用 O(n) 和 O(nlogn) 解的，优化思路之后再想。第 3 题 Trie ，第 4 题 dp。">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2018-04-22T13:13:48.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Contest 81 Solution">
-<meta name="twitter:description" content="Link：https://leetcode.com/contest/weekly-contest-81 感觉最近 Leetcode 是不是越来越水了啊...纯拼手速的话，比赛风向就歪了（捂脸，我猜可能是之前那一次冷门数学题导致官方矫枉过正..）。第 1、2 题都是常规题，我用 O(n) 和 O(nlogn) 解的，优化思路之后再想。第 3 题 Trie ，第 4 题 dp。">
+<meta name="twitter:description" content="Link：https://leetcode.com/contest/weekly-contest-81 感觉最近 Leetcode 是不是越来越水了啊…纯拼手速的话，比赛风向就歪了（捂脸，我猜可能是之前那一次冷门数学题导致官方矫枉过正..）。第 1、2 题都是常规题，我用 O(n) 和 O(nlogn) 解的，优化思路之后再想。第 3 题 Trie ，第 4 题 dp。">
 
 
 
@@ -459,12 +459,12 @@
 
       
         <p>Link：<a href="https://leetcode.com/contest/weekly-contest-81" class="uri" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-81</a></p>
-<p>感觉最近 Leetcode 是不是越来越水了啊...纯拼手速的话，比赛风向就歪了（捂脸，我猜可能是之前那一次冷门数学题导致官方矫枉过正..）。第 1、2 题都是常规题，我用 O(n) 和 O(nlogn) 解的，优化思路之后再想。第 3 题 Trie ，第 4 题 dp。</p>
+<p>感觉最近 Leetcode 是不是越来越水了啊…纯拼手速的话，比赛风向就歪了（捂脸，我猜可能是之前那一次冷门数学题导致官方矫枉过正..）。第 1、2 题都是常规题，我用 O(n) 和 O(nlogn) 解的，优化思路之后再想。第 3 题 Trie ，第 4 题 dp。</p>
 <a id="more"></a>
 <h1 id="short-encoding-of-words">820. Short Encoding of Words</h1>
 <p>Given a list of words, we may encode it by writing a reference string S and a list of indexes A.</p>
-<p>For example, if the list of words is [&quot;time&quot;, &quot;me&quot;, &quot;bell&quot;], we can write it as S = &quot;time#bell#&quot; and indexes = [0, 2, 5].</p>
-<p>Then for each index, we will recover the word by reading from the reference string from that index until we reach a &quot;#&quot; character.</p>
+<p>For example, if the list of words is [“time”, “me”, “bell”], we can write it as S = “time#bell#” and indexes = [0, 2, 5].</p>
+<p>Then for each index, we will recover the word by reading from the reference string from that index until we reach a “#” character.</p>
 <p>What is the length of the shortest reference string S possible that encodes the given words?</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line">Input: words = [&quot;time&quot;, &quot;me&quot;, &quot;bell&quot;]</span><br><span class="line">Output: 10</span><br><span class="line">Explanation: S = &quot;time#bell#&quot; and indexes = [0, 2, 5].</span><br></pre></td></tr></table></figure>
 <p><strong>Notes:</strong></p>
@@ -479,17 +479,17 @@
 <h1 id="binary-trees-with-factors">823. Binary Trees With Factors</h1>
 <p>Given an array of unique integers, each integer is strictly greater than 1.</p>
 <p>We make a binary tree using these integers and each number may be used for any number of times.</p>
-<p>Each non-leaf node's value should be equal to the product of the values of it's children.</p>
+<p>Each non-leaf node’s value should be equal to the product of the values of it’s children.</p>
 <p>How many binary trees can we make? Return the answer <strong>modulo 10 ** 9 + 7</strong>.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line">Input: A = [2, 4, 5, 10]</span><br><span class="line">Output: 7</span><br><span class="line">Explanation: We can make these trees: [2], [4], [5], [10], [4, 2, 2], [10, 2, 5], [10, 5, 2].</span><br></pre></td></tr></table></figure>
 <p><strong>Note:</strong></p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><code>1 &lt;= A.length &lt;= 1000.</code></li>
 <li><code>2 &lt;= A[i] &lt;= 10 ^ 9</code>.</li>
 </ol>
 <h2 id="dp">DP</h2>
 <p>感觉这道题也是个典型的 dp 题。枚举子树因子组合，不重复的子树因子组合都可以切分成一个子问题，状态转移方程为 <code>dp[i * j] = dp[i] * dp[j] + dp[i * j]</code>。</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>先 sort 整个数组</li>
 <li>枚举 i 之前的所有数 j，如果 <code>A[j] | A[i]</code> ，并且对应因子也存在数组中（肯定在 <span class="math inline">\([0, i)\)</span> )，就可以使用状态转移方程。</li>
 </ol>

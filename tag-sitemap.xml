@@ -23,13 +23,6 @@
     </url>
 
     <url>
-        <loc>https://www.gjxhlan.me/tags/Android/</loc>
-        <lastmod>2018-06-23T09:05:39.203Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://www.gjxhlan.me/tags/Bug-Report/</loc>
         <lastmod>2018-06-23T09:05:39.203Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -45,14 +38,56 @@
 
     <url>
         <loc>https://www.gjxhlan.me/tags/Leetcode/</loc>
-        <lastmod>2018-07-22T05:57:08.086Z</lastmod>
+        <lastmod>2018-07-22T05:59:10.821Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://www.gjxhlan.me/tags/%E6%80%BB%E7%BB%93/</loc>
-        <lastmod>2018-07-22T05:57:08.086Z</lastmod>
+        <lastmod>2018-07-22T05:59:10.821Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.gjxhlan.me/tags/Android/</loc>
+        <lastmod>2018-09-10T02:22:14.411Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.gjxhlan.me/tags/hadoop/</loc>
+        <lastmod>2018-09-10T02:49:51.834Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.gjxhlan.me/tags/trouble-shooting/</loc>
+        <lastmod>2018-09-10T02:49:51.834Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.gjxhlan.me/tags/python/</loc>
+        <lastmod>2018-11-08T20:10:10.867Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.gjxhlan.me/tags/conda/</loc>
+        <lastmod>2018-11-08T20:10:10.867Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://www.gjxhlan.me/tags/pip/</loc>
+        <lastmod>2018-11-08T20:10:10.867Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
