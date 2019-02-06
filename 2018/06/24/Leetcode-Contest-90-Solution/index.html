@@ -15,13 +15,11 @@
 
 
 <html class="theme-next gemini use-motion" lang="en">
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2">
 <meta name="theme-color" content="#222">
-
-
 
 
 
@@ -31,16 +29,8 @@
     
     
   <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-center-radar.min.css?v=1.0.2" rel="stylesheet">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-center-radar.min.css?v=1.0.2">
 
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -99,7 +89,7 @@
   
     
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rannetto One:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rannetto One:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
   
 
 
@@ -107,23 +97,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
 
-<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+<link rel="stylesheet" href="/css/main.css?v=7.0.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
 
 
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
 
 
 
@@ -131,12 +119,12 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '6.4.1',
+    version: '7.0.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
@@ -152,19 +140,19 @@
     }
   };
 </script>
-  <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-90 昨晚看世界杯德国 vs 瑞典比赛看到四点，最后德国 17s 绝杀，看得真爽，然后早上就起不来了… 下午写完，第 1 题 bruteForce，第 2 题 recursion or stack，第 3 题 Math，第 4 题 topK 问题 Sort + PriorityQueue。">
+  <meta name="description" content="Link：https://leetcode.com/contest/weekly-contest-90 昨晚看世界杯德国 vs 瑞典比赛看到四点，最后德国 17s 绝杀，看得真爽，然后早上就起不来了... 下午写完，第 1 题 bruteForce，第 2 题 recursion or stack，第 3 题 Math，第 4 题 topK 问题 Sort + PriorityQueue。">
 <meta name="keywords" content="Leetcode,总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode Contest 90 Solution">
 <meta property="og:url" content="https://www.gjxhlan.me/2018/06/24/Leetcode-Contest-90-Solution/index.html">
 <meta property="og:site_name" content="gjxhlan&#39;s blog">
-<meta property="og:description" content="Link：https://leetcode.com/contest/weekly-contest-90 昨晚看世界杯德国 vs 瑞典比赛看到四点，最后德国 17s 绝杀，看得真爽，然后早上就起不来了… 下午写完，第 1 题 bruteForce，第 2 题 recursion or stack，第 3 题 Math，第 4 题 topK 问题 Sort + PriorityQueue。">
+<meta property="og:description" content="Link：https://leetcode.com/contest/weekly-contest-90 昨晚看世界杯德国 vs 瑞典比赛看到四点，最后德国 17s 绝杀，看得真爽，然后早上就起不来了... 下午写完，第 1 题 bruteForce，第 2 题 recursion or stack，第 3 题 Math，第 4 题 topK 问题 Sort + PriorityQueue。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://i.loli.net/2018/06/24/5b2f703e49fab.jpg">
 <meta property="og:updated_time" content="2018-07-22T02:15:29.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode Contest 90 Solution">
-<meta name="twitter:description" content="Link：https://leetcode.com/contest/weekly-contest-90 昨晚看世界杯德国 vs 瑞典比赛看到四点，最后德国 17s 绝杀，看得真爽，然后早上就起不来了… 下午写完，第 1 题 bruteForce，第 2 题 recursion or stack，第 3 题 Math，第 4 题 topK 问题 Sort + PriorityQueue。">
+<meta name="twitter:description" content="Link：https://leetcode.com/contest/weekly-contest-90 昨晚看世界杯德国 vs 瑞典比赛看到四点，最后德国 17s 绝杀，看得真爽，然后早上就起不来了... 下午写完，第 1 题 bruteForce，第 2 题 recursion or stack，第 3 题 Math，第 4 题 topK 问题 Sort + PriorityQueue。">
 <meta name="twitter:image" content="https://i.loli.net/2018/06/24/5b2f703e49fab.jpg">
 
 
@@ -176,7 +164,7 @@
 
 
 
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
@@ -193,37 +181,38 @@
 
 
 
+
+
+
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 </head>
 
 
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -233,7 +222,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
     
@@ -245,6 +234,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
     
   </div>
 
@@ -267,40 +257,85 @@
         
           
           <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
   </li>
         
         
         
           
           <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
   </li>
 
       
@@ -345,20 +380,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://www.gjxhlan.me/2018/06/24/Leetcode-Contest-90-Solution/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="gjxhlan">
       <meta itemprop="description" content="Keep Calm, Listen and Move Fast.">
       <meta itemprop="image" content="/upload_image/Avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="gjxhlan's blog">
     </span>
 
@@ -368,6 +403,7 @@
         
         
           <h1 class="post-title" itemprop="name headline">Leetcode Contest 90 Solution
+
               
             
           </h1>
@@ -426,7 +462,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程题/" itemprop="url" rel="index"><span itemprop="name">编程题</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/编程题/" itemprop="url" rel="index"><span itemprop="name">编程题</span></a></span>
 
                 
                 
@@ -435,6 +471,7 @@
           
 
           
+            
             
           
 
@@ -461,7 +498,7 @@
 
       
         <p>Link：<a href="https://leetcode.com/contest/weekly-contest-90" class="uri" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-90</a></p>
-<p>昨晚看世界杯德国 vs 瑞典比赛看到四点，最后德国 17s 绝杀，看得真爽，然后早上就起不来了… 下午写完，第 1 题 bruteForce，第 2 题 recursion or stack，第 3 题 Math，第 4 题 topK 问题 Sort + PriorityQueue。</p>
+<p>昨晚看世界杯德国 vs 瑞典比赛看到四点，最后德国 17s 绝杀，看得真爽，然后早上就起不来了... 下午写完，第 1 题 bruteForce，第 2 题 recursion or stack，第 3 题 Math，第 4 题 topK 问题 Sort + PriorityQueue。</p>
 <a id="more"></a>
 <h1 id="buddy-strings-bruteforce">859. Buddy Strings: BruteForce</h1>
 <p>So easy, just two situations</p>
@@ -472,12 +509,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(N), Space Complexity O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">buddyStrings</span><span class="params">(String A, String B)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (A == <span class="keyword">null</span> || B == <span class="keyword">null</span> || A.length() != B.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span>[] index = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span>[] f = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; A.length(); k++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (A.charAt(k) != B.charAt(k)) index[count++] = k;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                f[A.charAt(k)-<span class="string">'a'</span>]++;</span><br><span class="line">                <span class="keyword">if</span> (f[A.charAt(k)-<span class="string">'a'</span>] &gt;= <span class="number">2</span>) flag = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (count &gt; <span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (count == <span class="number">2</span> &amp;&amp; A.charAt(index[<span class="number">0</span>]) == B.charAt(index[<span class="number">1</span>]) &amp;&amp; A.charAt(index[<span class="number">1</span>]) == B.charAt(index[<span class="number">0</span>])) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (count == <span class="number">0</span> &amp;&amp; flag) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="score-of-parentheses">856. Score of Parentheses</h1>
 <h2 id="stack-递推">Stack + 递推</h2>
-<p>这道题还有点意思，我首先是拿 Stack 做的，由于每一个 ‘)’ 必定对应一个 balanced parentheses，所以将 score 保存在右括号所在的 position。</p>
-<p>碰到 ‘)’ 就先计算一下自身的 score (A) 的情况，再将之前串联 AB 的 score 也存储到当前位置，这样一直递推到 score[n-1]。</p>
+<p>这道题还有点意思，我首先是拿 Stack 做的，由于每一个 ')' 必定对应一个 balanced parentheses，所以将 score 保存在右括号所在的 position。</p>
+<p>碰到 ')' 就先计算一下自身的 score (A) 的情况，再将之前串联 AB 的 score 也存储到当前位置，这样一直递推到 score[n-1]。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(N), Space O(N)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">scoreOfParentheses</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (S == <span class="keyword">null</span> || S.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> n = S.length();</span><br><span class="line">        <span class="keyword">int</span>[] score = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">int</span> lastRight = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        Stack&lt;Integer&gt; stk = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (S.charAt(i) == <span class="string">'('</span>) &#123;</span><br><span class="line">                stk.push(i);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> left = stk.pop();</span><br><span class="line">                <span class="keyword">if</span> (S.charAt(i-<span class="number">1</span>) == <span class="string">')'</span>) score[i] = <span class="number">2</span> * score[i-<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">else</span> score[i] = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (left &gt; <span class="number">0</span> &amp;&amp; S.charAt(left-<span class="number">1</span>) == <span class="string">')'</span>) score[i] += score[left-<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> score[n-<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="recursive-solution">recursive solution</h2>
 <p>既然能用 Stack 求解，那么自然也就会设想能否用递归来减小空间复杂度。这道题也可以直接用递归求解。</p>
-<p>假设 S = ABC… 是由 n 个串联的 balanced parentheses 组成的 (<span class="math inline">\(n \ge 1\)</span>)，那么只要 traverse S and find each <span class="math inline">\(A_i\)</span>，将 Ai 拆解成 (A)，在把 A 抛给 scoreOfParentheses 求解即可，最后将所有串联的 score 相加就可以得到答案，代码更加简练了。</p>
+<p>假设 S = ABC... 是由 n 个串联的 balanced parentheses 组成的 (<span class="math inline">\(n \ge 1\)</span>)，那么只要 traverse S and find each <span class="math inline">\(A_i\)</span>，将 Ai 拆解成 (A)，在把 A 抛给 scoreOfParentheses 求解即可，最后将所有串联的 score 相加就可以得到答案，代码更加简练了。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time Complexity O(N), Space O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">scoreOfParentheses</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (S == <span class="keyword">null</span> || S.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, score = <span class="number">0</span>, last = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; S.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (S.charAt(i) == <span class="string">'('</span>) left++;</span><br><span class="line">            <span class="keyword">else</span> left--;</span><br><span class="line">            <span class="keyword">if</span> (left == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (last == i-<span class="number">1</span>) score += <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span> score += <span class="number">2</span> * scoreOfParentheses(S.substring(last+<span class="number">1</span>, i));</span><br><span class="line">                last = i+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> score;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="mirror-reflection-math">858. Mirror Reflection: Math</h1>
 <p>数学题，涉及到 Euclid gcd。If we draw a picture, the solution will be obvious.</p>
@@ -503,6 +540,9 @@
 
     
 
+    
+      
+    
     
 
     
@@ -593,9 +633,9 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image" src="/upload_image/Avatar.png" alt="gjxhlan">
             
@@ -682,19 +722,30 @@
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/angnuoli" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/angnuoli" title="GitHub &rarr; https://github.com/angnuoli" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="mailto:gjxhlan@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:gjxhlan@gmail.com" title="E-Mail &rarr; mailto:gjxhlan@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                 </span>
               
             </div>
           
 
-          
           
 
           
@@ -706,15 +757,16 @@
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -722,7 +774,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -751,8 +803,6 @@
 </div>
 
 
-
-
   <div class="powered-by">
     <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
       本站访客数:<span id="busuanzi_value_site_uv"></span>
@@ -761,7 +811,7 @@
 
   <span class="post-meta-divider">|</span>
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -769,7 +819,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.1</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.0.0</div>
         
 
 
@@ -791,7 +841,7 @@
     
 
     
-	
+
     
 
     
@@ -799,7 +849,7 @@
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -819,6 +869,10 @@
 
 
   
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
 
@@ -833,32 +887,21 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+  <script src="/js/src/utils.js?v=7.0.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+  <script src="/js/src/motion.js?v=7.0.0"></script>
 
 
 
@@ -866,47 +909,36 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+  <script src="/js/src/affix.js?v=7.0.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+  <script src="/js/src/schemes/pisces.js?v=7.0.0"></script>
 
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
 
 
 
   
 
 
-
-  
-
-
-
-
-
-
-
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
 
 
 
   
 
 
-
+  
 
 
   
+
+
+
 
   
 
@@ -921,31 +953,51 @@
   
     
       <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
-    });
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
 </script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
 
     
   
 
 
   
+
+  
+
+  
+
+  
+
   
 
   
