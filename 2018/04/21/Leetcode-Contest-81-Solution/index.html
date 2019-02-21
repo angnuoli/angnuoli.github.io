@@ -495,13 +495,13 @@
       
 
       
-        <p>Link：<a href="https://leetcode.com/contest/weekly-contest-81" class="uri" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-81</a></p>
+        <p>Link：<a href="https://leetcode.com/contest/weekly-contest-81" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-81</a></p>
 <p>感觉最近 Leetcode 是不是越来越水了啊...纯拼手速的话，比赛风向就歪了（捂脸，我猜可能是之前那一次冷门数学题导致官方矫枉过正..）。第 1、2 题都是常规题，我用 O(n) 和 O(nlogn) 解的，优化思路之后再想。第 3 题 Trie ，第 4 题 dp。</p>
 <a id="more"></a>
 <h1 id="short-encoding-of-words">820. Short Encoding of Words</h1>
 <p>Given a list of words, we may encode it by writing a reference string S and a list of indexes A.</p>
-<p>For example, if the list of words is [&quot;time&quot;, &quot;me&quot;, &quot;bell&quot;], we can write it as S = &quot;time#bell#&quot; and indexes = [0, 2, 5].</p>
-<p>Then for each index, we will recover the word by reading from the reference string from that index until we reach a &quot;#&quot; character.</p>
+<p>For example, if the list of words is ["time", "me", "bell"], we can write it as S = "time#bell#" and indexes = [0, 2, 5].</p>
+<p>Then for each index, we will recover the word by reading from the reference string from that index until we reach a "#" character.</p>
 <p>What is the length of the shortest reference string S possible that encodes the given words?</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line">Input: words = [&quot;time&quot;, &quot;me&quot;, &quot;bell&quot;]</span><br><span class="line">Output: 10</span><br><span class="line">Explanation: S = &quot;time#bell#&quot; and indexes = [0, 2, 5].</span><br></pre></td></tr></table></figure>
 <p><strong>Notes:</strong></p>

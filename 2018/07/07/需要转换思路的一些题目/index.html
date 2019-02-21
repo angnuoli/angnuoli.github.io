@@ -482,7 +482,7 @@
 <a id="more"></a>
 <h2 id="split-array-largest-sum">410. Split Array Largest Sum</h2>
 <blockquote>
-<p><a href="https://leetcode.com/problems/split-array-largest-sum/description/" class="uri" target="_blank" rel="noopener">https://leetcode.com/problems/split-array-largest-sum/description/</a></p>
+<p><a href="https://leetcode.com/problems/split-array-largest-sum/description/" target="_blank" rel="noopener">https://leetcode.com/problems/split-array-largest-sum/description/</a></p>
 </blockquote>
 <p>这道题我先是用了 dp 求解，时间复杂度为 <code>O(mn^2)</code>。之后采用了二分求解，时间复杂度 <code>O(nlogn)</code>。</p>
 <p>这种题我之前也遇到过，感觉很有意思。</p>
@@ -490,7 +490,7 @@
 <p>状态、max min 这些词听上去特别像 dp，而且也的确可以用 dp 做，但是 dp 往往可能不是最优时间复杂度的解，不妨换个思路想想，说不定会有新的发现。</p>
 <h2 id="kth-smallest-number-in-multiplication-table">668. Kth Smallest Number in Multiplication Table</h2>
 <blockquote>
-<p><a href="https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/description/" class="uri" target="_blank" rel="noopener">https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/description/</a></p>
+<p><a href="https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/description/" target="_blank" rel="noopener">https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/description/</a></p>
 </blockquote>
 <p>这道题的关键在于 k 实在是太大了，如果采用排序或者 priorityQueue 从低到高寻找的方法 <code>O(klogm)</code> ，绝对会得到一个 TLE 的结果。但是如果在 <code>[1, m*n]</code> 的范围内对 <code>row*col</code> 的值进行二分查找，再通过给出一个 O(m) 或者 O(mlogn) 的判别方法，我们就可以将时间复杂度降至 <code>O(mlognlogmn)</code>。</p>
       

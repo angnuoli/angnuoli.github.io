@@ -486,10 +486,10 @@
 
       
         <p>最近试验了一下 Google Play Store 的 Dynamic Delivery 功能，感觉挺不错，记录一下。</p>
-<p>Demo： <a href="https://github.com/angnuoli/dynamic-features-demo" class="uri" target="_blank" rel="noopener">https://github.com/angnuoli/dynamic-features-demo</a></p>
+<p>Demo： <a href="https://github.com/angnuoli/dynamic-features-demo" target="_blank" rel="noopener">https://github.com/angnuoli/dynamic-features-demo</a></p>
 <blockquote>
 <p>官方文档：<a href="https://developer.android.com/guide/app-bundle/" target="_blank" rel="noopener">Android App Bundles</a></p>
-<p>Google sample in Kotlin: <a href="https://github.com/googlesamples/android-dynamic-features" class="uri" target="_blank" rel="noopener">https://github.com/googlesamples/android-dynamic-features</a>.</p>
+<p>Google sample in Kotlin: <a href="https://github.com/googlesamples/android-dynamic-features" target="_blank" rel="noopener">https://github.com/googlesamples/android-dynamic-features</a>.</p>
 </blockquote>
 <p>有篇博客也可以看看</p>
 <blockquote>
@@ -505,13 +505,13 @@
 </figure>
 <h3 id="problems">Problems</h3>
 <ol type="1">
-<li><p>ClassNotFoundException. This can be solved by adding <code>split=&quot;modulename&quot;</code> attribute in manifest file.</p></li>
+<li><p>ClassNotFoundException. This can be solved by adding <code>split="modulename"</code> attribute in manifest file.</p></li>
 <li><p>ResourceNotFound. This error will happen on API 26 or higher using</p>
 <p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api <span class="string">'com.google.android.play:core:1.3.0'</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>Details</strong></p>
 <p>After first installing the module, you should restart the app.</p>
 <blockquote>
-<p>Reference: <a href="https://developer.android.com/guide/app-bundle/playcore#access_downloaded_modules" class="uri" target="_blank" rel="noopener">https://developer.android.com/guide/app-bundle/playcore#access_downloaded_modules</a></p>
+<p>Reference: <a href="https://developer.android.com/guide/app-bundle/playcore#access_downloaded_modules" target="_blank" rel="noopener">https://developer.android.com/guide/app-bundle/playcore#access_downloaded_modules</a></p>
 </blockquote>
 <p>Before restarting the app, starting activity of the module will result in ResourceNotFound Exception on all API level. The stack trace is same with following stack trace. But if we restart the app, ResourceNotFound Exception will still happen on API 26 or higher and the module will work on API 25 or lower.</p>
 <p><strong>Root Cause</strong></p>
@@ -529,7 +529,7 @@
 <ol type="1">
 <li><p>用户第一次下载时会只下载 base module，当用户下载过几次 feature module 后，之后重新下载会将之前下载过的 module 一起下载（测试不是很方便）。</p>
 <p><strong>Clear all data</strong> of Google Play probably result in only downloading base app module next time。</p></li>
-<li><p>We should restart app to use module. Details see <a href="https://developer.android.com/guide/app-bundle/playcore#access_downloaded_modules" class="uri" target="_blank" rel="noopener">https://developer.android.com/guide/app-bundle/playcore#access_downloaded_modules</a></p></li>
+<li><p>We should restart app to use module. Details see <a href="https://developer.android.com/guide/app-bundle/playcore#access_downloaded_modules" target="_blank" rel="noopener">https://developer.android.com/guide/app-bundle/playcore#access_downloaded_modules</a></p></li>
 <li><p>The app base.apk is in <code>data/app/packageName</code></p>
 <p>Downloaded split-feature.apk is in <code>data/user/0/packageName/files/splitcompat/versionCode/verifiled-splits</code></p>
 <p>We can try loading apk dynamically using DexClassLoader</p>
