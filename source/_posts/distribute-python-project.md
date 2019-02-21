@@ -11,6 +11,8 @@ tags:
 
 总结一下将依赖关系和项目一同打包发送给对方的几个方法。
 
+<!-- more -->
+
 # 使用 conda
 
 推荐在自己机器上开发程序时，使用虚拟环境，避免本机的 packages 越来越多。
@@ -20,8 +22,37 @@ tags:
 ```bash
 # 本机上新建环境，防止多余 site-package 混入项目
 $ conda create --name <envname> [python=3.7 or 3.5]
+$ conda activate <envname>
 # 本机上项目运行成功后，导出 conda package
 $ conda list --export > requirements.txt
+# 退出环境
+$ conda deactivate
+# 删除环境
+$ conda env remove <envname>
+```
+
+其中 requirements.txt 或者 yml 文件的样式如下
+
+```yml
+name: AI
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6
+  - ujson
+  - numpy
+  - pip
+  - spacy=2.0.16
+  - tensorboard
+  - tensorflow
+  - tensorboardX
+  - tqdm
+  - urllib3
+  - pytorch=1.0.0
+  - pip:
+    - torch==1.0.0
 ```
 
 项目发送给对方后

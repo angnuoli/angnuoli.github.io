@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://www.gjxhlan.me
+url: https://www.angnuo.me
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -82,3 +82,12 @@ deploy:
 
 flowchart:
   options: raphael
+
+Plugins:
+- hexo-generator-baidu-sitemap
+- hexo-generator-sitemap
+
+baidusitemap:
+    path: baidusitemap.xml
+sitemap:
+    path: sitemap.xml
